@@ -1,0 +1,9 @@
+{
+  "name": "trig-marketing",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjenkins24/trig-marketing.git"
+  },
+  "license": "UNLICENSED",
+}
