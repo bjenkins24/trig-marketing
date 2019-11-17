@@ -4,13 +4,21 @@ const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = env => {
+    const { NODE_ENV } = env;
+
     return {
-        mode: env.NODE_ENV,
+        mode: NODE_ENV,
         entry: "./src/index.js",
+        devServer: {
+            contentBase: path.join(__dirname, "dist"),
+            compress: true,
+            port: 2021 
+        },
         output: {
             filename: "bundle.js",
             path: path.resolve(__dirname, "dist/assets")
         },
+        devtool: NODE_ENV === "development" ? "eval-source-map" : false,
         optimization: {
             minimizer: [
                 new TerserJSPlugin({}),
@@ -44,7 +52,7 @@ module.exports = env => {
                         {
                             loader: MiniCssExtractPlugin.loader,
                             options: {
-                                hmr: process.env.NODE_ENV === "development"
+                                hmr: NODE_ENV === "development"
                             }
                         },
                         {
