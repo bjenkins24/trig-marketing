@@ -1,29 +1,30 @@
 {
-  "name": "trig-marketing",
-  "version": "1.0.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bjenkins24/trig-marketing.git"
-  },
-  "license": "UNLICENSED",
+  "name": "gatsby-starter-hello-world",
+  "private": true,
+  "description": "A simplified bare-bones starter for Gatsby",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
-    "build": "webpack --env.NODE_ENV=production",
-    "build-dev": "webpack --env.NODE_ENV=development",
-    "start": "webpack-dev-server --env.NODE_ENV=development"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "dependencies": {
+    "gatsby": "^2.17.11",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
-    "mini-css-extract-plugin": "^0.8.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "style-loader": "^1.0.0",
-    "terser-webpack-plugin": "^2.2.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "prettier": "^1.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
