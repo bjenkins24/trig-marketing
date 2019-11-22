@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Button } from "@trig-app/core-components"
 
 const Container = styled.div`
   background: black;
@@ -7,7 +8,12 @@ const Container = styled.div`
 `
 
 const Index = () => {
-  return <Container>Hello world friends!</Container>
+  return (
+    <Container>
+      Hello world friends!
+      <Button>Hello Test</Button>
+    </Container>
+  )
 }
 
 export default Index

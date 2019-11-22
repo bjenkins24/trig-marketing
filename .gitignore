@@ -1,3 +1,7 @@
+# ide
+*.sublime-workspace
+*.sublime-project
+
 # Logs
 logs
 *.log
