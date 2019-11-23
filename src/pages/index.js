@@ -1,19 +1,8 @@
-import React from "react"
-import styled from "styled-components"
-import { Button } from "@trig-app/core-components"
-
-const Container = styled.div`
-  background: black;
-  color: white;
-`
+import React from 'react';
+import Layout from '../components/Layout';
 
 const Index = () => {
-  return (
-    <Container>
-      Hello world friends!
-      <Button>Hello Test</Button>
-    </Container>
-  )
-}
+  return <Layout>Hello world friends!</Layout>;
+};
 
-export default Index
+export default Index;

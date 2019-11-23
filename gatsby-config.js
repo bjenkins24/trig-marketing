@@ -1,9 +1,8 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
+const siteConfig = require("./site-config")
 
 module.exports = {
-    plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-offline"]
-};
+  siteMetadata: {
+    ...siteConfig,
+  },
+  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-offline"],
+}
