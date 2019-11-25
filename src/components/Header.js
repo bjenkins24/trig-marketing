@@ -7,6 +7,9 @@ import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
 
 const Container = styled.div`
   display: flex;
+  position: fixed;
+  width: calc(100% - 6.4rem);
+  top: 0;
   background: ${({ theme }) => theme.p};
   padding: 3.2rem;
 `;
