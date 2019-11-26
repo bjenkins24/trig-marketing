@@ -8,10 +8,13 @@ module.exports = {
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-offline',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: 'gatsby-plugin-root-import',
+      resolve: 'gatsby-source-filesystem',
       options: {
-        root: path.join(__dirname, 'src'),
+        name: 'images',
+        path: `${__dirname}/src/images`
       },
     },
   ],

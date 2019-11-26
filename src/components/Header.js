@@ -1,13 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
+import logo from '../images/logo-light.svg';
+import { Button } from '@trig-app/core-components/dist/Buttons';
+import { BodyBig } from '@trig-app/core-components/dist/Typography';
+import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
 
-const StyledHeader = styled.div`
+const Container = styled.div`
+  display: flex;
+  position: fixed;
+  width: calc(100% - 6.4rem);
+  top: 0;
   background: ${({ theme }) => theme.p};
-  height: 500px;
+  padding: 3.2rem;
+  z-index: 1;
+`;
+
+const Nav = styled(HorizontalGroup)`
+  margin-left: auto;
 `;
 
 const Header = () => {
-  return <StyledHeader />;
+  return (
+    <Container>
+      <img src={logo} alt="Logo" />
+      <Nav margin={3.2}>
+        <BodyBig color="sc" weight="bold">
+          Home
+        </BodyBig>
+        <BodyBig color="sc" weight="bold">
+          Pricing
+        </BodyBig>
+        <BodyBig color="sc" weight="bold">
+          Sign in
+        </BodyBig>
+        <Button>Try Now</Button>
+      </Nav>
+    </Container>
+  );
 };
 
 export default Header;
