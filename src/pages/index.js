@@ -40,7 +40,11 @@ const Index = ({ data }) => {
           know it all.
         </BodyBiggestStyled>
         <ButtonStyled size="hg">Try Trig for Free</ButtonStyled>
-        <Img fixed={data.file.childImageSharp.fixed} />
+        <Img
+          alt="Screenshot of Trig in a Laptop"
+          durationFadeIn={300}
+          fixed={data.file.childImageSharp.fixed}
+        />
       </Hero>
     </Layout>
   );
@@ -52,8 +56,8 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "laptop.png" }) {
       childImageSharp {
-        fixed(width: 911, height: 532) {
-          ...GatsbyImageSharpFixed_withWebp
+        fixed(width: 928, height: 532, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
     }
