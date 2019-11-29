@@ -177,7 +177,7 @@ const Index = ({ data }) => {
           <BodyBig as="p">
             Store files and links, create documents, and sync with existing
             services like Google Drive and Dropbox. Anything you can think of
-            can be stored as trig as Cards.
+            can be stored in Trig as cards.
           </BodyBig>
           <BodyBig as="p">
             Empower all your teammates to find what they need exactly when they
