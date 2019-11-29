@@ -195,12 +195,24 @@ const Index = ({ data }) => {
       </Section>
 
       <Section fullPadding>
-        <div>
+        <Img
+          css={`
+            align-self: center;
+          `}
+          alt="Screenshot of Organization in Trig"
+          durationFadeIn={300}
+          fixed={data.organize.childImageSharp.fixed}
+        />
+        <div
+          css={`
+            width: 51.1rem;
+          `}
+        >
           <FeatureTitle>Organizing is a thing of the past</FeatureTitle>
           <BodyBig as="p">
             Are you the type of person that organizes your socks by color and
             pattern, but then your partner washes them and throws them in your
-            shirt drawer? Not. Cool
+            shirt drawer? Not. Cool.
           </BodyBig>
           <BodyBig as="p">
             You might not have sock drawers in your company (maybe you do, we’re
@@ -229,7 +241,12 @@ const Index = ({ data }) => {
         </div>
       </Section>
       <Section colored fullPadding>
-        <div>
+        <div
+          css={`
+            width: 42.5rem;
+            align-self: center;
+          `}
+        >
           <FeatureTitle>
             Share collections of files, links, and documents
           </FeatureTitle>
@@ -244,9 +261,37 @@ const Index = ({ data }) => {
             your existing intranet.
           </BodyBig>
         </div>
+        <Img
+          css={`
+            align-self: center;
+          `}
+          alt="Screenshot of Decks in Trig"
+          durationFadeIn={300}
+          fixed={data.deck.childImageSharp.fixed}
+        />
       </Section>
       <Section fullPadding>
-        <div>
+        <div
+          css={`
+            width: 41.8rem;
+            align-self: center;
+          `}
+        >
+          <Huge>Ideas &amp; Questions</Huge>
+          <Button
+            size="hg"
+            css={`
+              padding: 0 6.4rem;
+            `}
+          >
+            Get Started Now For Free
+          </Button>
+        </div>
+        <div
+          css={`
+            width: 51.1rem;
+          `}
+        >
           <FeatureTitle>
             There’s no such things as bad ideas or questions
           </FeatureTitle>
@@ -270,14 +315,25 @@ const Index = ({ data }) => {
       <Section fullPadding colored>
         <FeatureTitle>Pricing</FeatureTitle>
       </Section>
-      <Section fullPadding>
-        <Huge>Have Questions?</Huge>
-        <BodyBig as="p">
+      <div
+        css={`
+          padding: ${bottomMargin};
+          text-align: center;
+        `}
+      >
+        <Huge
+          css={`
+            margin-bottom: 3.2rem;
+          `}
+        >
+          Have Questions?
+        </Huge>
+        <BodyBig as="p" css={`margin-bottom: 5.6rem`}>
           Find out if Trig is the right tool for your business by getting in
           touch.
         </BodyBig>
-        <Button size="hg">Contact Us</Button>
-      </Section>
+        <Button size="hg" css={`padding: 0 3.2rem`}>Contact Us</Button>
+      </div>
     </Layout>
   );
 };
@@ -296,6 +352,20 @@ export const query = graphql`
     card: file(relativePath: { eq: "card.png" }) {
       childImageSharp {
         fixed(width: 424, height: 320, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
+    organize: file(relativePath: { eq: "organize.png" }) {
+      childImageSharp {
+        fixed(width: 450, height: 468, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
+    deck: file(relativePath: { eq: "deck.png" }) {
+      childImageSharp {
+        fixed(width: 515, height: 441, pngQuality: 100, webpQuality: 100) {
           ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
