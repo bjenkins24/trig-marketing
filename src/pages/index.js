@@ -100,10 +100,23 @@ const BulletInfo = ({ color, iconType, title, description }) => {
       <Bullet color={color}>
         <Icon type={iconType} size={5.6} color="bs.200" />
       </Bullet>
-      <BulletTitle as="h3" color="ps.200">
+      <BulletTitle
+        as="h3"
+        color="ps.200"
+        css={`
+          text-align: center;
+        `}
+      >
         {title}
       </BulletTitle>
-      <BodyBig>{description}</BodyBig>
+      <BodyBig
+        as="p"
+        css={`
+          text-align: center;
+        `}
+      >
+        {description}
+      </BodyBig>
     </BulletInfoContainer>
   );
 };
@@ -126,7 +139,7 @@ const Index = ({ data }) => {
         <ImgStyled
           alt="Screenshot of Trig in a Laptop"
           durationFadeIn={300}
-          fixed={data.file.childImageSharp.fixed}
+          fixed={data.laptop.childImageSharp.fixed}
         />
       </Hero>
       <SubHeading>What is Trig?</SubHeading>
@@ -151,7 +164,11 @@ const Index = ({ data }) => {
         />
       </Section>
       <Section colored fullPadding>
-        <div>
+        <div
+          css={`
+            width: 42.5rem;
+          `}
+        >
           <FeatureTitle>Store all company knowledge in one place</FeatureTitle>
           <BodyBig as="p">
             Just like your garage! Wait, no, not like that. You’ll actually be
@@ -167,7 +184,16 @@ const Index = ({ data }) => {
             need it.
           </BodyBig>
         </div>
+        <Img
+          css={`
+            align-self: center;
+          `}
+          alt="Screenshot of Cards in Trig"
+          durationFadeIn={300}
+          fixed={data.card.childImageSharp.fixed}
+        />
       </Section>
+
       <Section fullPadding>
         <div>
           <FeatureTitle>Organizing is a thing of the past</FeatureTitle>
@@ -260,9 +286,16 @@ export default Index;
 
 export const query = graphql`
   query {
-    file(relativePath: { eq: "laptop.png" }) {
+    laptop: file(relativePath: { eq: "laptop.png" }) {
       childImageSharp {
         fixed(width: 928, height: 532, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFixed_withWebp_noBase64
+        }
+      }
+    }
+    card: file(relativePath: { eq: "card.png" }) {
+      childImageSharp {
+        fixed(width: 424, height: 320, pngQuality: 100, webpQuality: 100) {
           ...GatsbyImageSharpFixed_withWebp_noBase64
         }
       }
