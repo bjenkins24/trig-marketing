@@ -313,7 +313,13 @@ const Index = ({ data }) => {
         </div>
       </Section>
       <Section fullPadding colored>
-        <FeatureTitle>Pricing</FeatureTitle>
+        <FeatureTitle
+          css={`
+            margin: 0 auto 3.2rem;
+          `}
+        >
+          Pricing
+        </FeatureTitle>
       </Section>
       <div
         css={`
@@ -328,11 +334,23 @@ const Index = ({ data }) => {
         >
           Have Questions?
         </Huge>
-        <BodyBig as="p" css={`margin-bottom: 5.6rem`}>
+        <BodyBig
+          as="p"
+          css={`
+            margin-bottom: 5.6rem;
+          `}
+        >
           Find out if Trig is the right tool for your business by getting in
           touch.
         </BodyBig>
-        <Button size="hg" css={`padding: 0 3.2rem`}>Contact Us</Button>
+        <Button
+          size="hg"
+          css={`
+            padding: 0 3.2rem;
+          `}
+        >
+          Contact Us
+        </Button>
       </div>
     </Layout>
   );

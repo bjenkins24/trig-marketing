@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4 > *:not(:last-child) {
+  margin-right: 0.8rem;
+}
+
+.c2 {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #F5F5F5;
+}
+
+.c5 {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  font-weight: 600;
+  color: #F5F5F5;
+}
+
+.c3 {
+  font-family: inherit;
+  height: 4rem;
+  border: 0;
+  background: #009E8F;
+  border: 0.1rem solid #009E8F;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  padding: 0 1.6rem;
+  cursor: pointer;
+  -webkit-transition: all 150ms ease-in;
+  transition: all 150ms ease-in;
+  outline: none;
+}
+
+.c3:hover {
+  background: #098072;
+  border: 0.1rem solid #098072;
+}
+
+.c3:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255,255,255,0.15);
+  opacity: 0;
+  border-radius: 100%;
+  -webkit-transform: scale(1,1) translate(-50%);
+  -ms-transform: scale(1,1) translate(-50%);
+  transform: scale(1,1) translate(-50%);
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+
+.c3:focus:not(:active)::after {
+  -webkit-animation: jrKCvp 1s ease-out;
+  animation: jrKCvp 1s ease-out;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  width: calc(100% - 6.4rem);
+  top: 0;
+  background: #2C2929;
+  padding: 3.2rem;
+  z-index: 1;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: auto;
+}
+
+.c1 > *:not(:last-child) {
+  margin-right: 3.2rem;
+}
+
+<div
+  className="c0"
+>
+  <img
+    alt="Logo"
+    src="test-file-stub"
+  />
+  <div
+    className="c1"
+  >
+    <span
+      className="c2"
+      color="sc"
+    >
+      Home
+    </span>
+    <span
+      className="c2"
+      color="sc"
+    >
+      Pricing
+    </span>
+    <span
+      className="c2"
+      color="sc"
+    >
+      Sign in
+    </span>
+    <button
+      className="c3"
+      size="md"
+      type="button"
+    >
+      <div
+        className="c4"
+      >
+        <span
+          className="c5"
+          color="sc"
+        >
+          Try Now
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;
