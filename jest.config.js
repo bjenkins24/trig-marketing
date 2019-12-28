@@ -10,11 +10,20 @@ module.exports = {
     '**/src/**/*.js',
     '!**/src/test/**/*.js',
     '!**/src/fonts/**/*.js',
+    '!**/src/pages/**/*.js',
   ],
   testPathIgnorePatterns: [`node_modules`, `.cache`, `public`],
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
   globals: {
     __PATH_PREFIX__: ``,
+  },
+  coverageThreshold: {
+    global: {
+      statements: 100,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+    },
   },
   setupFiles: [`<rootDir>/loadershim.js`],
   setupFilesAfterEnv: [

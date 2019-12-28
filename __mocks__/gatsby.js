@@ -1,4 +1,5 @@
 const React = require('react');
+
 const gatsby = jest.requireActual('gatsby');
 module.exports = {
   ...gatsby,
@@ -21,6 +22,7 @@ module.exports = {
         href: to,
       })
   ),
+  // eslint-disable-next-line react/prop-types
   StaticQuery: jest.fn(),
   useStaticQuery: jest.fn(),
 };

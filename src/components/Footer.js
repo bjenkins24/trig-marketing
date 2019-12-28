@@ -7,9 +7,9 @@ const Container = styled.div`
   padding: 3.2rem;
 `;
 
-const Footer = () => {
+const Footer = props => {
   return (
-    <Container>
+    <Container {...props}>
       <img src={logo} alt="Logo" />
     </Container>
   );

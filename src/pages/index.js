@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import Layout from '../components/Layout';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 import {
   Huge,
@@ -12,6 +11,7 @@ import {
   Heading1,
 } from '@trig-app/core-components/dist/Typography';
 import Icon from '@trig-app/core-components/dist/Icon';
+import Layout from '../components/Layout';
 
 const bottomMargin = '9.6rem';
 
@@ -59,6 +59,10 @@ const FeatureContainer = styled.div`
     colored ? theme.bs[300] : theme.bs[200]};
 `;
 
+const sectionTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const Section = ({ children, ...restProps }) => {
   return (
     <FeatureContainer {...restProps}>
@@ -66,6 +70,8 @@ const Section = ({ children, ...restProps }) => {
     </FeatureContainer>
   );
 };
+
+Section.propTypes = sectionTypes;
 
 const FeatureTitle = styled(Heading1)`
   margin-bottom: 3.2rem;
@@ -122,6 +128,10 @@ const BulletInfo = ({ color, iconType, title, description }) => {
 };
 
 BulletInfo.propTypes = bulletInfoTypes;
+
+const indexTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 const Index = ({ data }) => {
   return (
@@ -355,6 +365,8 @@ const Index = ({ data }) => {
     </Layout>
   );
 };
+
+Index.propTypes = indexTypes;
 
 export default Index;
 

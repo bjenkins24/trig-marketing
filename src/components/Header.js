@@ -19,9 +19,9 @@ const Nav = styled(HorizontalGroup)`
   margin-left: auto;
 `;
 
-const Header = () => {
+const Header = props => {
   return (
-    <Container>
+    <Container {...props}>
       <img src={logo} alt="Logo" />
       <Nav margin={3.2}>
         <BodyBig color="sc" weight="bold">

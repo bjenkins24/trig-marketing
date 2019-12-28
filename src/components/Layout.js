@@ -4,7 +4,12 @@ import { StaticQuery, graphql } from 'gatsby';
 import Head from './Head';
 import Header from './Header';
 import Footer from './Footer';
-import GlobalStyle from '../../global.css.js';
+import GlobalStyle from '../../global.css';
+
+const layoutTypes = {
+  children: PropTypes.node.isRequired,
+  data: PropTypes.object.isRequired,
+};
 
 const Layout = ({ data, children }) => (
   <>
@@ -16,10 +21,7 @@ const Layout = ({ data, children }) => (
   </>
 );
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  data: PropTypes.object.isRequired,
-};
+Layout.propTypes = layoutTypes;
 
 const LayoutWithQuery = props => (
   <StaticQuery
