@@ -18,9 +18,20 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean && rimraf package-lock.json && rimraf node_modules && npm install"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "precise-commits",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@reach/router": "^1.2.1",
-    "@trig-app/core-components": "^0.1.15",
     "@trig-app/themes": "^0.1.2",
     "gatsby": "^2.18.17",
     "gatsby-image": "^2.2.33",
@@ -28,13 +39,23 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
-    "styled-components": "^5.0.0-beta.8"
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@testing-library/react": "^9.4.0",
+    "@trig-app/core-components": "^0.1.15",
+    "@trig-app/eslint-config": "^1.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-styled-components": "^1.10.6",
     "babel-preset-gatsby": "^0.2.23",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "gatsby-plugin-offline": "^3.0.21",
     "gatsby-plugin-react-svg": "^2.1.2",
     "gatsby-plugin-root-import": "^2.0.5",
@@ -42,11 +63,14 @@
     "gatsby-plugin-styled-components": "^3.1.13",
     "gatsby-source-filesystem": "^2.1.38",
     "gatsby-transformer-sharp": "^2.3.5",
+    "husky": "^3.1.0",
     "identity-obj-proxy": "^3.0.0",
     "is-ci-cli": "^2.0.0",
     "jest": "^24.9.0",
     "jest-styled-components": "^7.0.0-beta.2",
+    "lint-staged": "^9.5.0",
     "open-cli": "^5.0.0",
+    "precise-commits": "^1.0.2",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.12.0",
