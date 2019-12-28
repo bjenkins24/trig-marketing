@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../images/logo-light.svg';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig } from '@trig-app/core-components/dist/Typography';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
+import logo from '../images/logo-light.svg';
 
 const Container = styled.div`
   display: flex;

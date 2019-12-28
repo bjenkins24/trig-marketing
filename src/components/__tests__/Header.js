@@ -4,6 +4,7 @@ import Header from '../Header';
 
 describe('<Header />', () => {
   it('renders and takes basic props', () => {
-      render(<Header />);
+    const { getByAltText } = render(<Header />);
+    expect(getByAltText(/logo/i)).toBeInTheDocument();
   });
 });

@@ -17,4 +17,8 @@ module.exports = {
     __PATH_PREFIX__: ``,
   },
   setupFiles: [`<rootDir>/loadershim.js`],
+  setupFilesAfterEnv: [
+    'jest-styled-components',
+    '@testing-library/jest-dom/extend-expect',
+  ],
 };
