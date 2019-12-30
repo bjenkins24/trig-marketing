@@ -87,10 +87,16 @@ const Bullet = styled.div`
   width: 8.8rem;
   height: 8.8rem;
   margin: 0 auto 3.2rem;
+  display: flex;
+  align-items: center;
 `;
 
 const BulletTitle = styled(BodyBig)`
   margin: 0 0 0.8rem 0;
+`;
+
+const StyledIcon = styled(Icon)`
+  margin: 0 auto;
 `;
 
 const bulletInfoTypes = {
@@ -104,7 +110,7 @@ const BulletInfo = ({ color, iconType, title, description }) => {
   return (
     <BulletInfoContainer>
       <Bullet color={color}>
-        <Icon type={iconType} size={5.6} color="bs.200" />
+        <StyledIcon type={iconType} size={4.8} color="bs.200" />
       </Bullet>
       <BulletTitle
         as="h3"
