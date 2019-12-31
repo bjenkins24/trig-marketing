@@ -12,6 +12,7 @@ import {
 } from '@trig-app/core-components/dist/Typography';
 import Icon from '@trig-app/core-components/dist/Icon';
 import Layout from '../components/Layout';
+import Pricing from '../components/Pricing';
 
 const bottomMargin = '9.6rem';
 
@@ -336,6 +337,7 @@ const Index = ({ data }) => {
         >
           Pricing
         </FeatureTitle>
+        <Pricing />
       </Section>
       <div
         css={`
