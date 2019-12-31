@@ -164,7 +164,7 @@ const Index = ({ data }) => {
           color="a2"
           iconType="aggregate"
           title="One Place for Everything"
-          description="Throw in your files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack"
+          description="Throw in your files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
         />
         <BulletInfo
           color="a1"
@@ -176,7 +176,7 @@ const Index = ({ data }) => {
           color="a3"
           iconType="deck"
           title="Share With Your Team"
-          description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new"
+          description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new."
         />
       </Section>
       <Section colored fullPadding>
@@ -243,8 +243,8 @@ const Index = ({ data }) => {
           >
             With Trig there are no folders, no tagging, and yup, no sock
             drawers. Trig surfaces and tags your documents automatically, and
-            has a deep full text search. It’s like your companies full-time
-            knowledge organizer.
+            has a deep full text search. It&apos;s like your company&apos;s
+            full-time knowledge organizer.
           </BodyBig>
           <Button
             css={`
