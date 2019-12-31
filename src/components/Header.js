@@ -12,7 +12,7 @@ const Container = styled.div`
   top: 0;
   background: ${({ theme }) => theme.p};
   padding: 3.2rem;
-  z-index: 1;
+  z-index: 100;
 `;
 
 const Nav = styled(HorizontalGroup)`

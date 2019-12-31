@@ -8,6 +8,12 @@ import {
 } from '@trig-app/core-components/dist/Typography';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 
+const Wrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  margin: 0 auto;
+`;
+
 const Block = styled.div`
   background: ${({ theme }) => theme.bs[200]};
   padding: 5.6rem 3.2rem;
@@ -15,6 +21,7 @@ const Block = styled.div`
   width: 27.1rem;
   box-shadow: ${({ theme }) => theme.sh};
   text-align: center;
+  flex-shrink: 0;
 `;
 
 const Title = styled(Heading2)`
@@ -47,15 +54,19 @@ const SecondaryButton = styled(Button).attrs({
 const Pricing = () => {
   const bodyColor = 'ps.200';
   return (
-    <>
-      <Block>
+    <Wrapper>
+      <Block
+        css={`
+          margin-right: -1.6rem;
+        `}
+      >
         <Title>Starter</Title>
         <Price>$6</Price>
         <Body1
           color={bodyColor}
           css={`
             display: block;
-            margin-bottom: 7.5rem;
+            margin-bottom: 4.8rem;
           `}
         >
           user/month
@@ -71,7 +82,10 @@ const Pricing = () => {
       </Block>
       <Block
         css={`
+          margin-top: -2.4rem;
           width: 31.1rem;
+          position: relative;
+          z-index: 1;
         `}
       >
         <Title>Plus</Title>
@@ -80,7 +94,7 @@ const Pricing = () => {
           color={bodyColor}
           css={`
             display: block;
-            margin-bottom: 4.8rem;
+            margin-bottom: 7.5rem;
           `}
         >
           user/month
@@ -99,11 +113,21 @@ const Pricing = () => {
           <ListItem>Ideas Feature</ListItem>
           <ListItem>250GB File Storage/User</ListItem>
         </List>
-        <Button type="button" size="lg">
+        <Button
+          type="button"
+          size="lg"
+          css={`
+            margin-top: 7.5rem;
+          `}
+        >
           Start Free 7-day Trial
         </Button>
       </Block>
-      <Block>
+      <Block
+        css={`
+          margin-left: -1.6rem;
+        `}
+      >
         <Title>Enterprise</Title>
         <Body1
           color={bodyColor}
@@ -130,7 +154,7 @@ const Pricing = () => {
         </List>
         <SecondaryButton type="button">Contact Us</SecondaryButton>
       </Block>
-    </>
+    </Wrapper>
   );
 };
 

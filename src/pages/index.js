@@ -53,7 +53,7 @@ const FeatureContent = styled.div`
   margin: 0 auto;
 `;
 
-const FeatureContainer = styled.div`
+const FeatureContainer = styled.section`
   padding-bottom: ${bottomMargin};
   padding-top: ${({ fullPadding }) => (fullPadding ? bottomMargin : 0)};
   background: ${({ colored, theme }) =>
@@ -62,16 +62,32 @@ const FeatureContainer = styled.div`
 
 const sectionTypes = {
   children: PropTypes.node.isRequired,
+  title: PropTypes.string,
 };
 
-const Section = ({ children, ...restProps }) => {
+const sectionDefaultProps = {
+  title: '',
+};
+
+const Section = ({ children, title, ...restProps }) => {
   return (
     <FeatureContainer {...restProps}>
+      {title && (
+        <FeatureTitle
+          css={`
+            margin: 0 auto 5.6rem;
+            text-align: center;
+          `}
+        >
+          {title}
+        </FeatureTitle>
+      )}
       <FeatureContent>{children}</FeatureContent>
     </FeatureContainer>
   );
 };
 
+Section.defaultProps = sectionDefaultProps;
 Section.propTypes = sectionTypes;
 
 const FeatureTitle = styled(Heading1)`
@@ -210,7 +226,6 @@ const Index = ({ data }) => {
           fixed={data.card.childImageSharp.fixed}
         />
       </Section>
-
       <Section fullPadding>
         <Img
           css={`
@@ -329,14 +344,7 @@ const Index = ({ data }) => {
           </BodyBig>
         </div>
       </Section>
-      <Section fullPadding colored>
-        <FeatureTitle
-          css={`
-            margin: 0 auto 3.2rem;
-          `}
-        >
-          Pricing
-        </FeatureTitle>
+      <Section fullPadding colored title="Pricing">
         <Pricing />
       </Section>
       <div
