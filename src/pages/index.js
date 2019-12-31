@@ -118,17 +118,15 @@ const StyledIcon = styled(Icon)`
 
 const bulletInfoTypes = {
   color: PropTypes.oneOf(['a1', 'a2', 'a3']).isRequired,
-  iconType: PropTypes.oneOf(['aggregate', 'organize', 'deck']).isRequired,
+  renderIcon: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
 
-const BulletInfo = ({ color, iconType, title, description }) => {
+const BulletInfo = ({ color, renderIcon, title, description }) => {
   return (
     <BulletInfoContainer>
-      <Bullet color={color}>
-        <StyledIcon type={iconType} size={4.8} color="bs.200" />
-      </Bullet>
+      <Bullet color={color}>{renderIcon()}</Bullet>
       <BulletTitle
         as="h3"
         color="ps.200"
@@ -179,19 +177,41 @@ const Index = ({ data }) => {
       <Section>
         <BulletInfo
           color="a2"
-          iconType="aggregate"
+          renderIcon={() => (
+            <StyledIcon type="aggregate" size={4.8} color="bs.200" />
+          )}
           title="One Place for Everything"
           description="Throw in your files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
         />
         <BulletInfo
           color="a1"
-          iconType="organize"
+          renderIcon={() => (
+            <StyledIcon
+              css={`
+                position: relative;
+                left: -0.2rem;
+              `}
+              type="organize"
+              size={4.8}
+              color="bs.200"
+            />
+          )}
           title="Auto Organizing"
           description="No endless folder nesting. Trig organizes for you. Find what you need when you need it."
         />
         <BulletInfo
           color="a3"
-          iconType="deck"
+          renderIcon={() => (
+            <StyledIcon
+              css={`
+                position: relative;
+                left: -0.2rem;
+              `}
+              type="deck"
+              size={4.8}
+              color="bs.200"
+            />
+          )}
           title="Share With Your Team"
           description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new."
         />
