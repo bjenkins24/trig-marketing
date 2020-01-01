@@ -14,6 +14,7 @@ import Layout from '../components/Layout';
 import Pricing from '../components/index/Pricing';
 import Section from '../components/index/Section';
 import FeatureBullets from '../components/index/FeatureBullets';
+import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
 export const bottomMargin = '9.6rem';
 
@@ -56,25 +57,26 @@ const indexTypes = {
 };
 
 const Index = ({ data }) => {
+  const { siteTitle } = useSiteMetadata();
   return (
     <Layout>
       <Hero>
         <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
         <BodyBiggestStyled as="p" color="pc">
           Ew, not like that guy in the breakroom whose parents didn’t love him.
-          Let Trig
+          Let {siteTitle}
           <br />
           organize all of your company knowledge, and your team will actually
           know it all.
         </BodyBiggestStyled>
-        <ButtonStyled size="hg">Try Trig for Free</ButtonStyled>
+        <ButtonStyled size="hg">Try {siteTitle} for Free</ButtonStyled>
         <ImgStyled
-          alt="Screenshot of Trig in a Laptop"
+          alt={`Screenshot of ${siteTitle} in a Laptop`}
           durationFadeIn={300}
           fixed={data.laptop.childImageSharp.fixed}
         />
       </Hero>
-      <SubHeading>What is Trig?</SubHeading>
+      <SubHeading>What is {siteTitle}?</SubHeading>
       <Section>
         <FeatureBullets />
       </Section>
@@ -87,12 +89,12 @@ const Index = ({ data }) => {
           <SectionTitle>Store all company knowledge in one place</SectionTitle>
           <BodyBig as="p">
             Just like your garage! Wait, no, not like that. You’ll actually be
-            able to find things in Trig.
+            able to find things in {siteTitle}
           </BodyBig>
           <BodyBig as="p">
             Store files and links, create documents, and sync with existing
             services like Google Drive and Dropbox. Anything you can think of
-            can be stored in Trig as cards.
+            can be stored in {siteTitle} as cards.
           </BodyBig>
           <BodyBig as="p">
             Empower all your teammates to find what they need exactly when they
@@ -103,7 +105,7 @@ const Index = ({ data }) => {
           css={`
             align-self: center;
           `}
-          alt="Screenshot of Cards in Trig"
+          alt={`Screenshot of Cards in ${siteTitle}`}
           durationFadeIn={300}
           fixed={data.card.childImageSharp.fixed}
         />
@@ -113,7 +115,7 @@ const Index = ({ data }) => {
           css={`
             align-self: center;
           `}
-          alt="Screenshot of Organization in Trig"
+          alt={`Screenshot of Organization in ${siteTitle}`}
           durationFadeIn={300}
           fixed={data.organize.childImageSharp.fixed}
         />
@@ -139,9 +141,9 @@ const Index = ({ data }) => {
               margin-bottom: 3.2rem;
             `}
           >
-            With Trig there are no folders, no tagging, and yup, no sock
-            drawers. Trig surfaces and tags your documents automatically, and
-            has a deep full text search. It&apos;s like your company&apos;s
+            With {siteTitle} there are no folders, no tagging, and yup, no sock
+            drawers. {siteTitle} surfaces and tags your documents automatically,
+            and has a deep full text search. It&apos;s like your company&apos;s
             full-time knowledge organizer.
           </BodyBig>
           <Button
@@ -167,7 +169,7 @@ const Index = ({ data }) => {
           <BodyBig as="p">
             If you want your team to read that career changing article you found
             on how to sell ice cream to eskimos (ice has been done), add the
-            article to a deck in Trig.
+            article to a deck in {siteTitle}.
           </BodyBig>
           <BodyBig as="p">
             All followers of your deck will be notified immediately that you
@@ -179,7 +181,7 @@ const Index = ({ data }) => {
           css={`
             align-self: center;
           `}
-          alt="Screenshot of Decks in Trig"
+          alt={`Screenshot of Decks in ${siteTitle}`}
           durationFadeIn={300}
           fixed={data.deck.childImageSharp.fixed}
         />
@@ -214,11 +216,12 @@ const Index = ({ data }) => {
             until you get through the bad ones.
           </BodyBig>
           <BodyBig as="p">
-            Trig lets team members post ideas and administrators can review them
-            or open them up for votes. Team members can also post questions and
-            Trig will direct them to the right people in your company. Answers
-            then stay in your pool of knowledge for others to find when they
-            need it.
+            {siteTitle} lets team members post ideas and administrators can
+            review them or open them up for votes. Team members can also post
+            questions and
+            {siteTitle} will direct them to the right people in your company.
+            Answers then stay in your pool of knowledge for others to find when
+            they need it.
           </BodyBig>
           <BodyBig as="p">
             Empower your team to come up with ideas, or you’ll never know how
@@ -248,8 +251,8 @@ const Index = ({ data }) => {
             margin-bottom: 5.6rem;
           `}
         >
-          Find out if Trig is the right tool for your business by getting in
-          touch.
+          Find out if {siteTitle} is the right tool for your business by getting
+          in touch.
         </BodyBig>
         <Button
           size="hg"

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig } from '@trig-app/core-components/dist/Typography';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
-import logo from '../images/logo-light.svg';
+import Logo from '@trig-app/core-components/dist/Logo';
 
 const Container = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ const Nav = styled(HorizontalGroup)`
 const Header = props => {
   return (
     <Container {...props}>
-      <img src={logo} alt="Logo" />
+      <Logo />
       <Nav margin={3.2}>
         <BodyBig color="sc" weight="bold">
           Home

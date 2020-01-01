@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from '../../test/utils';
-import Pricing from '../index/Pricing';
+import { render } from '../../../test/utils';
+import Pricing from '../Pricing';
 
 describe('<PricingBlock />', () => {
   it('renders and takes basic props', () => {
