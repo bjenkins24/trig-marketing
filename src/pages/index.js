@@ -10,11 +10,12 @@ import {
   BodyBig,
   Heading1,
 } from '@trig-app/core-components/dist/Typography';
-import Icon from '@trig-app/core-components/dist/Icon';
 import Layout from '../components/Layout';
-import Pricing from '../components/Pricing';
+import Pricing from '../components/index/Pricing';
+import Section from '../components/index/Section';
+import FeatureBullets from '../components/index/FeatureBullets';
 
-const bottomMargin = '9.6rem';
+export const bottomMargin = '9.6rem';
 
 const Hero = styled.div`
   padding-top: 15rem;
@@ -37,6 +38,10 @@ const ButtonStyled = styled(Button)`
   margin: 0 auto 6.4rem;
 `;
 
+const SectionTitle = styled(Heading1)`
+  margin-bottom: 3.2rem;
+`;
+
 const ImgStyled = styled(Img)`
   margin-bottom: ${bottomMargin};
 `;
@@ -45,110 +50,6 @@ const SubHeading = styled(Huge)`
   margin: 16.9rem 0 3.2rem;
   text-align: center;
 `;
-
-const FeatureContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 103rem;
-  margin: 0 auto;
-`;
-
-const FeatureContainer = styled.section`
-  padding-bottom: ${bottomMargin};
-  padding-top: ${({ fullPadding }) => (fullPadding ? bottomMargin : 0)};
-  background: ${({ colored, theme }) =>
-    colored ? theme.bs[300] : theme.bs[200]};
-`;
-
-const sectionTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string,
-};
-
-const sectionDefaultProps = {
-  title: '',
-};
-
-const Section = ({ children, title, ...restProps }) => {
-  return (
-    <FeatureContainer {...restProps}>
-      {title && (
-        <FeatureTitle
-          css={`
-            margin: 0 auto 5.6rem;
-            text-align: center;
-          `}
-        >
-          {title}
-        </FeatureTitle>
-      )}
-      <FeatureContent>{children}</FeatureContent>
-    </FeatureContainer>
-  );
-};
-
-Section.defaultProps = sectionDefaultProps;
-Section.propTypes = sectionTypes;
-
-const FeatureTitle = styled(Heading1)`
-  margin-bottom: 3.2rem;
-`;
-
-const BulletInfoContainer = styled.div`
-  width: 32rem;
-`;
-
-const Bullet = styled.div`
-  background: ${({ color, theme }) => theme[color]};
-  border-radius: 50%;
-  width: 8.8rem;
-  height: 8.8rem;
-  margin: 0 auto 3.2rem;
-  display: flex;
-  align-items: center;
-`;
-
-const BulletTitle = styled(BodyBig)`
-  margin: 0 0 0.8rem 0;
-`;
-
-const StyledIcon = styled(Icon)`
-  margin: 0 auto;
-`;
-
-const bulletInfoTypes = {
-  color: PropTypes.oneOf(['a1', 'a2', 'a3']).isRequired,
-  renderIcon: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-};
-
-const BulletInfo = ({ color, renderIcon, title, description }) => {
-  return (
-    <BulletInfoContainer>
-      <Bullet color={color}>{renderIcon()}</Bullet>
-      <BulletTitle
-        as="h3"
-        color="ps.200"
-        css={`
-          text-align: center;
-        `}
-      >
-        {title}
-      </BulletTitle>
-      <BodyBig
-        as="p"
-        css={`
-          text-align: center;
-        `}
-      >
-        {description}
-      </BodyBig>
-    </BulletInfoContainer>
-  );
-};
-
-BulletInfo.propTypes = bulletInfoTypes;
 
 const indexTypes = {
   data: PropTypes.object.isRequired,
@@ -175,46 +76,7 @@ const Index = ({ data }) => {
       </Hero>
       <SubHeading>What is Trig?</SubHeading>
       <Section>
-        <BulletInfo
-          color="a2"
-          renderIcon={() => (
-            <StyledIcon type="aggregate" size={4.8} color="bs.200" />
-          )}
-          title="One Place for Everything"
-          description="Throw in your files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
-        />
-        <BulletInfo
-          color="a1"
-          renderIcon={() => (
-            <StyledIcon
-              css={`
-                position: relative;
-                left: -0.2rem;
-              `}
-              type="organize"
-              size={4.8}
-              color="bs.200"
-            />
-          )}
-          title="Auto Organizing"
-          description="No endless folder nesting. Trig organizes for you. Find what you need when you need it."
-        />
-        <BulletInfo
-          color="a3"
-          renderIcon={() => (
-            <StyledIcon
-              css={`
-                position: relative;
-                left: -0.2rem;
-              `}
-              type="deck"
-              size={4.8}
-              color="bs.200"
-            />
-          )}
-          title="Share With Your Team"
-          description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new."
-        />
+        <FeatureBullets />
       </Section>
       <Section colored fullPadding>
         <div
@@ -222,7 +84,7 @@ const Index = ({ data }) => {
             width: 42.5rem;
           `}
         >
-          <FeatureTitle>Store all company knowledge in one place</FeatureTitle>
+          <SectionTitle>Store all company knowledge in one place</SectionTitle>
           <BodyBig as="p">
             Just like your garage! Wait, no, not like that. You’ll actually be
             able to find things in Trig.
@@ -260,7 +122,7 @@ const Index = ({ data }) => {
             width: 51.1rem;
           `}
         >
-          <FeatureTitle>Organizing is a thing of the past</FeatureTitle>
+          <SectionTitle>Organizing is a thing of the past</SectionTitle>
           <BodyBig as="p">
             Are you the type of person that organizes your socks by color and
             pattern, but then your partner washes them and throws them in your
@@ -299,9 +161,9 @@ const Index = ({ data }) => {
             align-self: center;
           `}
         >
-          <FeatureTitle>
+          <SectionTitle>
             Share collections of files, links, and documents
-          </FeatureTitle>
+          </SectionTitle>
           <BodyBig as="p">
             If you want your team to read that career changing article you found
             on how to sell ice cream to eskimos (ice has been done), add the
@@ -344,9 +206,9 @@ const Index = ({ data }) => {
             width: 51.1rem;
           `}
         >
-          <FeatureTitle>
+          <SectionTitle>
             There’s no such things as bad ideas or questions
-          </FeatureTitle>
+          </SectionTitle>
           <BodyBig as="p">
             Just kidding. There totally are. But you can’t get to the good ones,
             until you get through the bad ones.
