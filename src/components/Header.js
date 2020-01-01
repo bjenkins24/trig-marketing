@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../images/logo-light.svg';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig } from '@trig-app/core-components/dist/Typography';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
+import logo from '../images/logo-light.svg';
 
 const Container = styled.div`
   display: flex;
@@ -12,16 +12,16 @@ const Container = styled.div`
   top: 0;
   background: ${({ theme }) => theme.p};
   padding: 3.2rem;
-  z-index: 1;
+  z-index: 100;
 `;
 
 const Nav = styled(HorizontalGroup)`
   margin-left: auto;
 `;
 
-const Header = () => {
+const Header = props => {
   return (
-    <Container>
+    <Container {...props}>
       <img src={logo} alt="Logo" />
       <Nav margin={3.2}>
         <BodyBig color="sc" weight="bold">
