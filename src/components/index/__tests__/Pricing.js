@@ -6,7 +6,7 @@ describe('<PricingBlock />', () => {
   it('renders and takes basic props', () => {
     const { getByText } = render(<Pricing />);
     expect(getByText('Starter')).toBeInTheDocument();
-    getByText('Plus').toBeInTheDocument();
-    getByText('Enterprise').toBeInTheDocument();
+    expect(getByText('Plus')).toBeInTheDocument();
+    expect(getByText('Enterprise')).toBeInTheDocument();
   });
 });

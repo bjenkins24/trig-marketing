@@ -1,5 +1,4 @@
 import React from 'react';
-import { StaticQuery } from 'gatsby';
 import Head from '../Head';
 import { render } from '../../test/utils';
 
@@ -10,23 +9,17 @@ jest.mock('react-helmet', () => ({
   Helmet: props => <div {...props} />,
 }));
 
-beforeEach(() => {
-  StaticQuery.mockImplementationOnce(({ render: renderStatic }) =>
-    renderStatic({
-      site: {
-        siteMetadata: {
-          siteTitle: 'Trig',
-          siteDescription: 'Knowledge Management for Teams',
-          siteUrl: 'https://trytrig.com',
-          themeColor: '#2C2929',
-          social: {
-            twitter: 'gatsbyjs',
-            fbAppId: '966242223397117',
-          },
-        },
-      },
-    })
-  );
+jest.mock('../helpers/hooks/useSiteMetadata', () => {
+  return {
+    siteTitle: 'Trig',
+    siteDescription: 'Knowledge Management for Teams',
+    siteUrl: 'https://trytrig.com',
+    themeColor: '#2C2929',
+    social: {
+      twitter: 'gatsbyjs',
+      fbAppId: '966242223397117',
+    },
+  };
 });
 
 describe('<Head />', () => {
