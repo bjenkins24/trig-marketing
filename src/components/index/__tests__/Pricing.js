@@ -1,12 +1,12 @@
 import React from 'react';
-import { render } from '../../test/utils';
+import { render } from '../../../test/utils';
 import Pricing from '../Pricing';
 
-describe('<PricingBlock />', () => {
+describe('<Pricing />', () => {
   it('renders and takes basic props', () => {
     const { getByText } = render(<Pricing />);
     expect(getByText('Starter')).toBeInTheDocument();
-    getByText('Plus').toBeInTheDocument();
-    getByText('Enterprise').toBeInTheDocument();
+    expect(getByText('Plus')).toBeInTheDocument();
+    expect(getByText('Enterprise')).toBeInTheDocument();
   });
 });
