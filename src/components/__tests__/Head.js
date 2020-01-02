@@ -9,18 +9,7 @@ jest.mock('react-helmet', () => ({
   Helmet: props => <div {...props} />,
 }));
 
-jest.mock('../helpers/hooks/useSiteMetadata', () => {
-  return {
-    siteTitle: 'Trig',
-    siteDescription: 'Knowledge Management for Teams',
-    siteUrl: 'https://trytrig.com',
-    themeColor: '#2C2929',
-    social: {
-      twitter: 'gatsbyjs',
-      fbAppId: '966242223397117',
-    },
-  };
-});
+jest.mock('../../helpers/hooks/useSiteMetadata');
 
 describe('<Head />', () => {
   it('renders correctly', () => {
@@ -34,21 +23,5 @@ describe('<Head />', () => {
     const title = 'My Cool Title';
     const { getByText } = render(<Head pageTitle={title} />);
     expect(getByText(`${title} - Trig`)).toBeInTheDocument();
-  });
-
-  it('renders canonical correctly with pathname', () => {
-    const { getByTestId } = render(<Head location={{ pathname: '/hello' }} />);
-    expect(getByTestId('head__canonical')).toHaveAttribute(
-      'href',
-      'https://trytrig.com/hello'
-    );
-  });
-
-  it('renders canonical correctly without pathname', () => {
-    const { getByTestId } = render(<Head location={{ pathname: false }} />);
-    expect(getByTestId('head__canonical')).toHaveAttribute(
-      'href',
-      'https://trytrig.com'
-    );
   });
 });

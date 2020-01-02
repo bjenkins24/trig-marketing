@@ -19,6 +19,7 @@ const Footer = props => {
           css={`
             margin-bottom: 8.8rem;
           `}
+          title={`${siteTitle} Logo`}
         />
         <Body1 color="pc">
           &copy; {new Date().getFullYear()} {siteTitle}

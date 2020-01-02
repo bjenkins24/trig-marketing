@@ -4,6 +4,7 @@ import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig } from '@trig-app/core-components/dist/Typography';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
 import Logo from '@trig-app/core-components/dist/Logo';
+import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
 const Container = styled.div`
   display: flex;
@@ -20,9 +21,10 @@ const Nav = styled(HorizontalGroup)`
 `;
 
 const Header = props => {
+  const { siteTitle } = useSiteMetadata();
   return (
     <Container {...props}>
-      <Logo />
+      <Logo title={`${siteTitle} Logo`} />
       <Nav margin={3.2}>
         <BodyBig color="sc" weight="bold">
           Home

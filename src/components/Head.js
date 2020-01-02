@@ -28,6 +28,7 @@ const Head = ({ pageTitle, socialImageUrl }) => {
   return (
     <Location>
       {({ location }) => {
+        /* istanbul ignore next */
         const canonical = siteUrl + (location.pathname || '');
         return (
           <Helmet>

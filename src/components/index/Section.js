@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Heading1 } from '@trig-app/core-components/dist/Typography';
 
-const bottomMargin = '9.6rem';
+export const bottomMargin = '9.6rem';
 
 const FeatureContainer = styled.section`
   padding-bottom: ${bottomMargin};
@@ -22,15 +22,23 @@ const FeatureContent = styled.div`
 const sectionTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
+  fullPadding: PropTypes.bool,
+  colored: PropTypes.bool,
 };
 
 const sectionDefaultProps = {
   title: '',
+  fullPadding: false,
+  colored: false,
 };
 
-const Section = ({ children, title, ...restProps }) => {
+const Section = ({ children, title, fullPadding, colored, ...restProps }) => {
   return (
-    <FeatureContainer {...restProps}>
+    <FeatureContainer
+      fullPadding={fullPadding}
+      colored={colored}
+      {...restProps}
+    >
       {title && (
         <Heading1
           css={`
