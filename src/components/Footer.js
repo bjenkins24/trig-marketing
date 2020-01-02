@@ -22,7 +22,7 @@ const Footer = props => {
           title={`${siteTitle} Logo`}
         />
         <Body1 color="pc">
-          &copy; {new Date().getFullYear()} {siteTitle}
+          &copy; {`${new Date().getFullYear()}`} {siteTitle}
         </Body1>
       </div>
     </Container>
