@@ -4,6 +4,7 @@ import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig } from '@trig-app/core-components/dist/Typography';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
 import Logo from '@trig-app/core-components/dist/Logo';
+import { device } from '@trig-app/constants';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
 const Container = styled.div`
@@ -21,10 +22,21 @@ const Container = styled.div`
 
 const Nav = styled(HorizontalGroup)`
   margin-left: auto;
+  @media ${device.xs} {
+    display: none;
+  }
 `;
 
 const NavigationItem = styled(BodyBig)`
   color: ${({ theme, isLight }) => (isLight ? theme.p : theme.pc)};
+`;
+
+const HamburgerNav = styled.div`
+  display: none;
+  margin-left: auto;
+  @media ${device.xs} {
+    display: block;
+  }
 `;
 
 const Header = props => {
@@ -65,6 +77,7 @@ const Header = props => {
         </NavigationItem>
         <Button>Try Now</Button>
       </Nav>
+      <HamburgerNav>My test</HamburgerNav>
     </Container>
   );
 };
