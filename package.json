@@ -46,7 +46,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^8.0.2",
-    "@trig-app/core-components": "^0.1.19",
+    "@trig-app/core-components": "^0.1.20",
     "@trig-app/eslint-config": "^1.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-styled-components": "^1.10.6",
