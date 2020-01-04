@@ -3,10 +3,20 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { BodyBig } from '@trig-app/core-components/dist/Typography';
 import Icon from '@trig-app/core-components/dist/Icon';
+import { device } from '@trig-app/constants';
 import useSiteMetadata from '../../helpers/hooks/useSiteMetadata';
 
 const BulletInfoContainer = styled.div`
-  width: 32rem;
+  width: 32%;
+  @media ${device.sm}, ${device.xs} {
+    margin: 0 auto 3.2rem;
+  }
+  @media ${device.sm} {
+    width: 60%;
+  }
+  @media ${device.xs} {
+    width: 100%;
+  }
 `;
 
 const Bullet = styled.div`
@@ -64,7 +74,16 @@ BulletInfo.propTypes = bulletInfoTypes;
 const FeatureBullets = () => {
   const { siteTitle } = useSiteMetadata();
   return (
-    <>
+    <div
+      css={`
+        display: flex;
+        flex-wrap: wrap;
+        justify-items: space-between;
+        & > *:not(:last-child) {
+          padding-right: 2%;
+        }
+      `}
+    >
       <BulletInfo
         color="a2"
         renderIcon={() => (
@@ -105,7 +124,7 @@ const FeatureBullets = () => {
         title="Share With Your Team"
         description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new."
       />
-    </>
+    </div>
   );
 };
 
