@@ -10,6 +10,7 @@ import {
   BodyBig,
   Heading1,
 } from '@trig-app/core-components/dist/Typography';
+import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 import Pricing from '../components/index/Pricing';
 import Section from '../components/index/Section';
@@ -23,6 +24,9 @@ const Hero = styled.div`
   background: ${({ theme }) => theme.p};
   height: 84.6rem;
   text-align: center;
+  @media ${device.xs} {
+    padding: 15rem 3.2rem 0;
+  }
 `;
 
 const MainHeading = styled(Huge)`
