@@ -40,10 +40,11 @@ const Hamburger = styled(Icon).attrs({
   @media ${device.xs} {
     display: block;
   }
+  transition: all 0.3s;
   position: fixed;
   z-index: 102;
   right: 3.2rem;
-  top: 3.8rem;
+  top: ${({ isLight }) => (!isLight ? '3.8rem' : '2.4rem')};
 `;
 
 const MobileMenu = styled.div`
@@ -59,7 +60,6 @@ const MobileMenu = styled.div`
   top: 0;
   z-index: 101;
   background: ${({ theme, isLight }) => (isLight ? theme.bs[200] : theme.p)};
-  color: white;
 `;
 
 const MobileMenuContent = styled.div`
@@ -77,7 +77,7 @@ const MobileMenuNav = styled.ul`
 
 const MobileMenuNavItem = styled.li`
   ${HugeStyles}
-  color: ${({ theme }) => theme.pc}
+  color: ${({ theme, isLight }) => (isLight ? theme.p : theme.pc)};
 `;
 
 const Header = props => {
@@ -121,14 +121,19 @@ const Header = props => {
           <Button>Try Now</Button>
         </Nav>
       </Container>
-      <Hamburger onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
-      <MobileMenu isOpen={isMobileMenuOpen}>
+      <Hamburger
+        color={isLight ? 'p' : 'pc'}
+        isLight={isLight}
+        isOpen={isMobileMenuOpen}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      />
+      <MobileMenu isLight={isLight} isOpen={isMobileMenuOpen}>
         <MobileMenuContent>
           <MobileMenuNav>
-            <MobileMenuNavItem>Home</MobileMenuNavItem>
-            <MobileMenuNavItem>Pricing</MobileMenuNavItem>
-            <MobileMenuNavItem>Sign In</MobileMenuNavItem>
-            <MobileMenuNavItem>Try Now</MobileMenuNavItem>
+            <MobileMenuNavItem isLight={isLight}>Home</MobileMenuNavItem>
+            <MobileMenuNavItem isLight={isLight}>Pricing</MobileMenuNavItem>
+            <MobileMenuNavItem isLight={isLight}>Sign In</MobileMenuNavItem>
+            <MobileMenuNavItem isLight={isLight}>Try Now</MobileMenuNavItem>
           </MobileMenuNav>
         </MobileMenuContent>
       </MobileMenu>
