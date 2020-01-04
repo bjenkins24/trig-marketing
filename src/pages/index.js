@@ -20,10 +20,10 @@ import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 export const bottomMargin = '9.6rem';
 
 const Hero = styled.div`
-  padding-top: 15rem;
   background: ${({ theme }) => theme.p};
   height: 84.6rem;
   text-align: center;
+  padding: 15rem 3.2rem 0;
   @media ${device.xs} {
     padding: 15rem 3.2rem 7.2rem;
     height: auto;
@@ -38,7 +38,8 @@ const MainHeading = styled(Huge)`
 `;
 
 const BodyBiggestStyled = styled(BodyBiggest)`
-  margin-bottom: 6.4rem;
+  max-width: 87rem;
+  margin: 0 auto 6.4rem;
 `;
 
 const ButtonStyled = styled(Button)`
@@ -78,17 +79,14 @@ const Index = ({ data }) => {
         <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
         <BodyBiggestStyled as="p" color="pc">
           Ew, not like that guy in the breakroom whose parents didn’t love him.
-          Let {siteTitle}
-          <br />
-          organize all of your company knowledge, and your team will actually
-          know it all.
+          Let {siteTitle} organize all of your company knowledge, and your team
+          will actually know it all.
         </BodyBiggestStyled>
         <ButtonStyled size="hg">Try {siteTitle} for Free</ButtonStyled>
         <div
           css={`
             max-width: 92.8rem;
             margin: 0 auto;
-            padding: 0 3.2rem;
             @media ${device.xs} {
               display: none;
             }
