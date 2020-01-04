@@ -23,8 +23,9 @@ const Container = styled.div`
 
 const Nav = styled(HorizontalGroup)`
   margin-left: auto;
-  @media ${device.xs} {
-    display: none;
+  display: none;
+  @media ${device.tabletPortraitUp} {
+    display: flex;
   }
 `;
 
@@ -36,9 +37,9 @@ const NavigationItem = styled(BodyBig)`
 const Hamburger = styled(Icon).attrs({
   type: 'hamburger',
 })`
-  display: none;
-  @media ${device.xs} {
-    display: block;
+  display: block;
+  @media ${device.tabletPortraitUp} {
+    display: none;
   }
   transition: all 0.3s;
   position: fixed;
@@ -48,10 +49,10 @@ const Hamburger = styled(Icon).attrs({
 `;
 
 const MobileMenu = styled.div`
-  display: none;
+  display: flex;
   padding-top: 4.8rem;
-  @media ${device.xs} {
-    display: flex;
+  @media ${device.tabletPortraitUp} {
+    display: none;
   }
   height: calc(100% - 4.8rem);
   position: fixed;

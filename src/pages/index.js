@@ -21,12 +21,12 @@ const bottomMargin = '9.6rem';
 
 const Hero = styled.div`
   background: ${({ theme }) => theme.p};
-  height: 84.6rem;
   text-align: center;
-  padding: 15rem 3.2rem 0;
-  @media ${device.xs} {
-    padding: 15rem 3.2rem 7.2rem;
-    height: auto;
+  padding: 15rem 3.2rem 7.2rem;
+  height: auto;
+  @media ${device.tabletPortraitUp} {
+    height: 84.6rem;
+    padding: 15rem 3.2rem 0;
   }
   @media (min-width: 600px) and (max-width: 715px) {
     height: 80rem;
@@ -34,10 +34,14 @@ const Hero = styled.div`
 `;
 
 const MainHeading = styled(Huge)`
-  margin-bottom: 1.6rem;
-  @media ${device.sm} {
+  margin: 0 auto 1.6rem;
+  max-width: 73rem;
+  @media ${device.tabletPortraitUp} {
+    max-width: none;
+    margin-bottom: 1.6rem;
+  }
+  @media (min-width: 815px) and (max-width: 1003px) {
     max-width: 73rem;
-    margin: 0 auto 1.6rem;
   }
 `;
 
@@ -49,9 +53,9 @@ const BodyBiggestStyled = styled(BodyBiggest)`
 const ButtonStyled = styled(Button)`
   padding: 0 4.5rem;
   display: block;
-  margin: 0 auto 6.4rem;
-  @media ${device.xs} {
-    margin-bottom: 0;
+  margin: 0 auto;
+  @media ${device.tabletPortraitUp} {
+    margin: 0 auto 6.4rem;
   }
 `;
 
@@ -64,13 +68,13 @@ const ImgStyled = styled(Img)`
 `;
 
 const SubHeading = styled(Huge)`
-  margin: 16.9rem 0 3.2rem;
   text-align: center;
-  @media ${device.xs} {
-    margin-top: 6.4rem;
-  }
-  @media ${device.sm} {
+  margin-top: 6.4rem;
+  @media ${device.tabletPortraitUp} {
     margin-top: 12.9rem;
+  }
+  @media ${device.tabletLandscapeUp} {
+    margin: 16.9rem 0 3.2rem;
   }
 `;
 
@@ -92,10 +96,11 @@ const Index = ({ data }) => {
         <ButtonStyled size="hg">Try {siteTitle} for Free</ButtonStyled>
         <div
           css={`
-            max-width: 92.8rem;
-            margin: 0 auto;
-            @media ${device.xs} {
-              display: none;
+            display: none;
+            @media ${device.tabletPortraitUp} {
+              max-width: 92.8rem;
+              margin: 0 auto;
+              display: block;
             }
           `}
         >

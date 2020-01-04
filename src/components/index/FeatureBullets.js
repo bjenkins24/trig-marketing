@@ -7,15 +7,14 @@ import { device } from '@trig-app/constants';
 import useSiteMetadata from '../../helpers/hooks/useSiteMetadata';
 
 const BulletInfoContainer = styled.div`
-  width: 32%;
-  @media ${device.sm}, ${device.xs} {
-    margin: 0 auto 3.2rem;
-  }
-  @media ${device.sm} {
+  width: 100%;
+  margin: 0 auto 3.2rem;
+  @media ${device.tabletPortraitUp} {
     width: 60%;
   }
-  @media ${device.xs} {
-    width: 100%;
+  @media ${device.tabletLandscapeUp} {
+    width: 32%;
+    margin: auto;
   }
 `;
 

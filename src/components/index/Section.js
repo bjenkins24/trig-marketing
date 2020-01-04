@@ -7,12 +7,12 @@ import { device } from '@trig-app/constants';
 export const paddingTopBottom = '9.6rem';
 
 const FeatureContainer = styled.section`
-  padding-bottom: ${paddingTopBottom};
+  padding-bottom: 3.2rem;
   padding-top: ${({ fullPadding }) => (fullPadding ? paddingTopBottom : 0)};
   background: ${({ colored, theme }) =>
     colored ? theme.bs[300] : theme.bs[200]};
-  @media ${device.sm}, ${device.xs} {
-    padding-bottom: 3.2rem;
+  @media ${device.tabletLandscapeUp} {
+    padding-bottom: ${paddingTopBottom};
   }
 `;
 
