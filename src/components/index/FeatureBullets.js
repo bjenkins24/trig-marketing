@@ -90,7 +90,7 @@ const FeatureBullets = () => {
           <StyledIcon type="aggregate" size={4.8} color="bs.200" />
         )}
         title="One Place for Everything"
-        description="Throw in your files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
+        description="Throw in your team's files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
       />
       <BulletInfo
         color="a1"

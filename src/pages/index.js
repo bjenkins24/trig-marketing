@@ -17,7 +17,7 @@ import Section from '../components/index/Section';
 import FeatureBullets from '../components/index/FeatureBullets';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
-export const bottomMargin = '9.6rem';
+const bottomMargin = '9.6rem';
 
 const Hero = styled.div`
   background: ${({ theme }) => theme.p};
@@ -68,6 +68,9 @@ const SubHeading = styled(Huge)`
   text-align: center;
   @media ${device.xs} {
     margin-top: 6.4rem;
+  }
+  @media ${device.sm} {
+    margin-top: 12.9rem;
   }
 `;
 

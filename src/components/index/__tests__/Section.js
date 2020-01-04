@@ -1,7 +1,7 @@
 import React from 'react';
 import theme from '@trig-app/themes';
 import { render } from '../../../test/utils';
-import Section, { bottomMargin } from '../Section';
+import Section, { paddingTopBottom } from '../Section';
 
 describe('<Section />', () => {
   it('renders and takes basic props', () => {
@@ -20,7 +20,10 @@ describe('<Section />', () => {
       </Section>
     );
     expect(getByText(title)).toBeInTheDocument();
-    expect(container.firstChild).toHaveStyleRule('padding-top', bottomMargin);
+    expect(container.firstChild).toHaveStyleRule(
+      'padding-top',
+      paddingTopBottom
+    );
     expect(container.firstChild).toHaveStyleRule('background', theme.bs[300]);
   });
 });

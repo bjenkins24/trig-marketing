@@ -2,14 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Heading1 } from '@trig-app/core-components/dist/Typography';
+import { device } from '@trig-app/constants';
 
-export const bottomMargin = '9.6rem';
+export const paddingTopBottom = '9.6rem';
 
 const FeatureContainer = styled.section`
-  padding-bottom: ${bottomMargin};
-  padding-top: ${({ fullPadding }) => (fullPadding ? bottomMargin : 0)};
+  padding-bottom: ${paddingTopBottom};
+  padding-top: ${({ fullPadding }) => (fullPadding ? paddingTopBottom : 0)};
   background: ${({ colored, theme }) =>
     colored ? theme.bs[300] : theme.bs[200]};
+  @media ${device.sm}, ${device.xs} {
+    padding-bottom: 3.2rem;
+  }
 `;
 
 const FeatureContent = styled.div`
