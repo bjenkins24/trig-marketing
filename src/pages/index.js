@@ -35,6 +35,10 @@ const Hero = styled.div`
 
 const MainHeading = styled(Huge)`
   margin-bottom: 1.6rem;
+  @media ${device.sm} {
+    width: 73rem;
+    margin: 0 auto 1.6rem;
+  }
 `;
 
 const BodyBiggestStyled = styled(BodyBiggest)`

@@ -51,13 +51,14 @@ const MobileMenu = styled.div`
   display: none;
   padding-top: 4.8rem;
   @media ${device.xs} {
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    display: flex;
   }
   height: calc(100% - 4.8rem);
   position: fixed;
   width: 100%;
+  transition: all 0.3s;
   padding: 3.2rem;
-  top: 0;
+  transform: translateY(${({ isOpen }) => (isOpen ? '0' : '-100%')});
   z-index: 101;
   background: ${({ theme, isLight }) => (isLight ? theme.bs[200] : theme.p)};
 `;
