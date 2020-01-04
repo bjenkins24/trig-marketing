@@ -15,7 +15,8 @@ const FeatureContainer = styled.section`
 const FeatureContent = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 103rem;
+  max-width: 103rem;
+  padding: 0 3.2rem;
   margin: 0 auto;
 `;
 

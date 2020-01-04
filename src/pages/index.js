@@ -28,6 +28,9 @@ const Hero = styled.div`
     padding: 15rem 3.2rem 7.2rem;
     height: auto;
   }
+  @media (min-width: 600px) and (max-width: 715px) {
+    height: 80rem;
+  }
 `;
 
 const MainHeading = styled(Huge)`
@@ -85,6 +88,7 @@ const Index = ({ data }) => {
           css={`
             max-width: 92.8rem;
             margin: 0 auto;
+            padding: 0 3.2rem;
             @media ${device.xs} {
               display: none;
             }
