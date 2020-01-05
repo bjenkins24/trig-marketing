@@ -46,8 +46,15 @@ const MainHeading = styled(Huge)`
 `;
 
 const BodyBiggestStyled = styled(BodyBiggest)`
-  max-width: 87rem;
+  width: 100%;
   margin: 0 auto 6.4rem;
+  @media ${device.tabletPortraitUp} {
+    width: 90%;
+  }
+  @media ${device.tabletLandscapeUp} {
+    width: 100%;
+    max-width: 87rem;
+  }
 `;
 
 const ButtonStyled = styled(Button)`
@@ -56,6 +63,20 @@ const ButtonStyled = styled(Button)`
   margin: 0 auto;
   @media ${device.tabletPortraitUp} {
     margin: 0 auto 6.4rem;
+  }
+`;
+
+const SideBySide = styled.div`
+  width: 100%;
+  @media ${device.tabletPortraitUp} {
+    width: 80%;
+  }
+  @media ${device.tabletLandscapeUp} {
+    width: 70%;
+  }
+  @media ${device.desktopUp} {
+    width: 48%;
+    margin: 0 2% 0 0;
   }
 `;
 
@@ -116,17 +137,9 @@ const Index = ({ data }) => {
         <FeatureBullets />
       </Section>
       <Section colored fullPadding>
-        <div
+        <SideBySide
           css={`
             margin: 0 auto 3.2rem;
-            width: 100%;
-            @media ${device.tabletPortraitUp} {
-              width: 70%;
-            }
-            @media ${device.tabletLandscapeUp} {
-              width: 48%;
-              margin: 0 2% 0 0;
-            }
           `}
         >
           <SectionTitle>Store all company knowledge in one place</SectionTitle>
@@ -143,12 +156,12 @@ const Index = ({ data }) => {
             Empower all your teammates to find what they need exactly when they
             need it.
           </BodyBig>
-        </div>
+        </SideBySide>
         <Img
           css={`
             align-self: center;
             margin: 0 auto;
-            @media ${device.tabletLandscapeUp} {
+            @media ${device.desktopUp} {
               margin: 0;
             }
           `}
@@ -162,7 +175,7 @@ const Index = ({ data }) => {
           css={`
             align-self: center;
             margin: 0 auto 3.2rem;
-            @media ${device.tabletLandscapeUp} {
+            @media ${device.desktopUp} {
               margin: 0;
             }
           `}
@@ -170,17 +183,9 @@ const Index = ({ data }) => {
           durationFadeIn={300}
           fixed={data.organize.childImageSharp.fixed}
         />
-        <div
+        <SideBySide
           css={`
             margin: 0 auto;
-            width: 100%;
-            @media ${device.tabletPortraitUp} {
-              width: 70%;
-            }
-            @media ${device.tabletLandscapeUp} {
-              width: 48%;
-              margin: 0 2% 0 0;
-            }
           `}
         >
           <SectionTitle>Organizing is a thing of the past</SectionTitle>
@@ -213,20 +218,12 @@ const Index = ({ data }) => {
           >
             Get Organized Now
           </Button>
-        </div>
+        </SideBySide>
       </Section>
       <Section colored fullPadding>
-        <div
+        <SideBySide
           css={`
             margin: 0 auto 3.2rem;
-            width: 100%;
-            @media ${device.tabletPortraitUp} {
-              width: 70%;
-            }
-            @media ${device.tabletLandscapeUp} {
-              width: 48%;
-              margin: 0 2% 0 0;
-            }
           `}
         >
           <SectionTitle>
@@ -242,12 +239,12 @@ const Index = ({ data }) => {
             added a new card. You can link to your deck, or even embed it in
             your existing intranet.
           </BodyBig>
-        </div>
+        </SideBySide>
         <Img
           css={`
             align-self: center;
             margin: 0 auto;
-            @media ${device.tabletLandscapeUp} {
+            @media ${device.desktopUp} {
               margin: 0;
             }
           `}

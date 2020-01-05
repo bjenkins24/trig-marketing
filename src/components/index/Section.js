@@ -21,7 +21,7 @@ const FeatureContent = styled.div`
   max-width: 103rem;
   margin: 0 auto;
   flex-wrap: wrap;
-  @media ${device.tabletLandscapeUp} {
+  @media ${device.desktopUp} {
     flex-wrap: nowrap;
   }
 `;
