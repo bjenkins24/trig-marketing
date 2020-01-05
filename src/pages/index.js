@@ -124,8 +124,8 @@ const Index = ({ data }) => {
               width: 70%;
             }
             @media ${device.tabletLandscapeUp} {
-              width: 42.5rem;
-              margin: 0;
+              width: 48%;
+              margin: 0 2% 0 0;
             }
           `}
         >
@@ -147,7 +147,7 @@ const Index = ({ data }) => {
         <Img
           css={`
             align-self: center;
-            margin: 0 auto 3.2rem;
+            margin: 0 auto;
             @media ${device.tabletLandscapeUp} {
               margin: 0;
             }
@@ -161,6 +161,10 @@ const Index = ({ data }) => {
         <Img
           css={`
             align-self: center;
+            margin: 0 auto 3.2rem;
+            @media ${device.tabletLandscapeUp} {
+              margin: 0;
+            }
           `}
           alt={`Screenshot of Organization in ${siteTitle}`}
           durationFadeIn={300}
@@ -168,7 +172,15 @@ const Index = ({ data }) => {
         />
         <div
           css={`
-            width: 51.1rem;
+            margin: 0 auto;
+            width: 100%;
+            @media ${device.tabletPortraitUp} {
+              width: 70%;
+            }
+            @media ${device.tabletLandscapeUp} {
+              width: 48%;
+              margin: 0 2% 0 0;
+            }
           `}
         >
           <SectionTitle>Organizing is a thing of the past</SectionTitle>
@@ -206,8 +218,15 @@ const Index = ({ data }) => {
       <Section colored fullPadding>
         <div
           css={`
-            width: 42.5rem;
-            align-self: center;
+            margin: 0 auto 3.2rem;
+            width: 100%;
+            @media ${device.tabletPortraitUp} {
+              width: 70%;
+            }
+            @media ${device.tabletLandscapeUp} {
+              width: 48%;
+              margin: 0 2% 0 0;
+            }
           `}
         >
           <SectionTitle>
@@ -227,6 +246,10 @@ const Index = ({ data }) => {
         <Img
           css={`
             align-self: center;
+            margin: 0 auto;
+            @media ${device.tabletLandscapeUp} {
+              margin: 0;
+            }
           `}
           alt={`Screenshot of Decks in ${siteTitle}`}
           durationFadeIn={300}
