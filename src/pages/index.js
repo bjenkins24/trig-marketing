@@ -118,7 +118,15 @@ const Index = ({ data }) => {
       <Section colored fullPadding>
         <div
           css={`
-            width: 42.5rem;
+            margin: 0 auto 3.2rem;
+            width: 100%;
+            @media ${device.tabletPortraitUp} {
+              width: 70%;
+            }
+            @media ${device.tabletLandscapeUp} {
+              width: 42.5rem;
+              margin: 0;
+            }
           `}
         >
           <SectionTitle>Store all company knowledge in one place</SectionTitle>
@@ -139,6 +147,10 @@ const Index = ({ data }) => {
         <Img
           css={`
             align-self: center;
+            margin: 0 auto 3.2rem;
+            @media ${device.tabletLandscapeUp} {
+              margin: 0;
+            }
           `}
           alt={`Screenshot of Cards in ${siteTitle}`}
           durationFadeIn={300}

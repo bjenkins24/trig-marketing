@@ -7,12 +7,11 @@ import { device } from '@trig-app/constants';
 export const paddingTopBottom = '9.6rem';
 
 const FeatureContainer = styled.section`
-  padding-bottom: 3.2rem;
-  padding-top: ${({ fullPadding }) => (fullPadding ? paddingTopBottom : 0)};
+  padding: 6.4rem 4rem;
   background: ${({ colored, theme }) =>
     colored ? theme.bs[300] : theme.bs[200]};
   @media ${device.tabletLandscapeUp} {
-    padding-bottom: ${paddingTopBottom};
+    padding: ${({ fullPadding }) => (fullPadding ? paddingTopBottom : 0)};
   }
 `;
 
@@ -20,8 +19,11 @@ const FeatureContent = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 103rem;
-  padding: 0 3.2rem;
   margin: 0 auto;
+  flex-wrap: wrap;
+  @media ${device.tabletLandscapeUp} {
+    flex-wrap: nowrap;
+  }
 `;
 
 const sectionTypes = {
