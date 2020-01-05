@@ -3,10 +3,19 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { BodyBig } from '@trig-app/core-components/dist/Typography';
 import Icon from '@trig-app/core-components/dist/Icon';
+import { device } from '@trig-app/constants';
 import useSiteMetadata from '../../helpers/hooks/useSiteMetadata';
 
 const BulletInfoContainer = styled.div`
-  width: 32rem;
+  width: 100%;
+  margin: 0 auto 3.2rem;
+  @media ${device.tabletPortraitUp} {
+    width: 60%;
+  }
+  @media ${device.tabletLandscapeUp} {
+    width: 32%;
+    margin: auto;
+  }
 `;
 
 const Bullet = styled.div`
@@ -64,14 +73,23 @@ BulletInfo.propTypes = bulletInfoTypes;
 const FeatureBullets = () => {
   const { siteTitle } = useSiteMetadata();
   return (
-    <>
+    <div
+      css={`
+        display: flex;
+        flex-wrap: wrap;
+        justify-items: space-between;
+        & > *:not(:last-child) {
+          padding-right: 2%;
+        }
+      `}
+    >
       <BulletInfo
         color="a2"
         renderIcon={() => (
           <StyledIcon type="aggregate" size={4.8} color="bs.200" />
         )}
         title="One Place for Everything"
-        description="Throw in your files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
+        description="Throw in your team's files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
       />
       <BulletInfo
         color="a1"
@@ -105,7 +123,7 @@ const FeatureBullets = () => {
         title="Share With Your Team"
         description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new."
       />
-    </>
+    </div>
   );
 };
 

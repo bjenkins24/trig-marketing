@@ -2,10 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Body1, Body1Styles } from '@trig-app/core-components/dist/Typography';
 import Logo from '@trig-app/core-components/dist/Logo';
-import {
-  VerticalGroup,
-  HorizontalGroup,
-} from '@trig-app/core-components/dist/Groups';
+import { device } from '@trig-app/constants';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
 const Container = styled.div`
@@ -13,10 +10,54 @@ const Container = styled.div`
   padding: 3.2rem;
 `;
 
+const Content = styled.div`
+  display: block;
+  @media ${device.tabletLandscapeUp} {
+    display: flex;
+  }
+`;
+
+const CompanyMeta = styled.div`
+  display: flex;
+  margin-bottom: 3.2rem;
+  flex-direction: column;
+  flex-shrink: 1;
+  @media ${device.tabletLandscapeUp} {
+    width: 32rem;
+    margin: 0;
+  }
+`;
+
+const Copyright = styled(Body1).attrs({
+  color: 'pc',
+})`
+  display: none;
+  @media ${device.tabletLandscapeUp} {
+    display: block;
+  }
+`;
+
+const NavigationMenu = styled.div`
+  display: flex;
+  align-self: flex-start;
+  align-items: flex-start;
+  flex-shrink: 0;
+  & > *:not(:last-child) {
+    margin-right: 9.6rem;
+  }
+  flex-wrap: wrap;
+  margin-bottom: -3.2rem;
+`;
+
 const Navigation = styled.ul`
   margin: 0;
   padding: 0;
   list-style-type: none;
+  flex-shrink: 0;
+  margin-bottom: 3.2rem;
+  @media ${device.tabletLandscapeUp} {
+    margin-bottom: 0;
+  }
 `;
 
 const NavigationTitle = styled.li`
@@ -34,19 +75,21 @@ const Footer = props => {
 
   return (
     <Container {...props}>
-      <HorizontalGroup>
-        <VerticalGroup
-          css={`
-            width: 32rem;
-          `}
-          margin={8.8}
-        >
-          <Logo title={`${siteTitle} Logo`} />
-          <Body1 color="pc">
+      <Content>
+        <CompanyMeta>
+          <Logo
+            title={`${siteTitle} Logo`}
+            css={`
+              @media ${device.tabletLandscapeUp} {
+                margin-bottom: 8.8rem;
+              }
+            `}
+          />
+          <Copyright>
             &copy; {`${new Date().getFullYear()}`} {siteTitle}
-          </Body1>
-        </VerticalGroup>
-        <HorizontalGroup
+          </Copyright>
+        </CompanyMeta>
+        <NavigationMenu
           margin={9.6}
           css={`
             align-self: flex-start;
@@ -74,8 +117,8 @@ const Footer = props => {
             <NavigationItem>Terms of Service</NavigationItem>
             <NavigationItem>Privacy Policy</NavigationItem>
           </Navigation>
-        </HorizontalGroup>
-      </HorizontalGroup>
+        </NavigationMenu>
+      </Content>
     </Container>
   );
 };

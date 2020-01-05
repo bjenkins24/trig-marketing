@@ -6,19 +6,38 @@ import {
   Body1Styles,
   Body1,
 } from '@trig-app/core-components/dist/Typography';
+import { device } from '@trig-app/constants';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 
 const Wrapper = styled.div`
   display: flex;
   align-items: flex-start;
   margin: 0 auto;
+  flex-wrap: wrap;
+  & > *:not(:last-child) {
+    margin-bottom: 3.2rem;
+  }
+  @media ${device.desktopUp} {
+    flex-wrap: nowrap;
+    margin-bottom: 0;
+  }
 `;
 
 const Block = styled.div`
   background: ${({ theme }) => theme.bs[200]};
   padding: 5.6rem 3.2rem;
   border-radius: ${({ theme }) => theme.br};
-  width: 27.1rem;
+  margin: 0 auto;
+  width: calc(100% - 6.4rem);
+  @media ${device.tabletPortraitUp} {
+    width: 70%;
+  }
+  @media ${device.tabletLandscapeUp} {
+    width: 60%;
+  }
+  @media ${device.desktopUp} {
+    width: 27.1rem;
+  }
   box-shadow: ${({ theme }) => theme.sh};
   text-align: center;
   flex-shrink: 0;
@@ -57,7 +76,9 @@ const Pricing = () => {
     <Wrapper>
       <Block
         css={`
-          margin-right: -1.6rem;
+          @media ${device.desktopUp} {
+            transform: translateX(1.6rem);
+          }
         `}
       >
         <Title>Starter</Title>
@@ -82,10 +103,12 @@ const Pricing = () => {
       </Block>
       <Block
         css={`
-          margin-top: -2.4rem;
-          width: 31.1rem;
-          position: relative;
-          z-index: 1;
+          @media ${device.desktopUp} {
+            transform: translateY(-2.4rem);
+            width: 31.1rem;
+            position: relative;
+            z-index: 2;
+          }
         `}
       >
         <Title>Plus</Title>
@@ -94,7 +117,10 @@ const Pricing = () => {
           color={bodyColor}
           css={`
             display: block;
-            margin-bottom: 7.5rem;
+            margin-bottom: 4.8rem;
+            @media ${device.desktopUp} {
+              margin-bottom: 7.5rem;
+            }
           `}
         >
           user/month
@@ -117,7 +143,10 @@ const Pricing = () => {
           type="button"
           size="lg"
           css={`
-            margin-top: 7.5rem;
+            margin-top: 4.8rem;
+            @media ${device.desktopUp} {
+              margin-top: 7.5rem;
+            }
           `}
         >
           Start Free 7-day Trial
@@ -125,7 +154,9 @@ const Pricing = () => {
       </Block>
       <Block
         css={`
-          margin-left: -1.6rem;
+          @media ${device.desktopUp} {
+            transform: translateX(-1.6rem);
+          }
         `}
       >
         <Title>Enterprise</Title>

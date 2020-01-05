@@ -23,8 +23,9 @@ const Container = styled.div`
 
 const Nav = styled(HorizontalGroup)`
   margin-left: auto;
-  @media ${device.xs} {
-    display: none;
+  display: none;
+  @media ${device.tabletPortraitUp} {
+    display: flex;
   }
 `;
 
@@ -36,9 +37,9 @@ const NavigationItem = styled(BodyBig)`
 const Hamburger = styled(Icon).attrs({
   type: 'hamburger',
 })`
-  display: none;
-  @media ${device.xs} {
-    display: block;
+  display: block;
+  @media ${device.tabletPortraitUp} {
+    display: none;
   }
   transition: all 0.3s;
   position: fixed;
@@ -48,18 +49,18 @@ const Hamburger = styled(Icon).attrs({
 `;
 
 const MobileMenu = styled.div`
-  display: none;
-  padding-top: 4.8rem;
-  @media ${device.xs} {
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-  }
-  height: calc(100% - 4.8rem);
-  position: fixed;
-  width: 100%;
-  padding: 3.2rem;
-  top: 0;
-  z-index: 101;
+  display: flex;
   background: ${({ theme, isLight }) => (isLight ? theme.bs[200] : theme.p)};
+  position: fixed;
+  @media ${device.tabletPortraitUp} {
+    display: none;
+  }
+  padding: 4.8rem 3.2rem;
+  width: calc(100% - 6.4rem);
+  height: calc(100% - 9.6rem);
+  transition: all 0.3s;
+  transform: translateY(${({ isOpen }) => (isOpen ? '0' : '-100%')});
+  z-index: 101;
 `;
 
 const MobileMenuContent = styled.div`
@@ -73,6 +74,12 @@ const MobileMenuNav = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+  & > *:not(:last-child) {
+    margin-bottom: 4.8rem;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const MobileMenuNavItem = styled.li`

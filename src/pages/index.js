@@ -10,33 +10,53 @@ import {
   BodyBig,
   Heading1,
 } from '@trig-app/core-components/dist/Typography';
+import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 import Pricing from '../components/index/Pricing';
 import Section from '../components/index/Section';
 import FeatureBullets from '../components/index/FeatureBullets';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
-export const bottomMargin = '9.6rem';
+const bottomMargin = '9.6rem';
 
 const Hero = styled.div`
-  padding-top: 15rem;
   background: ${({ theme }) => theme.p};
-  height: 84.6rem;
   text-align: center;
+  padding: 15rem 3.2rem 7.2rem;
+  height: auto;
+  @media ${device.tabletPortraitUp} {
+    height: 84.6rem;
+    padding: 15rem 3.2rem 0;
+  }
+  @media (min-width: 600px) and (max-width: 715px) {
+    height: 80rem;
+  }
 `;
 
 const MainHeading = styled(Huge)`
-  margin-bottom: 1.6rem;
+  margin: 0 auto 1.6rem;
+  max-width: 73rem;
+  @media ${device.tabletPortraitUp} {
+    max-width: none;
+    margin-bottom: 1.6rem;
+  }
+  @media (min-width: 815px) and (max-width: 1003px) {
+    max-width: 73rem;
+  }
 `;
 
 const BodyBiggestStyled = styled(BodyBiggest)`
-  margin-bottom: 6.4rem;
+  max-width: 87rem;
+  margin: 0 auto 6.4rem;
 `;
 
 const ButtonStyled = styled(Button)`
   padding: 0 4.5rem;
   display: block;
-  margin: 0 auto 6.4rem;
+  margin: 0 auto;
+  @media ${device.tabletPortraitUp} {
+    margin: 0 auto 6.4rem;
+  }
 `;
 
 const SectionTitle = styled(Heading1)`
@@ -48,8 +68,14 @@ const ImgStyled = styled(Img)`
 `;
 
 const SubHeading = styled(Huge)`
-  margin: 16.9rem 0 3.2rem;
   text-align: center;
+  margin-top: 6.4rem;
+  @media ${device.tabletPortraitUp} {
+    margin-top: 12.9rem;
+  }
+  @media ${device.tabletLandscapeUp} {
+    margin: 16.9rem 0 3.2rem;
+  }
 `;
 
 const indexTypes = {
@@ -64,17 +90,26 @@ const Index = ({ data }) => {
         <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
         <BodyBiggestStyled as="p" color="pc">
           Ew, not like that guy in the breakroom whose parents didn’t love him.
-          Let {siteTitle}
-          <br />
-          organize all of your company knowledge, and your team will actually
-          know it all.
+          Let {siteTitle} organize all of your company knowledge, and your team
+          will actually know it all.
         </BodyBiggestStyled>
         <ButtonStyled size="hg">Try {siteTitle} for Free</ButtonStyled>
-        <ImgStyled
-          alt={`Screenshot of ${siteTitle} in a Laptop`}
-          durationFadeIn={300}
-          fixed={data.laptop.childImageSharp.fixed}
-        />
+        <div
+          css={`
+            display: none;
+            @media ${device.tabletPortraitUp} {
+              max-width: 92.8rem;
+              margin: 0 auto;
+              display: block;
+            }
+          `}
+        >
+          <ImgStyled
+            alt={`Screenshot of ${siteTitle} in a Laptop`}
+            durationFadeIn={300}
+            fluid={data.laptop.childImageSharp.fluid}
+          />
+        </div>
       </Hero>
       <SubHeading>What is {siteTitle}?</SubHeading>
       <Section>
@@ -275,8 +310,8 @@ export const query = graphql`
   query {
     laptop: file(relativePath: { eq: "laptop.png" }) {
       childImageSharp {
-        fixed(width: 928, height: 532, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
+        fluid(maxWidth: 928, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
