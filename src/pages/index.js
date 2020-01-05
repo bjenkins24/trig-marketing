@@ -66,10 +66,10 @@ const ButtonStyled = styled(Button)`
   }
 `;
 
-const SideBySide = styled.div`
+const FeatureContainer = styled.div`
   width: 100%;
   @media ${device.tabletPortraitUp} {
-    width: 80%;
+    width: 75%;
   }
   @media ${device.tabletLandscapeUp} {
     width: 70%;
@@ -82,6 +82,13 @@ const SideBySide = styled.div`
 
 const SectionTitle = styled(Heading1)`
   margin-bottom: 3.2rem;
+`;
+
+const ImgContainer = styled.div`
+  max-width: 51.5rem;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
 `;
 
 const ImgStyled = styled(Img)`
@@ -137,7 +144,7 @@ const Index = ({ data }) => {
         <FeatureBullets />
       </Section>
       <Section colored fullPadding>
-        <SideBySide
+        <FeatureContainer
           css={`
             margin: 0 auto 3.2rem;
           `}
@@ -156,34 +163,46 @@ const Index = ({ data }) => {
             Empower all your teammates to find what they need exactly when they
             need it.
           </BodyBig>
-        </SideBySide>
-        <Img
+        </FeatureContainer>
+        <ImgContainer
           css={`
-            align-self: center;
-            margin: 0 auto;
-            @media ${device.desktopUp} {
-              margin: 0;
-            }
+            max-width: 42.4rem;
           `}
-          alt={`Screenshot of Cards in ${siteTitle}`}
-          durationFadeIn={300}
-          fixed={data.card.childImageSharp.fixed}
-        />
+        >
+          <Img
+            css={`
+              align-self: center;
+              margin: 0 auto;
+              @media ${device.desktopUp} {
+                margin: 0;
+              }
+            `}
+            alt={`Screenshot of Cards in ${siteTitle}`}
+            durationFadeIn={300}
+            fluid={data.card.childImageSharp.fluid}
+          />
+        </ImgContainer>
       </Section>
       <Section fullPadding>
-        <Img
+        <ImgContainer
           css={`
-            align-self: center;
-            margin: 0 auto 3.2rem;
-            @media ${device.desktopUp} {
-              margin: 0;
-            }
+            max-width: 45rem;
           `}
-          alt={`Screenshot of Organization in ${siteTitle}`}
-          durationFadeIn={300}
-          fixed={data.organize.childImageSharp.fixed}
-        />
-        <SideBySide
+        >
+          <Img
+            css={`
+              align-self: center;
+              margin: 0 auto 3.2rem;
+              @media ${device.desktopUp} {
+                margin: 0;
+              }
+            `}
+            alt={`Screenshot of Organization in ${siteTitle}`}
+            durationFadeIn={300}
+            fluid={data.organize.childImageSharp.fluid}
+          />
+        </ImgContainer>
+        <FeatureContainer
           css={`
             margin: 0 auto;
           `}
@@ -218,10 +237,10 @@ const Index = ({ data }) => {
           >
             Get Organized Now
           </Button>
-        </SideBySide>
+        </FeatureContainer>
       </Section>
       <Section colored fullPadding>
-        <SideBySide
+        <FeatureContainer
           css={`
             margin: 0 auto 3.2rem;
           `}
@@ -239,19 +258,25 @@ const Index = ({ data }) => {
             added a new card. You can link to your deck, or even embed it in
             your existing intranet.
           </BodyBig>
-        </SideBySide>
-        <Img
+        </FeatureContainer>
+        <ImgContainer
           css={`
-            align-self: center;
-            margin: 0 auto;
-            @media ${device.desktopUp} {
-              margin: 0;
-            }
+            width: 51.5rem;
           `}
-          alt={`Screenshot of Decks in ${siteTitle}`}
-          durationFadeIn={300}
-          fixed={data.deck.childImageSharp.fixed}
-        />
+        >
+          <Img
+            css={`
+              align-self: center;
+              margin: 0 auto;
+              @media ${device.desktopUp} {
+                margin: 0;
+              }
+            `}
+            alt={`Screenshot of Decks in ${siteTitle}`}
+            durationFadeIn={300}
+            fluid={data.deck.childImageSharp.fluid}
+          />
+        </ImgContainer>
       </Section>
       <Section fullPadding>
         <div
@@ -349,22 +374,22 @@ export const query = graphql`
     }
     card: file(relativePath: { eq: "card.png" }) {
       childImageSharp {
-        fixed(width: 424, height: 320, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
+        fluid(maxWidth: 424, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
     organize: file(relativePath: { eq: "organize.png" }) {
       childImageSharp {
-        fixed(width: 450, height: 468, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
+        fluid(maxWidth: 450, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
     deck: file(relativePath: { eq: "deck.png" }) {
       childImageSharp {
-        fixed(width: 515, height: 441, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
+        fluid(maxWidth: 515, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
