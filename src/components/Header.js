@@ -50,18 +50,17 @@ const Hamburger = styled(Icon).attrs({
 
 const MobileMenu = styled.div`
   display: flex;
-  padding-top: 4.8rem;
+  background: ${({ theme, isLight }) => (isLight ? theme.bs[200] : theme.p)};
+  position: fixed;
   @media ${device.tabletPortraitUp} {
     display: none;
   }
-  height: calc(100% - 4.8rem);
-  position: fixed;
-  width: 100%;
+  padding: 4.8rem 3.2rem;
+  width: calc(100% - 6.4rem);
+  height: calc(100% - 9.6rem);
   transition: all 0.3s;
-  padding: 3.2rem;
   transform: translateY(${({ isOpen }) => (isOpen ? '0' : '-100%')});
   z-index: 101;
-  background: ${({ theme, isLight }) => (isLight ? theme.bs[200] : theme.p)};
 `;
 
 const MobileMenuContent = styled.div`
@@ -75,6 +74,12 @@ const MobileMenuNav = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+  & > *:not(:last-child) {
+    margin-bottom: 4.8rem;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const MobileMenuNavItem = styled.li`
