@@ -1,7 +1,7 @@
 import React from 'react';
 import theme from '@trig-app/themes';
 import { render } from '../../../test/utils';
-import Section, { paddingTopBottom } from '../Section';
+import Section from '../Section';
 
 describe('<Section />', () => {
   it('renders and takes basic props', () => {
@@ -11,7 +11,7 @@ describe('<Section />', () => {
       <Section>{children}</Section>
     );
     expect(getByText(children)).toBeInTheDocument();
-    expect(container.firstChild).toHaveStyleRule('padding-top', '0');
+    expect(container.firstChild).toHaveStyleRule('padding', '0');
     expect(container.firstChild).toHaveStyleRule('background', theme.bs[200]);
 
     rerender(
@@ -20,10 +20,7 @@ describe('<Section />', () => {
       </Section>
     );
     expect(getByText(title)).toBeInTheDocument();
-    expect(container.firstChild).toHaveStyleRule(
-      'padding-top',
-      paddingTopBottom
-    );
+    expect(container.firstChild).toHaveStyleRule('padding', '6.4rem 4rem');
     expect(container.firstChild).toHaveStyleRule('background', theme.bs[300]);
   });
 });

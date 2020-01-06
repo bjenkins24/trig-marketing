@@ -8,13 +8,13 @@ import useSiteMetadata from '../../helpers/hooks/useSiteMetadata';
 
 const BulletInfoContainer = styled.div`
   width: 100%;
-  margin: 0 auto 3.2rem;
+  margin: 0 auto;
   @media ${device.tabletPortraitUp} {
     width: 60%;
   }
   @media ${device.tabletLandscapeUp} {
     width: 32%;
-    margin: auto;
+    margin: 0;
   }
 `;
 
@@ -70,19 +70,24 @@ const BulletInfo = ({ color, renderIcon, title, description }) => {
 
 BulletInfo.propTypes = bulletInfoTypes;
 
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: space-between;
+  padding: 3.2rem;
+  @media ${device.desktopUp} {
+    padding: 0;
+  }
+  & > *:not(:last-child) {
+    padding-right: 2%;
+    margin-bottom: 3.2rem;
+  }
+`;
+
 const FeatureBullets = () => {
   const { siteTitle } = useSiteMetadata();
   return (
-    <div
-      css={`
-        display: flex;
-        flex-wrap: wrap;
-        justify-items: space-between;
-        & > *:not(:last-child) {
-          padding-right: 2%;
-        }
-      `}
-    >
+    <Container>
       <BulletInfo
         color="a2"
         renderIcon={() => (
@@ -123,7 +128,7 @@ const FeatureBullets = () => {
         title="Share With Your Team"
         description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new."
       />
-    </div>
+    </Container>
   );
 };
 

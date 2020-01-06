@@ -46,8 +46,15 @@ const MainHeading = styled(Huge)`
 `;
 
 const BodyBiggestStyled = styled(BodyBiggest)`
-  max-width: 87rem;
+  width: 100%;
   margin: 0 auto 6.4rem;
+  @media ${device.tabletPortraitUp} {
+    width: 90%;
+  }
+  @media ${device.tabletLandscapeUp} {
+    width: 100%;
+    max-width: 87rem;
+  }
 `;
 
 const ButtonStyled = styled(Button)`
@@ -59,8 +66,32 @@ const ButtonStyled = styled(Button)`
   }
 `;
 
+const FeatureContainer = styled.div`
+  width: 100%;
+  @media ${device.tabletPortraitUp} {
+    width: 75%;
+  }
+  @media ${device.tabletLandscapeUp} {
+    width: 70%;
+  }
+  @media ${device.desktopUp} {
+    width: 48%;
+    margin: 0 2% 0 0;
+  }
+`;
+
 const SectionTitle = styled(Heading1)`
   margin-bottom: 3.2rem;
+`;
+
+const ImgContainer = styled.div`
+  max-width: 51.5rem;
+  width: 100%;
+  margin: 0 auto;
+  @media ${device.desktopUp} {
+    margin: 0;
+  }
+  display: block;
 `;
 
 const ImgStyled = styled(Img)`
@@ -71,10 +102,13 @@ const SubHeading = styled(Huge)`
   text-align: center;
   margin-top: 6.4rem;
   @media ${device.tabletPortraitUp} {
-    margin-top: 12.9rem;
+    margin-top: 12rem;
   }
   @media ${device.tabletLandscapeUp} {
-    margin: 16.9rem 0 3.2rem;
+    margin: 16rem 0 3.2rem;
+  }
+  @media ${device.desktopUp} {
+    margin: 12.8rem 0 3.2rem;
   }
 `;
 
@@ -116,9 +150,9 @@ const Index = ({ data }) => {
         <FeatureBullets />
       </Section>
       <Section colored fullPadding>
-        <div
+        <FeatureContainer
           css={`
-            width: 42.5rem;
+            margin: 0 auto 3.2rem;
           `}
         >
           <SectionTitle>Store all company knowledge in one place</SectionTitle>
@@ -135,28 +169,48 @@ const Index = ({ data }) => {
             Empower all your teammates to find what they need exactly when they
             need it.
           </BodyBig>
-        </div>
-        <Img
+        </FeatureContainer>
+        <ImgContainer
           css={`
-            align-self: center;
+            max-width: 42.4rem;
           `}
-          alt={`Screenshot of Cards in ${siteTitle}`}
-          durationFadeIn={300}
-          fixed={data.card.childImageSharp.fixed}
-        />
+        >
+          <Img
+            css={`
+              align-self: center;
+              margin: 0 auto;
+              @media ${device.desktopUp} {
+                margin: 0;
+              }
+            `}
+            alt={`Screenshot of Cards in ${siteTitle}`}
+            durationFadeIn={300}
+            fluid={data.card.childImageSharp.fluid}
+          />
+        </ImgContainer>
       </Section>
       <Section fullPadding>
-        <Img
+        <ImgContainer
           css={`
-            align-self: center;
+            max-width: 45rem;
           `}
-          alt={`Screenshot of Organization in ${siteTitle}`}
-          durationFadeIn={300}
-          fixed={data.organize.childImageSharp.fixed}
-        />
-        <div
+        >
+          <Img
+            css={`
+              align-self: center;
+              margin: 0 auto 3.2rem;
+              @media ${device.desktopUp} {
+                margin: 0;
+              }
+            `}
+            alt={`Screenshot of Organization in ${siteTitle}`}
+            durationFadeIn={300}
+            fluid={data.organize.childImageSharp.fluid}
+          />
+        </ImgContainer>
+        <FeatureContainer
           css={`
-            width: 51.1rem;
+            margin: 0 auto;
           `}
         >
           <SectionTitle>Organizing is a thing of the past</SectionTitle>
@@ -189,13 +243,12 @@ const Index = ({ data }) => {
           >
             Get Organized Now
           </Button>
-        </div>
+        </FeatureContainer>
       </Section>
       <Section colored fullPadding>
-        <div
+        <FeatureContainer
           css={`
-            width: 42.5rem;
-            align-self: center;
+            margin: 0 auto 3.2rem;
           `}
         >
           <SectionTitle>
@@ -211,21 +264,35 @@ const Index = ({ data }) => {
             added a new card. You can link to your deck, or even embed it in
             your existing intranet.
           </BodyBig>
-        </div>
-        <Img
+        </FeatureContainer>
+        <ImgContainer
           css={`
-            align-self: center;
+            width: 51.5rem;
           `}
-          alt={`Screenshot of Decks in ${siteTitle}`}
-          durationFadeIn={300}
-          fixed={data.deck.childImageSharp.fixed}
-        />
+        >
+          <Img
+            css={`
+              align-self: center;
+              margin: 0 auto;
+              @media ${device.desktopUp} {
+                margin: 0;
+              }
+            `}
+            alt={`Screenshot of Decks in ${siteTitle}`}
+            durationFadeIn={300}
+            fluid={data.deck.childImageSharp.fluid}
+          />
+        </ImgContainer>
       </Section>
       <Section fullPadding>
         <div
           css={`
-            width: 41.8rem;
-            align-self: center;
+            display: none;
+            @media ${device.desktopUp} {
+              display: block;
+              width: 41.8rem;
+              align-self: center;
+            }
           `}
         >
           <Huge>Ideas &amp; Questions</Huge>
@@ -241,6 +308,10 @@ const Index = ({ data }) => {
         <div
           css={`
             width: 51.1rem;
+            margin: 0 auto;
+            @media ${device.desktopUp} {
+              margin: 0;
+            }
           `}
         >
           <SectionTitle>
@@ -258,10 +329,26 @@ const Index = ({ data }) => {
             Answers then stay in your pool of knowledge for others to find when
             they need it.
           </BodyBig>
-          <BodyBig as="p">
+          <BodyBig
+            as="p"
+            css={`
+              margin-bottom: 3.2rem;
+            `}
+          >
             Empower your team to come up with ideas, or you’ll never know how
             badly your team wants lunch time lip sync battles.
           </BodyBig>
+          <Button
+            size="hg"
+            css={`
+              padding: 0 6.4rem;
+              @media ${device.desktopUp} {
+                display: none;
+              }
+            `}
+          >
+            Get Started Now For Free
+          </Button>
         </div>
       </Section>
       <Section fullPadding colored title="Pricing">
@@ -269,7 +356,10 @@ const Index = ({ data }) => {
       </Section>
       <div
         css={`
-          padding: ${bottomMargin};
+          padding: 6.4rem 4rem;
+          @media ${device.desktopUp} {
+            padding: ${bottomMargin};
+          }
           text-align: center;
         `}
       >
@@ -317,22 +407,22 @@ export const query = graphql`
     }
     card: file(relativePath: { eq: "card.png" }) {
       childImageSharp {
-        fixed(width: 424, height: 320, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
+        fluid(maxWidth: 424, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
     organize: file(relativePath: { eq: "organize.png" }) {
       childImageSharp {
-        fixed(width: 450, height: 468, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
+        fluid(maxWidth: 450, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
     deck: file(relativePath: { eq: "deck.png" }) {
       childImageSharp {
-        fixed(width: 515, height: 441, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFixed_withWebp_noBase64
+        fluid(maxWidth: 515, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
         }
       }
     }
