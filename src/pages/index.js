@@ -88,6 +88,9 @@ const ImgContainer = styled.div`
   max-width: 51.5rem;
   width: 100%;
   margin: 0 auto;
+  @media ${device.desktopUp} {
+    margin: 0;
+  }
   display: block;
 `;
 
@@ -99,10 +102,13 @@ const SubHeading = styled(Huge)`
   text-align: center;
   margin-top: 6.4rem;
   @media ${device.tabletPortraitUp} {
-    margin-top: 12.9rem;
+    margin-top: 12rem;
   }
   @media ${device.tabletLandscapeUp} {
-    margin: 16.9rem 0 3.2rem;
+    margin: 16rem 0 3.2rem;
+  }
+  @media ${device.desktopUp} {
+    margin: 12.8rem 0 3.2rem;
   }
 `;
 
@@ -281,8 +287,12 @@ const Index = ({ data }) => {
       <Section fullPadding>
         <div
           css={`
-            width: 41.8rem;
-            align-self: center;
+            display: none;
+            @media ${device.desktopUp} {
+              display: block;
+              width: 41.8rem;
+              align-self: center;
+            }
           `}
         >
           <Huge>Ideas &amp; Questions</Huge>
@@ -298,6 +308,10 @@ const Index = ({ data }) => {
         <div
           css={`
             width: 51.1rem;
+            margin: 0 auto;
+            @media ${device.desktopUp} {
+              margin: 0;
+            }
           `}
         >
           <SectionTitle>
@@ -315,10 +329,26 @@ const Index = ({ data }) => {
             Answers then stay in your pool of knowledge for others to find when
             they need it.
           </BodyBig>
-          <BodyBig as="p">
+          <BodyBig
+            as="p"
+            css={`
+              margin-bottom: 3.2rem;
+            `}
+          >
             Empower your team to come up with ideas, or you’ll never know how
             badly your team wants lunch time lip sync battles.
           </BodyBig>
+          <Button
+            size="hg"
+            css={`
+              padding: 0 6.4rem;
+              @media ${device.desktopUp} {
+                display: none;
+              }
+            `}
+          >
+            Get Started Now For Free
+          </Button>
         </div>
       </Section>
       <Section fullPadding colored title="Pricing">
@@ -326,7 +356,10 @@ const Index = ({ data }) => {
       </Section>
       <div
         css={`
-          padding: ${bottomMargin};
+          padding: 6.4rem 4rem;
+          @media ${device.desktopUp} {
+            padding: ${bottomMargin};
+          }
           text-align: center;
         `}
       >

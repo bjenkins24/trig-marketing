@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import { Heading1 } from '@trig-app/core-components/dist/Typography';
 import { device } from '@trig-app/constants';
 
-export const paddingTopBottom = '9.6rem';
-
 const FeatureContainer = styled.section`
-  padding: 6.4rem 4rem;
+  padding: ${({ fullPadding }) => (fullPadding ? '6.4rem 4rem' : 0)};
   background: ${({ colored, theme }) =>
     colored ? theme.bs[300] : theme.bs[200]};
   @media ${device.tabletLandscapeUp} {
-    padding: ${({ fullPadding }) => (fullPadding ? paddingTopBottom : 0)};
+    padding: ${({ fullPadding }) => (fullPadding ? '9.6rem' : '0 0 4.8rem 0')};
   }
 `;
 

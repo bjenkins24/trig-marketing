@@ -74,6 +74,10 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-items: space-between;
+  padding: 3.2rem;
+  @media ${device.desktopUp} {
+    padding: 0;
+  }
   & > *:not(:last-child) {
     padding-right: 2%;
     margin-bottom: 3.2rem;
