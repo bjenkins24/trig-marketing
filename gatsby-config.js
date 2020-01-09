@@ -1,5 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 const siteConfig = require('./site-config');
-const path = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -14,7 +16,15 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/images`
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: `trig-app`,
+        accessToken: `${process.env.PRISMIC_API_KEY}`,
+        linkResolver: () => post => `/${post.uid}`,
       },
     },
   ],
