@@ -119,7 +119,7 @@ const indexTypes = {
 const Index = ({ data }) => {
   const { siteTitle } = useSiteMetadata();
   return (
-    <Layout>
+    <Layout headerProps={{ isLightTheme: false }}>
       <Hero>
         <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
         <BodyBiggestStyled as="p" color="pc">

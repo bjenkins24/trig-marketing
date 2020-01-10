@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig, HugeStyles } from '@trig-app/core-components/dist/Typography';
@@ -16,9 +17,9 @@ const Container = styled.div`
   top: 0;
   background: ${({ theme, isLight }) => (isLight ? theme.bs[200] : theme.p)};
   transition: all 0.3s;
-  padding: ${({ isLight }) => (isLight ? '1.6rem 3.2rem' : '3.2rem')};
+  padding: ${({ hasScrolled }) => (hasScrolled ? '1.6rem 3.2rem' : '3.2rem')};
   z-index: 100;
-  box-shadow: ${({ theme, isLight }) => (isLight ? theme.sh : 'none')};
+  box-shadow: ${({ theme, hasScrolled }) => (hasScrolled ? theme.sh : 'none')};
 `;
 
 const Nav = styled(HorizontalGroup)`
@@ -45,7 +46,7 @@ const Hamburger = styled(Icon).attrs({
   position: fixed;
   z-index: 102;
   right: 3.2rem;
-  top: ${({ isLight }) => (!isLight ? '3.8rem' : '2.4rem')};
+  top: ${({ hasScrolled }) => (!hasScrolled ? '3.8rem' : '2.4rem')};
 `;
 
 const MobileMenu = styled.div`
@@ -87,17 +88,26 @@ const MobileMenuNavItem = styled.li`
   color: ${({ theme, isLight }) => (isLight ? theme.p : theme.pc)};
 `;
 
-const Header = props => {
+export const headerTypes = {
+  isLightTheme: PropTypes.bool,
+};
+
+const defaultProps = {
+  isLightTheme: true,
+};
+
+const Header = ({ isLightTheme, ...restProps }) => {
   const { siteTitle } = useSiteMetadata();
-  const [isLight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(isLightTheme);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       if (window.pageYOffset > 50) {
-        return setIsLight(true);
+        return setHasScrolled(true);
       }
-      return setIsLight(false);
+      return setHasScrolled(false);
     };
     window.addEventListener('scroll', onScroll);
     return () => {
@@ -105,9 +115,18 @@ const Header = props => {
     };
   });
 
+  useEffect(() => {
+    if (!isLight && hasScrolled && !isLightTheme) {
+      setIsLight(true);
+    }
+    if (isLight && !hasScrolled && !isLightTheme) {
+      setIsLight(false);
+    }
+  });
+
   return (
     <>
-      <Container isLight={isLight} {...props}>
+      <Container hasScrolled={hasScrolled} isLight={isLight} {...restProps}>
         <Logo
           css={`
             margin-top: 0.4rem;
@@ -130,7 +149,7 @@ const Header = props => {
       </Container>
       <Hamburger
         color={isLight ? 'p' : 'pc'}
-        isLight={isLight}
+        hasScrolled={hasScrolled}
         isOpen={isMobileMenuOpen}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
@@ -147,5 +166,8 @@ const Header = props => {
     </>
   );
 };
+
+Header.propTypes = headerTypes;
+Header.defaultProps = defaultProps;
 
 export default Header;
