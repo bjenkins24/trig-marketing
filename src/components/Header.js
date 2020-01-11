@@ -136,7 +136,6 @@ const Header = ({ isLightTheme, ...restProps }) => {
       setIsLight(false);
     }
   });
-  console.log(isMobileMenuOpen);
 
   return (
     <>
