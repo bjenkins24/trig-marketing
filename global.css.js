@@ -66,5 +66,10 @@ export default createGlobalStyle`
 
     a {
         text-decoration: none;
+        transition: all 0.2s;
+        color: inherit;
+        &:hover {
+           color: ${({ theme }) => theme.ss[200]};
+        }
     }
 `;

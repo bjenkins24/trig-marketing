@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig, HugeStyles } from '@trig-app/core-components/dist/Typography';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
@@ -131,16 +132,18 @@ const Header = ({ isLightTheme, ...restProps }) => {
   return (
     <>
       <Container hasScrolled={hasScrolled} isLight={isLight} {...restProps}>
-        <Logo
-          css={`
-            margin-top: 0.4rem;
-          `}
-          type={isLight ? 'light' : 'dark'}
-          title={`${siteTitle} Logo`}
-        />
+        <Link to="/">
+          <Logo
+            css={`
+              margin-top: 0.5rem;
+            `}
+            type={isLight ? 'light' : 'dark'}
+            title={`${siteTitle} Logo`}
+          />
+        </Link>
         <Nav margin={3.2}>
           <NavigationItem isLight={isLight} weight="bold">
-            Home
+            <Link to="/">Home</Link>
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
             Pricing
