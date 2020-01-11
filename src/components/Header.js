@@ -60,7 +60,7 @@ const MobileMenu = styled.div`
   width: calc(100% - 6.4rem);
   height: calc(100% - 9.6rem);
   transition: all 0.3s;
-  transform: translateY(${({ isOpen }) => (isOpen ? '0' : '-100%')});
+  transform: translateY(${({ isOpen }) => (isOpen ? '0' : '-110%')});
   z-index: 101;
 `;
 
@@ -86,6 +86,10 @@ const MobileMenuNav = styled.ul`
 const MobileMenuNavItem = styled.li`
   ${HugeStyles}
   color: ${({ theme, isLight }) => (isLight ? theme.p : theme.pc)};
+`;
+
+const Spacer = styled.div`
+  height: 10.4rem;
 `;
 
 export const headerTypes = {
@@ -163,6 +167,7 @@ const Header = ({ isLightTheme, ...restProps }) => {
           </MobileMenuNav>
         </MobileMenuContent>
       </MobileMenu>
+      <Spacer data-testid="header__spacer" aria-hidden />
     </>
   );
 };

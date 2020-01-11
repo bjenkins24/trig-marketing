@@ -29,4 +29,9 @@ describe('<Header />', () => {
     fireEvent.scroll(window, { target: { pageYOffset: 0 } });
     expect(container.firstChild).toHaveStyleRule('background', theme.p);
   });
+
+  it('renders a spacer for height of header', () => {
+    const { getByTestId } = render(<Header />);
+    expect(getByTestId('header__spacer')).toHaveStyleRule('height', '10.4rem');
+  });
 });
