@@ -93,6 +93,14 @@ const Spacer = styled.div`
   height: 10.3rem;
 `;
 
+const HomeLink = () => {
+  return <Link to="/">Home</Link>;
+};
+
+const PricingLink = () => {
+  return <Link to="/#pricing">Pricing</Link>;
+};
+
 export const headerTypes = {
   isLightTheme: PropTypes.bool,
 };
@@ -128,6 +136,7 @@ const Header = ({ isLightTheme, ...restProps }) => {
       setIsLight(false);
     }
   });
+  console.log(isMobileMenuOpen);
 
   return (
     <>
@@ -143,10 +152,10 @@ const Header = ({ isLightTheme, ...restProps }) => {
         </Link>
         <Nav margin={3.2}>
           <NavigationItem isLight={isLight} weight="bold">
-            <Link to="/">Home</Link>
+            <HomeLink />
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
-            <Link to="/#pricing">Pricing</Link>
+            <PricingLink />
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
             Sign in
@@ -163,10 +172,30 @@ const Header = ({ isLightTheme, ...restProps }) => {
       <MobileMenu isLight={isLight} isOpen={isMobileMenuOpen}>
         <MobileMenuContent>
           <MobileMenuNav>
-            <MobileMenuNavItem isLight={isLight}>Home</MobileMenuNavItem>
-            <MobileMenuNavItem isLight={isLight}>Pricing</MobileMenuNavItem>
-            <MobileMenuNavItem isLight={isLight}>Sign In</MobileMenuNavItem>
-            <MobileMenuNavItem isLight={isLight}>Try Now</MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <HomeLink />
+            </MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <PricingLink />
+            </MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Sign In
+            </MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Try Now
+            </MobileMenuNavItem>
           </MobileMenuNav>
         </MobileMenuContent>
       </MobileMenu>
