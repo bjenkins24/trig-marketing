@@ -90,7 +90,7 @@ const MobileMenuNavItem = styled.li`
 `;
 
 const Spacer = styled.div`
-  height: 10.4rem;
+  height: 10.3rem;
 `;
 
 export const headerTypes = {
@@ -146,7 +146,7 @@ const Header = ({ isLightTheme, ...restProps }) => {
             <Link to="/">Home</Link>
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
-            Pricing
+            <Link to="/#pricing">Pricing</Link>
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
             Sign in

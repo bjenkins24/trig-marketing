@@ -351,7 +351,7 @@ const Index = ({ data }) => {
           </Button>
         </div>
       </Section>
-      <Section fullPadding colored title="Pricing">
+      <Section fullPadding colored title="Pricing" id="pricing">
         <Pricing />
       </Section>
       <div

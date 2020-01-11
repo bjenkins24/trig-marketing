@@ -78,16 +78,15 @@ const Footer = props => {
     <Container {...props}>
       <Content>
         <CompanyMeta>
-          <Link to="/">
-            <Logo
-              title={`${siteTitle} Logo`}
-              css={`
-                @media ${device.tabletLandscapeUp} {
-                  margin-bottom: 8.8rem;
-                }
-              `}
-            />
-          </Link>
+          <Logo
+            title={`${siteTitle} Logo`}
+            css={`
+              @media ${device.tabletLandscapeUp} {
+                margin-bottom: 8.8rem;
+              }
+            `}
+          />
+
           <Copyright>
             &copy; {`${new Date().getFullYear()}`} {siteTitle}
           </Copyright>

@@ -70,10 +70,10 @@ const SecondaryButton = styled(Button).attrs({
   margin-top: 4.8rem;
 `;
 
-const Pricing = () => {
+const Pricing = props => {
   const bodyColor = 'ps.200';
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Block
         css={`
           @media ${device.desktopUp} {

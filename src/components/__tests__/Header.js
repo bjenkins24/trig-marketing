@@ -32,6 +32,6 @@ describe('<Header />', () => {
 
   it('renders a spacer for height of header', () => {
     const { getByTestId } = render(<Header />);
-    expect(getByTestId('header__spacer')).toHaveStyleRule('height', '10.4rem');
+    expect(getByTestId('header__spacer')).toHaveStyleRule('height', '10.3rem');
   });
 });
