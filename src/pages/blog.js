@@ -24,14 +24,27 @@ const Posts = styled(HorizontalGroup)`
   flex-wrap: wrap;
   width: 100%;
 
+  @media ${device.tabletPortraitUp} {
+    & > a {
+      width: 49.5%;
+    }
+    & > a:not(:nth-child(2n + 2)) {
+      margin-right: 1%;
+    }
+  }
+
   @media ${device.tabletLandscapeUp} {
     & > a {
       width: 32.5%;
+    }
+    & > a:not(:nth-child(2n + 2)) {
+      margin-right: 0;
     }
     & > a:not(:nth-child(3n + 3)) {
       margin-right: 1.25%;
     }
   }
+
   @media ${device.desktopUp} {
     margin-right: 4rem;
   }
@@ -39,6 +52,10 @@ const Posts = styled(HorizontalGroup)`
 
 const PostStyled = styled(PostLink)`
   margin-bottom: 2.4rem;
+  width: 100%;
+  @media ${device.tabletLandscapeUp} {
+    width: auto;
+  }
 `;
 
 const Sidebar = styled.div`

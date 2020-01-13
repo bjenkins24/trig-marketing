@@ -9,6 +9,10 @@ const Container = styled(Link)`
   display: block;
   border-radius: ${({ theme }) => theme.br};
   background: ${({ theme }) => theme.b};
+  transition: all 0.2s;
+  &:hover {
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+  }
 `;
 
 const Content = styled.div`
