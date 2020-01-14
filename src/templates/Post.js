@@ -46,6 +46,12 @@ const Content = styled.div`
   img {
     max-width: ${span};
   }
+  iframe {
+    width: 100%;
+  }
+  div[data-oembed] {
+    margin: 2.4rem 0;
+  }
 `;
 
 const postTypes = {
