@@ -15,6 +15,11 @@ const Container = styled(Link)`
   }
 `;
 
+const ImgStyled = styled(Img)`
+  border-top-right-radius: ${({ theme }) => theme.br};
+  border-top-left-radius: ${({ theme }) => theme.br};
+`;
+
 const Content = styled.div`
   padding: 2.4rem;
 `;
@@ -45,7 +50,7 @@ const postLinkTypes = {
 const PostLink = ({ title, summary, imageProps, to, ...restProps }) => {
   return (
     <Container to={to} {...restProps}>
-      <Img alt={title} durationFadeIn={300} {...imageProps} />
+      <ImgStyled alt={title} durationFadeIn={300} {...imageProps} />
       <Content>
         <Title>{title}</Title>
         <Summary dangerouslySetInnerHTML={{ __html: summary }} />
