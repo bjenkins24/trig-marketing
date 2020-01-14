@@ -249,6 +249,7 @@ const Index = ({ data }) => {
         <FeatureContainer
           css={`
             margin: 0 auto 3.2rem;
+            align-self: center;
           `}
         >
           <SectionTitle>
