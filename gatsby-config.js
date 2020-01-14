@@ -24,7 +24,7 @@ module.exports = {
       options: {
         repositoryName: `trig-app`,
         accessToken: `${process.env.PRISMIC_API_KEY}`,
-        linkResolver: () => post => `/blog/${post.uid}`,
+        linkResolver: () => post => `/${post.uid}`,
       },
     },
   ],

@@ -95,7 +95,7 @@ const blogTypes = {
                 text: PropTypes.string,
               }),
             }),
-            slugs: PropTypes.arrayOf(PropTypes.string),
+            uid: PropTypes.string,
           }),
         })
       ),
@@ -112,11 +112,11 @@ const Blog = ({ data }) => {
         <Posts>
           {posts.map(post => {
             const postData = post.node.data;
-            const slug = post.node.slugs[0];
+            const { uid } = post.node;
             return (
               <PostStyled
                 key={post.node.id}
-                to={`/blog/${slug}`}
+                to={`/blog/${uid}`}
                 title={postData.title.text}
                 summary={postData.summary.html}
                 imageProps={{
@@ -198,7 +198,7 @@ export const query = graphql`
               text
             }
           }
-          slugs
+          uid
         }
       }
     }
