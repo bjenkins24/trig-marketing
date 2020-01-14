@@ -117,7 +117,7 @@ const Blog = ({ data }) => {
             return (
               <PostStyled
                 key={post.node.id}
-                to={slug}
+                to={`/blog/${slug}`}
                 title={postData.title.text}
                 summary={postData.summary.html}
                 imageProps={{
