@@ -113,7 +113,6 @@ const Blog = ({ data }) => {
           {posts.map(post => {
             const postData = post.node.data;
             const slug = post.node.slugs[0];
-
             return (
               <PostStyled
                 key={post.node.id}
