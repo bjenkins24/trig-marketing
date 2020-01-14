@@ -3,16 +3,49 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { Huge } from '@trig-app/core-components/dist/Typography';
 import Layout from '../components/Layout';
+
+const span = '65rem';
+
+const Title = styled.h1`
+  font-size: 4.8rem;
+  line-height: 1.3;
+  margin: 4.8rem auto 4rem;
+  width: ${span};
+`;
 
 const ImgStyled = styled(Img)`
   margin-bottom: 4rem;
 `;
 
 const Content = styled.div`
-  width: 65rem;
+  width: ${span};
   margin: 0 auto 9.6rem;
+  h1 {
+    font-size: 3.4rem;
+    line-height: 1.3;
+    margin: 4rem 0 2.4rem;
+  }
+  p {
+    font-size: 2.1rem;
+    line-height: 1.6;
+  }
+  li {
+    font-size: 2.1rem;
+    line-height: 1.6;
+  }
+  pre {
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    color: #f8f8f2;
+    background: #272922;
+    font-size: 1.6rem;
+    border-radius: 0.4rem;
+    padding: 1.6rem;
+  }
+  img {
+    max-width: ${span};
+  }
 `;
 
 const postTypes = {
@@ -44,14 +77,7 @@ const Post = ({ data: { prismicPost } }) => {
 
   return (
     <Layout>
-      <Huge
-        css={`
-          margin: 7.2rem auto 4rem;
-          width: 65rem;
-        `}
-      >
-        {data.title.text}
-      </Huge>
+      <Title>{data.title.text}</Title>
       <ImgStyled
         alt={data.image.alt}
         durationFadeIn={300}
