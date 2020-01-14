@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import { Button } from '@trig-app/core-components/dist/Buttons';
 import { BodyBig, HugeStyles } from '@trig-app/core-components/dist/Typography';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
@@ -16,9 +18,9 @@ const Container = styled.div`
   top: 0;
   background: ${({ theme, isLight }) => (isLight ? theme.bs[200] : theme.p)};
   transition: all 0.3s;
-  padding: ${({ isLight }) => (isLight ? '1.6rem 3.2rem' : '3.2rem')};
+  padding: ${({ hasScrolled }) => (hasScrolled ? '1.6rem 3.2rem' : '3.2rem')};
   z-index: 100;
-  box-shadow: ${({ theme, isLight }) => (isLight ? theme.sh : 'none')};
+  box-shadow: ${({ theme, hasScrolled }) => (hasScrolled ? theme.sh : 'none')};
 `;
 
 const Nav = styled(HorizontalGroup)`
@@ -45,7 +47,7 @@ const Hamburger = styled(Icon).attrs({
   position: fixed;
   z-index: 102;
   right: 3.2rem;
-  top: ${({ isLight }) => (!isLight ? '3.8rem' : '2.4rem')};
+  top: ${({ hasScrolled }) => (!hasScrolled ? '3.8rem' : '2.4rem')};
 `;
 
 const MobileMenu = styled.div`
@@ -59,7 +61,7 @@ const MobileMenu = styled.div`
   width: calc(100% - 6.4rem);
   height: calc(100% - 9.6rem);
   transition: all 0.3s;
-  transform: translateY(${({ isOpen }) => (isOpen ? '0' : '-100%')});
+  transform: translateY(${({ isOpen }) => (isOpen ? '0' : '-110%')});
   z-index: 101;
 `;
 
@@ -87,17 +89,38 @@ const MobileMenuNavItem = styled.li`
   color: ${({ theme, isLight }) => (isLight ? theme.p : theme.pc)};
 `;
 
-const Header = props => {
+const Spacer = styled.div`
+  height: 10.3rem;
+`;
+
+const HomeLink = () => {
+  return <Link to="/">Home</Link>;
+};
+
+const PricingLink = () => {
+  return <Link to="/#pricing">Pricing</Link>;
+};
+
+export const headerTypes = {
+  isLightTheme: PropTypes.bool,
+};
+
+const defaultProps = {
+  isLightTheme: true,
+};
+
+const Header = ({ isLightTheme, ...restProps }) => {
   const { siteTitle } = useSiteMetadata();
-  const [isLight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(isLightTheme);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       if (window.pageYOffset > 50) {
-        return setIsLight(true);
+        return setHasScrolled(true);
       }
-      return setIsLight(false);
+      return setHasScrolled(false);
     };
     window.addEventListener('scroll', onScroll);
     return () => {
@@ -105,22 +128,33 @@ const Header = props => {
     };
   });
 
+  useEffect(() => {
+    if (!isLight && hasScrolled && !isLightTheme) {
+      setIsLight(true);
+    }
+    if (isLight && !hasScrolled && !isLightTheme) {
+      setIsLight(false);
+    }
+  });
+
   return (
     <>
-      <Container isLight={isLight} {...props}>
-        <Logo
-          css={`
-            margin-top: 0.4rem;
-          `}
-          type={isLight ? 'light' : 'dark'}
-          title={`${siteTitle} Logo`}
-        />
+      <Container hasScrolled={hasScrolled} isLight={isLight} {...restProps}>
+        <Link to="/">
+          <Logo
+            css={`
+              margin-top: 0.5rem;
+            `}
+            type={isLight ? 'light' : 'dark'}
+            title={`${siteTitle} Logo`}
+          />
+        </Link>
         <Nav margin={3.2}>
           <NavigationItem isLight={isLight} weight="bold">
-            Home
+            <HomeLink />
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
-            Pricing
+            <PricingLink />
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
             Sign in
@@ -130,22 +164,46 @@ const Header = props => {
       </Container>
       <Hamburger
         color={isLight ? 'p' : 'pc'}
-        isLight={isLight}
+        hasScrolled={hasScrolled}
         isOpen={isMobileMenuOpen}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
       <MobileMenu isLight={isLight} isOpen={isMobileMenuOpen}>
         <MobileMenuContent>
           <MobileMenuNav>
-            <MobileMenuNavItem isLight={isLight}>Home</MobileMenuNavItem>
-            <MobileMenuNavItem isLight={isLight}>Pricing</MobileMenuNavItem>
-            <MobileMenuNavItem isLight={isLight}>Sign In</MobileMenuNavItem>
-            <MobileMenuNavItem isLight={isLight}>Try Now</MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <HomeLink />
+            </MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <PricingLink />
+            </MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Sign In
+            </MobileMenuNavItem>
+            <MobileMenuNavItem
+              isLight={isLight}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Try Now
+            </MobileMenuNavItem>
           </MobileMenuNav>
         </MobileMenuContent>
       </MobileMenu>
+      <Spacer data-testid="header__spacer" aria-hidden />
     </>
   );
 };
+
+Header.propTypes = headerTypes;
+Header.defaultProps = defaultProps;
 
 export default Header;

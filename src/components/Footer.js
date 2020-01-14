@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import { Body1, Body1Styles } from '@trig-app/core-components/dist/Typography';
 import Logo from '@trig-app/core-components/dist/Logo';
 import { device } from '@trig-app/constants';
@@ -85,6 +86,7 @@ const Footer = props => {
               }
             `}
           />
+
           <Copyright>
             &copy; {`${new Date().getFullYear()}`} {siteTitle}
           </Copyright>
@@ -105,7 +107,9 @@ const Footer = props => {
           <Navigation>
             <NavigationTitle>Keep in Touch</NavigationTitle>
             <NavigationItem>Contact Us</NavigationItem>
-            <NavigationItem>Blog</NavigationItem>
+            <NavigationItem>
+              <Link to="/blog">Blog</Link>
+            </NavigationItem>
           </Navigation>
           <Navigation>
             <NavigationTitle>Follow Us</NavigationTitle>

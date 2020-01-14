@@ -22,11 +22,11 @@ const bottomMargin = '9.6rem';
 const Hero = styled.div`
   background: ${({ theme }) => theme.p};
   text-align: center;
-  padding: 15rem 3.2rem 7.2rem;
+  padding: 4.8rem 3.2rem 7.2rem;
   height: auto;
   @media ${device.tabletPortraitUp} {
     height: 84.6rem;
-    padding: 15rem 3.2rem 0;
+    padding: 4.8rem 3.2rem 0;
   }
   @media (min-width: 600px) and (max-width: 715px) {
     height: 80rem;
@@ -119,7 +119,7 @@ const indexTypes = {
 const Index = ({ data }) => {
   const { siteTitle } = useSiteMetadata();
   return (
-    <Layout>
+    <Layout headerProps={{ isLightTheme: false }}>
       <Hero>
         <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
         <BodyBiggestStyled as="p" color="pc">
@@ -351,7 +351,7 @@ const Index = ({ data }) => {
           </Button>
         </div>
       </Section>
-      <Section fullPadding colored title="Pricing">
+      <Section fullPadding colored title="Pricing" id="pricing">
         <Pricing />
       </Section>
       <div
