@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { Body1, Body2 } from '@trig-app/core-components/dist/Typography';
+import { Body1, Body2Styles } from '@trig-app/core-components/dist/Typography';
 
 const Container = styled(Link)`
   display: block;
@@ -26,11 +26,12 @@ const Title = styled(Body1).attrs({
   margin: 0 0 1.6rem 0;
 `;
 
-const Summary = styled(Body2).attrs({
-  color: 'ps.200',
-  forwardedAs: 'p',
-})`
-  margin: 0;
+const Summary = styled.div`
+  p {
+    margin: 0;
+    color: ${({ theme }) => theme.ps[200]};
+    ${Body2Styles}
+  }
 `;
 
 const postLinkTypes = {
@@ -40,13 +41,14 @@ const postLinkTypes = {
   to: PropTypes.string.isRequired,
 };
 
+/* eslint-disable react/no-danger */
 const PostLink = ({ title, summary, imageProps, to, ...restProps }) => {
   return (
     <Container to={to} {...restProps}>
       <Img alt={title} durationFadeIn={300} {...imageProps} />
       <Content>
         <Title>{title}</Title>
-        <Summary>{summary}</Summary>
+        <Summary dangerouslySetInnerHTML={{ __html: summary }} />
       </Content>
     </Container>
   );

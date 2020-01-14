@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
@@ -72,47 +73,60 @@ const Ad = styled.div`
   padding: 3.2rem 0;
 `;
 
+const blogTypes = {
+  data: PropTypes.shape({
+    allPrismicPost: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            data: PropTypes.shape({
+              image: PropTypes.shape({
+                alt: PropTypes.string,
+                localFile: PropTypes.shape({
+                  childImageSharp: PropTypes.shape({
+                    fluid: PropTypes.object,
+                  }),
+                }),
+              }),
+              summary: PropTypes.shape({
+                html: PropTypes.string,
+              }),
+              title: PropTypes.shape({
+                text: PropTypes.string,
+              }),
+            }),
+            slugs: PropTypes.arrayOf(PropTypes.string),
+          }),
+        })
+      ),
+    }),
+  }).isRequired,
+};
+
 const Blog = ({ data }) => {
+  const posts = data.allPrismicPost.edges;
+
   return (
     <Layout>
       <Content>
         <Posts>
-          <PostStyled
-            to="/our-first-post"
-            title="How to have an Awesome Remote Workforce"
-            summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            imageProps={{ fluid: data.blogImage.childImageSharp.fluid }}
-          />
-          <PostStyled
-            to="/our-first-post"
-            title="My second post"
-            summary="I Love this so much"
-            imageProps={{ fluid: data.blogImage.childImageSharp.fluid }}
-          />
-          <PostStyled
-            to="/our-first-post"
-            title="My third post"
-            summary="I Love this so much"
-            imageProps={{ fluid: data.blogImage.childImageSharp.fluid }}
-          />
-          <PostStyled
-            to="/our-first-post"
-            title="How to have an Awesome Remote Workforce"
-            summary="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            imageProps={{ fluid: data.blogImage.childImageSharp.fluid }}
-          />
-          <PostStyled
-            to="/our-first-post"
-            title="My second post"
-            summary="I Love this so much"
-            imageProps={{ fluid: data.blogImage.childImageSharp.fluid }}
-          />
-          <PostStyled
-            to="/our-first-post"
-            title="My third post"
-            summary="I Love this so much"
-            imageProps={{ fluid: data.blogImage.childImageSharp.fluid }}
-          />
+          {posts.map(post => {
+            const postData = post.node.data;
+            const slug = post.node.slugs[0];
+
+            return (
+              <PostStyled
+                key={post.node.id}
+                to={slug}
+                title={postData.title.text}
+                summary={postData.summary.html}
+                imageProps={{
+                  fluid: postData.image.localFile.childImageSharp.fluid,
+                  alt: postData.image.alt,
+                }}
+              />
+            );
+          })}
         </Posts>
         <Sidebar>
           <Ad>
@@ -158,14 +172,34 @@ const Blog = ({ data }) => {
   );
 };
 
+Blog.propTypes = blogTypes;
+
 export default Blog;
 
 export const query = graphql`
-  query {
-    blogImage: file(relativePath: { eq: "deck.png" }) {
-      childImageSharp {
-        fluid(maxHeight: 256, pngQuality: 100, webpQuality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_noBase64
+  query AllPosts {
+    allPrismicPost(sort: { fields: data___date, order: DESC }) {
+      edges {
+        node {
+          data {
+            image {
+              alt
+              localFile {
+                childImageSharp {
+                  fluid(maxHeight: 216, pngQuality: 100, webpQuality: 100) {
+                    ...GatsbyImageSharpFluid_withWebp_noBase64
+                  }
+                }
+              }
+            }
+            summary {
+              html
+            }
+            title {
+              text
+            }
+          }
+          slugs
         }
       }
     }
