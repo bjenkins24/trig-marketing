@@ -22,7 +22,12 @@ const Title = styled.h1`
 `;
 
 const ImgStyled = styled(Img)`
-  margin-bottom: 4rem;
+  max-width: ${span}rem;
+  margin: 0 auto;
+  display: block;
+  @media ${breakpoint} {
+    border-radius: ${({ theme }) => theme.br};
+  }
 `;
 
 const Content = styled.div`
@@ -32,7 +37,7 @@ const Content = styled.div`
     width: ${span}rem;
     padding: 0;
   }
-  margin: 0 auto 9.6rem;
+  margin: 4rem auto 9.6rem;
   h1 {
     font-size: 3.4rem;
     line-height: 1.3;
@@ -135,7 +140,7 @@ export const pageQuery = graphql`
           alt
           localFile {
             childImageSharp {
-              fluid(maxHeight: 216, pngQuality: 100, webpQuality: 100) {
+              fluid(maxHeight: 410, pngQuality: 100, webpQuality: 100) {
                 ...GatsbyImageSharpFluid_withWebp_noBase64
               }
             }
