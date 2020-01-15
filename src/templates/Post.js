@@ -5,13 +5,13 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 
-const span = '65rem';
+const span = 65;
 
 const Title = styled.h1`
   font-size: 4.8rem;
   line-height: 1.3;
   margin: 4.8rem auto 4rem;
-  width: ${span};
+  width: ${span}rem;
 `;
 
 const ImgStyled = styled(Img)`
@@ -19,7 +19,7 @@ const ImgStyled = styled(Img)`
 `;
 
 const Content = styled.div`
-  width: ${span};
+  width: ${span}rem;
   margin: 0 auto 9.6rem;
   h1 {
     font-size: 3.4rem;
@@ -44,10 +44,12 @@ const Content = styled.div`
     padding: 1.6rem;
   }
   img {
-    max-width: ${span};
+    max-width: ${span}rem;
   }
   iframe {
     width: 100%;
+    /* 16:9 aspect ratio - too much work to worry about anything else */
+    height: ${span * 0.5625}rem;
   }
   div[data-oembed] {
     margin: 2.4rem 0;
