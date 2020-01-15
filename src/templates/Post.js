@@ -6,12 +6,19 @@ import Img from 'gatsby-image';
 import Layout from '../components/Layout';
 
 const span = 65;
+const breakpoint = '(min-width: 750px)';
 
 const Title = styled.h1`
-  font-size: 4.8rem;
+  font-size: 4rem;
   line-height: 1.3;
   margin: 4.8rem auto 4rem;
-  width: ${span}rem;
+  width: calc(100% - 6.4rem);
+  padding: 0 3.2rem;
+  @media ${breakpoint} {
+    font-size: 4.8rem;
+    width: ${span}rem;
+    padding: 0;
+  }
 `;
 
 const ImgStyled = styled(Img)`
@@ -19,7 +26,12 @@ const ImgStyled = styled(Img)`
 `;
 
 const Content = styled.div`
-  width: ${span}rem;
+  width: calc(100% - 6.4rem);
+  padding: 0 3.2rem;
+  @media ${breakpoint} {
+    width: ${span}rem;
+    padding: 0;
+  }
   margin: 0 auto 9.6rem;
   h1 {
     font-size: 3.4rem;
@@ -27,12 +39,18 @@ const Content = styled.div`
     margin: 4rem 0 2.4rem;
   }
   p {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     line-height: 1.6;
+    @media ${breakpoint} {
+      font-size: 2rem;
+    }
   }
   li {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     line-height: 1.6;
+    @media ${breakpoint} {
+      font-size: 2rem;
+    }
   }
   pre {
     font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
@@ -44,12 +62,17 @@ const Content = styled.div`
     padding: 1.6rem;
   }
   img {
-    max-width: ${span}rem;
+    max-width: 100%;
+    @media ${breakpoint} {
+      max-width: ${span}rem;
+    }
   }
   iframe {
     width: 100%;
     /* 16:9 aspect ratio - too much work to worry about anything else */
-    height: ${span * 0.5625}rem;
+    @media ${breakpoint} {
+      height: ${span * 0.5625}rem;
+    }
   }
   div[data-oembed] {
     margin: 2.4rem 0;

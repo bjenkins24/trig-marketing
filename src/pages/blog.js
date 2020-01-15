@@ -10,13 +10,19 @@ import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 import PostLink from '../components/PostLink';
 
+const leftRightMargin = 3.2;
+
 const Content = styled.div`
-  margin: 4.8rem 3.2rem;
+  margin: 4.8rem ${leftRightMargin}rem;
   display: flex;
   flex-wrap: wrap;
+  max-width: 144rem;
   @media ${device.desktopUp} {
     flex-wrap: nowrap;
-    margin: 9.6rem 3.2rem;
+    margin: 9.6rem ${leftRightMargin}rem;
+  }
+  @media (min-width: ${1440 + leftRightMargin * 10}px) {
+    margin: 9.6rem auto;
   }
 `;
 
