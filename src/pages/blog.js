@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
-import Logo from '@trig-app/core-components/dist/Logo';
-import { Heading1, Body1 } from '@trig-app/core-components/dist/Typography';
-import { Button } from '@trig-app/core-components/dist/Buttons';
+import {
+  HorizontalGroup,
+  Logo,
+  Heading1,
+  Body1,
+  Button,
+} from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 import PostLink from '../components/PostLink';

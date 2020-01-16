@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { Body1, Body1Styles } from '@trig-app/core-components/dist/Typography';
-import Logo from '@trig-app/core-components/dist/Logo';
+import { Body1, Body1Styles, Logo } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 

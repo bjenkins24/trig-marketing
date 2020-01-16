@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Huge } from '@trig-app/core-components/dist/Typography';
+import { Huge } from '@trig-app/core-components';
 import Layout from '../components/Layout';
 
 const Container = styled.div`

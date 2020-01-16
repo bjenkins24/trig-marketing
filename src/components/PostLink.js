@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { Body1, Body2Styles } from '@trig-app/core-components/dist/Typography';
+import { Body1, Body2Styles } from '@trig-app/core-components';
 
 const Container = styled(Link)`
   display: block;

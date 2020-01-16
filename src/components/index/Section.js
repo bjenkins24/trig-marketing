@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Heading1 } from '@trig-app/core-components/dist/Typography';
+import { Heading1 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 
 const FeatureContainer = styled.section`
