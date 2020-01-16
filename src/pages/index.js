@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { Button } from '@trig-app/core-components/dist/Buttons';
 import {
   Huge,
   BodyBiggest,
   BodyBig,
   Heading1,
-} from '@trig-app/core-components/dist/Typography';
+  Button,
+} from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 import Pricing from '../components/index/Pricing';
@@ -45,7 +45,7 @@ const MainHeading = styled(Huge)`
   }
 `;
 
-const BodyBiggestStyled = styled(BodyBiggest)`
+const Body2Styled = styled(BodyBiggest)`
   width: 100%;
   margin: 0 auto 6.4rem;
   @media ${device.tabletPortraitUp} {
@@ -122,11 +122,11 @@ const Index = ({ data }) => {
     <Layout headerProps={{ isLightTheme: false }}>
       <Hero>
         <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
-        <BodyBiggestStyled as="p" color="pc">
+        <Body2Styled as="p" color="pc">
           Ew, not like that guy in the breakroom whose parents didn’t love him.
           Let {siteTitle} organize all of your company knowledge, and your team
           will actually know it all.
-        </BodyBiggestStyled>
+        </Body2Styled>
         <ButtonStyled size="hg">Try {siteTitle} for Free</ButtonStyled>
         <div
           css={`
