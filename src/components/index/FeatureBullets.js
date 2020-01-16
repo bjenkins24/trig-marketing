@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { BodyBig } from '@trig-app/core-components/dist/Typography';
-import Icon from '@trig-app/core-components/dist/Icon';
+import { BodyBig, Icon } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import useSiteMetadata from '../../helpers/hooks/useSiteMetadata';
 

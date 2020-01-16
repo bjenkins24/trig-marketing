@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { Button } from '@trig-app/core-components/dist/Buttons';
-import { BodyBig, HugeStyles } from '@trig-app/core-components/dist/Typography';
-import { HorizontalGroup } from '@trig-app/core-components/dist/Groups';
-import Icon from '@trig-app/core-components/dist/Icon';
-import Logo from '@trig-app/core-components/dist/Logo';
+import {
+  BodyBig,
+  HugeStyles,
+  HorizontalGroup,
+  Icon,
+  Logo,
+  Button,
+} from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 

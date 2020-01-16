@@ -5,9 +5,9 @@ import {
   Heading1,
   Body1Styles,
   Body1,
-} from '@trig-app/core-components/dist/Typography';
+  Button,
+} from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
-import { Button } from '@trig-app/core-components/dist/Buttons';
 
 const Wrapper = styled.div`
   display: flex;
