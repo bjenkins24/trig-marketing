@@ -36,6 +36,7 @@
     "@trig-app/themes": "^0.1.2",
     "gatsby": "^2.18.17",
     "gatsby-image": "^2.2.33",
+    "gatsby-plugin-disqus": "^1.1.4",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
     "normalize.css": "^8.0.1",
     "react": "^16.11.0",
