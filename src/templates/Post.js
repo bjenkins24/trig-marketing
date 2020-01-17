@@ -9,10 +9,16 @@ import Layout from '../components/Layout';
 const span = 65;
 const breakpoint = '(min-width: 750px)';
 
-const FixedSidebar = styled.div`
-  position: fixed;
-  left: 10%;
-  top: 25%;
+const StickyContainer = styled.div`
+  position: absolute;
+  height: 100%;
+  left: -21rem;
+  top: 0.7rem;
+`;
+
+const StickySidebar = styled.div`
+  position: sticky;
+  top: 10rem;
   width: 13rem;
 `;
 
@@ -39,6 +45,7 @@ const ImgStyled = styled(Img)`
 `;
 
 const Content = styled.div`
+  position: relative;
   width: calc(100% - 6.4rem);
   padding: 0 3.2rem;
   @media ${breakpoint} {
@@ -46,6 +53,9 @@ const Content = styled.div`
     padding: 0;
   }
   margin: 4rem auto 9.6rem;
+`;
+
+const ContentStyles = styled.div`
   h1 {
     font-size: 3.4rem;
     line-height: 1.3;
@@ -127,48 +137,54 @@ const Post = ({ data: { prismicPost } }) => {
 
   return (
     <Layout>
-      <FixedSidebar>
-        <Body2
-          forwardedAs="p"
-          weight="bold"
-          css={`
-            margin-bottom: 0;
-          `}
-        >
-          Make a Team of Know-It-Alls
-        </Body2>
-        <Body2
-          forwardedAs="p"
-          color="ps.200"
-          css={`
-            margin: 0 0 0.8rem;
-          `}
-        >
-          Knowledge Base for Teams
-        </Body2>
-        <Button
-          size="md"
-          variant="inverse-s"
-          css={`
-            margin-bottom: 2.4rem;
-          `}
-        >
-          Try Trig Now
-        </Button>
-        <Separator
-          color="ps.50"
-          css={`
-            margin-bottom: 2.4rem;
-          `}
-        />
-      </FixedSidebar>
       <Title>{data.title.text}</Title>
       <ImgStyled
         alt={data.image.alt}
         durationFadeIn={300}
         fluid={data.image.localFile.childImageSharp.fluid}
       />
-      <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
+      <Content>
+        <StickyContainer>
+          <StickySidebar>
+            <Body2
+              forwardedAs="p"
+              weight="bold"
+              css={`
+                margin: 0;
+              `}
+            >
+              Make a Team of Know-It-Alls
+            </Body2>
+            <Body2
+              forwardedAs="p"
+              color="ps.200"
+              css={`
+                margin: 0 0 0.8rem;
+              `}
+            >
+              Knowledge Base for Teams
+            </Body2>
+            <Button
+              size="md"
+              variant="inverse-s"
+              css={`
+                margin-bottom: 2.4rem;
+              `}
+            >
+              Try Trig Now
+            </Button>
+            <Separator
+              color="ps.50"
+              css={`
+                margin-bottom: 2.4rem;
+              `}
+            />
+          </StickySidebar>
+        </StickyContainer>
+        <ContentStyles
+          dangerouslySetInnerHTML={{ __html: data.content.html }}
+        />
+      </Content>
     </Layout>
   );
 };
