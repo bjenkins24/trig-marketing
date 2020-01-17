@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { Body2, Button, Separator } from '@trig-app/core-components';
+import { Body2, Button, Separator, Icon } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 
@@ -25,6 +25,14 @@ const StickySidebar = styled.div`
   position: sticky;
   top: 10rem;
   width: 13rem;
+`;
+
+const ShareContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  color: ${({ theme }) => theme.p};
+  transform: translateX(-0.6rem);
+  width: calc(100% + 0.6rem);
 `;
 
 const Title = styled.h1`
@@ -184,6 +192,27 @@ const Post = ({ data: { prismicPost } }) => {
                 margin-bottom: 2.4rem;
               `}
             />
+            <ShareContainer>
+              <a
+                href={`http://www.facebook.com/share.php?u=${encodeURIComponent(
+                  window.location.href
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon type="facebook" size={2.4} title="Share on Facebook" />
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                  window.location.href
+                )}&text=${data.title.text}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon type="twitter" size={2.4} title="Tweet" />
+              </a>
+              <Icon type="linkedIn" size={2.4} />
+            </ShareContainer>
           </StickySidebar>
         </StickyContainer>
         <ContentStyles
