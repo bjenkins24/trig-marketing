@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { Body2, Button, Separator } from '@trig-app/core-components';
+import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 
 const span = 65;
@@ -14,6 +15,10 @@ const StickyContainer = styled.div`
   height: 100%;
   left: -21rem;
   top: 0.7rem;
+  display: none;
+  @media ${device.desktopUp} {
+    display: block;
+  }
 `;
 
 const StickySidebar = styled.div`
