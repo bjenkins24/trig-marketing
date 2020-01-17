@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import { Disqus } from 'gatsby-plugin-disqus';
 import { Body2, Button, Separator, Icon } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
+import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
 const span = 65;
 const breakpoint = '(min-width: 750px)';
@@ -124,6 +126,7 @@ const ContentStyles = styled.div`
 const postTypes = {
   data: PropTypes.shape({
     prismicPost: PropTypes.shape({
+      id: PropTypes.string,
       data: PropTypes.shape({
         title: PropTypes.shape({
           text: PropTypes.string,
@@ -146,7 +149,14 @@ const postTypes = {
 
 /* eslint-disable react/no-danger */
 const Post = ({ data: { prismicPost } }) => {
-  const { data } = prismicPost;
+  const { siteUrl } = useSiteMetadata();
+  const { data, id } = prismicPost;
+
+  const disqusConfig = {
+    url: `${siteUrl + window.location.pathname}`,
+    identifier: id,
+    title: data.title.text,
+  };
 
   return (
     <Layout>
@@ -226,6 +236,7 @@ const Post = ({ data: { prismicPost } }) => {
         <ContentStyles
           dangerouslySetInnerHTML={{ __html: data.content.html }}
         />
+        <Disqus config={disqusConfig} />
       </Content>
     </Layout>
   );
@@ -239,6 +250,7 @@ export const pageQuery = graphql`
   query PostBySlug($uid: String!) {
     prismicPost(uid: { eq: $uid }) {
       uid
+      id
       data {
         title {
           text

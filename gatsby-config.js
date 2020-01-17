@@ -27,5 +27,11 @@ module.exports = {
         linkResolver: () => post => `/${post.uid}`,
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `trig`,
+      },
+    },
   ],
 };
