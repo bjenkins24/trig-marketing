@@ -205,13 +205,21 @@ const Post = ({ data: { prismicPost } }) => {
               <a
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
                   window.location.href
-                )}&text=${data.title.text}`}
+                )}&text=${encodeURIComponent(data.title.text)}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Icon type="twitter" size={2.4} title="Tweet" />
               </a>
-              <Icon type="linkedIn" size={2.4} />
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                  window.location.href
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon type="linkedIn" size={2.4} />
+              </a>
             </ShareContainer>
           </StickySidebar>
         </StickyContainer>
