@@ -3,10 +3,37 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import { Body2, Button, Separator, Icon } from '@trig-app/core-components';
+import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
 
 const span = 65;
 const breakpoint = '(min-width: 750px)';
+
+const StickyContainer = styled.div`
+  position: absolute;
+  height: 100%;
+  left: -21rem;
+  top: 0.7rem;
+  display: none;
+  @media ${device.desktopUp} {
+    display: block;
+  }
+`;
+
+const StickySidebar = styled.div`
+  position: sticky;
+  top: 10rem;
+  width: 13rem;
+`;
+
+const ShareContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  color: ${({ theme }) => theme.p};
+  transform: translateX(-0.6rem);
+  width: calc(100% + 0.6rem);
+`;
 
 const Title = styled.h1`
   font-size: 4rem;
@@ -31,6 +58,7 @@ const ImgStyled = styled(Img)`
 `;
 
 const Content = styled.div`
+  position: relative;
   width: calc(100% - 6.4rem);
   padding: 0 3.2rem;
   @media ${breakpoint} {
@@ -38,10 +66,19 @@ const Content = styled.div`
     padding: 0;
   }
   margin: 4rem auto 9.6rem;
+`;
+
+const ContentStyles = styled.div`
   h1 {
     font-size: 3.4rem;
     line-height: 1.3;
     margin: 4rem 0 2.4rem;
+  }
+  a {
+    color: ${({ theme }) => theme.ss[400]};
+    &:hover {
+      color: ${({ theme }) => theme.ss[700]};
+    }
   }
   p {
     font-size: 1.8rem;
@@ -119,7 +156,77 @@ const Post = ({ data: { prismicPost } }) => {
         durationFadeIn={300}
         fluid={data.image.localFile.childImageSharp.fluid}
       />
-      <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
+      <Content>
+        <StickyContainer>
+          <StickySidebar>
+            <Body2
+              forwardedAs="p"
+              weight="bold"
+              css={`
+                margin: 0;
+              `}
+            >
+              Make a Team of Know-It-Alls
+            </Body2>
+            <Body2
+              forwardedAs="p"
+              color="ps.200"
+              css={`
+                margin: 0 0 0.8rem;
+              `}
+            >
+              Knowledge Base for Teams
+            </Body2>
+            <Button
+              size="md"
+              variant="inverse-s"
+              css={`
+                margin-bottom: 2.4rem;
+              `}
+            >
+              Try Trig Now
+            </Button>
+            <Separator
+              color="ps.50"
+              css={`
+                margin-bottom: 2.4rem;
+              `}
+            />
+            <ShareContainer>
+              <a
+                href={`http://www.facebook.com/share.php?u=${encodeURIComponent(
+                  window.location.href
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon type="facebook" size={2.4} title="Share on Facebook" />
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                  window.location.href
+                )}&text=${encodeURIComponent(data.title.text)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon type="twitter" size={2.4} title="Tweet" />
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                  window.location.href
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Icon type="linkedIn" size={2.4} />
+              </a>
+            </ShareContainer>
+          </StickySidebar>
+        </StickyContainer>
+        <ContentStyles
+          dangerouslySetInnerHTML={{ __html: data.content.html }}
+        />
+      </Content>
     </Layout>
   );
 };
