@@ -1,6 +1,7 @@
 import React from 'react';
 import user from '@testing-library/user-event';
-import { render } from '../../test/utils';
+// eslint-disable-next-line
+import { render, wait } from '../../test/utils';
 import ContactForm from '../ContactForm';
 
 describe('<ContactForm />', () => {
@@ -14,6 +15,6 @@ describe('<ContactForm />', () => {
     expect(getByLabelText(/message/i)).toBeInTheDocument();
     const submitButton = getByText(/send message/i);
     user.click(submitButton);
-    expect(mockCallback.mock.calls.length).toEqual(1);
+    wait(() => expect(mockCallback.mock.calls.length).toEqual(1));
   });
 });
