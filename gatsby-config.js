@@ -33,5 +33,13 @@ module.exports = {
         shortname: `trig`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-PF2PLRL',
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: 'gatsby' },
+      },
+    },
   ],
 };
