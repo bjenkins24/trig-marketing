@@ -11,7 +11,7 @@ import {
 
 const Container = styled.div``;
 
-const sendMail = ({ email, message }) => {
+const sendMail = ({ email, message, topic }) => {
   return fetch('/.netlify/functions/sendMail', {
     headers: {
       Accept: 'application/json',
@@ -20,6 +20,7 @@ const sendMail = ({ email, message }) => {
     method: 'POST',
     body: JSON.stringify({
       from: email,
+      subject: topic,
       text: message,
     }),
   });
@@ -38,7 +39,20 @@ const ContactForm = ({ afterSubmit }) => {
     <Container>
       <Form
         initialValues={{ email: '', topic: '', message: '' }}
-        onSubmit={async (values, { setSubmitting }) => {
+        validate={values => {
+          const errors = {};
+          if (!values.email) {
+            errors.email = 'Please enter a valid email address.';
+          }
+          if (!values.topic) {
+            errors.topic = 'Please add a topic.';
+          }
+          if (!values.message) {
+            errors.message = 'Please add a message.';
+          }
+          return errors;
+        }}
+        onSubmit={async values => {
           let result;
           try {
             result = await sendMail(values);
@@ -46,10 +60,9 @@ const ContactForm = ({ afterSubmit }) => {
             console.log(error);
           }
           afterSubmit(result);
-          setSubmitting(false);
         }}
       >
-        {({ handleSubmit, isSubmitting }) => {
+        {({ handleSubmit, submitting }) => {
           return (
             <form onSubmit={handleSubmit}>
               <Fieldset width={40}>
@@ -60,7 +73,7 @@ const ContactForm = ({ afterSubmit }) => {
                 />
                 <StringFieldForm name="topic" label="Topic" />
                 <TextFieldForm name="message" label="Message" />
-                <Button type="submit" disabled={isSubmitting}>
+                <Button type="submit" disabled={submitting}>
                   Send Message
                 </Button>
               </Fieldset>

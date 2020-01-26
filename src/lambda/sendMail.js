@@ -6,12 +6,12 @@ const sgMail = require('@sendgrid/mail');
 
 export async function handler(event, context) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  const { from, text } = JSON.parse(event.body);
+  const { from, text, subject } = JSON.parse(event.body);
 
   const msg = {
     to: 'brian@trytrig.com',
     from,
-    subject: 'Contact Us Form',
+    subject: `Contact Us Form: ${subject}`,
     text,
   };
 
