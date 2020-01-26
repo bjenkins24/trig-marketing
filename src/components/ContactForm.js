@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Formik } from 'formik';
-import { StringField, TextField, Button } from '@trig-app/core-components';
+import { Form } from 'react-final-form';
+import {
+  StringFieldForm,
+  TextFieldForm,
+  Button,
+  Fieldset,
+} from '@trig-app/core-components';
 
 const Container = styled.div``;
 
@@ -31,7 +36,7 @@ const defaultProps = {
 const ContactForm = ({ afterSubmit }) => {
   return (
     <Container>
-      <Formik
+      <Form
         initialValues={{ email: '', topic: '', message: '' }}
         onSubmit={async (values, { setSubmitting }) => {
           let result;
@@ -44,45 +49,25 @@ const ContactForm = ({ afterSubmit }) => {
           setSubmitting(false);
         }}
       >
-        {({
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => {
+        {({ handleSubmit, isSubmitting }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <StringField
-                onChange={handleChange}
-                name="email"
-                type="email"
-                onBlur={handleBlur}
-                label="Your email address"
-              />
-              {errors.email && touched.email && errors.email}
-              <StringField
-                onChange={handleChange}
-                name="topic"
-                onBlur={handleBlur}
-                label="Topic"
-              />
-              {errors.topic && touched.topic && errors.topic}
-              <TextField
-                onChange={handleChange}
-                name="message"
-                onBlur={handleBlur}
-                label="Message"
-              />
-              {errors.message && touched.message && errors.message}
-              <Button type="submit" disabled={isSubmitting}>
-                Send Message
-              </Button>
+              <Fieldset width={40}>
+                <StringFieldForm
+                  name="email"
+                  type="email"
+                  label="Your email address"
+                />
+                <StringFieldForm name="topic" label="Topic" />
+                <TextFieldForm name="message" label="Message" />
+                <Button type="submit" disabled={isSubmitting}>
+                  Send Message
+                </Button>
+              </Fieldset>
             </form>
           );
         }}
-      </Formik>
+      </Form>
     </Container>
   );
 };

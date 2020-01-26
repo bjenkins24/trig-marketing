@@ -128,12 +128,14 @@ const Index = ({ data }) => {
       <Modal
         isOpen={isContactFormOpen}
         onRequestClose={() => setIsContactFormOpen(false)}
-        style={{
-          zIndex: 1000,
-        }}
+        mainSelector="#___gatsby"
       >
         <Heading1>Contact Us</Heading1>
-        <Separator />
+        <Separator
+          css={`
+            margin-bottom: 3.2rem;
+          `}
+        />
         <ContactForm afterSubmit={() => setIsContactFormOpen(false)} />
       </Modal>
       <Layout headerProps={{ isLightTheme: false }}>
