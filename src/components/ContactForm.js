@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Form } from 'react-final-form';
+import * as yup from 'yup';
 import {
   StringFieldForm,
   TextFieldForm,
   Button,
   Fieldset,
+  Form,
 } from '@trig-app/core-components';
 
 const Container = styled.div``;
@@ -39,19 +40,14 @@ const ContactForm = ({ afterSubmit }) => {
     <Container>
       <Form
         initialValues={{ email: '', topic: '', message: '' }}
-        validate={values => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = 'Please enter a valid email address.';
-          }
-          if (!values.topic) {
-            errors.topic = 'Please add a topic.';
-          }
-          if (!values.message) {
-            errors.message = 'Please add a message.';
-          }
-          return errors;
-        }}
+        validationSchema={yup.object().shape({
+          email: yup
+            .string()
+            .email('Please enter a valid email address.')
+            .required('Please enter an email address.'),
+          topic: yup.string().required('Please enter a topic.'),
+          message: yup.string().required('Please enter a message.'),
+        })}
         onSubmit={async values => {
           let result;
           try {

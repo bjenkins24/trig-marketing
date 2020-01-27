@@ -8,7 +8,7 @@ import {
   BodyBiggest,
   BodyBig,
   Heading1,
-  Separator,
+  ModalHeader,
   Button,
   Modal,
 } from '@trig-app/core-components';
@@ -128,14 +128,8 @@ const Index = ({ data }) => {
       <Modal
         isOpen={isContactFormOpen}
         onRequestClose={() => setIsContactFormOpen(false)}
-        mainSelector="#___gatsby"
       >
-        <Heading1>Contact Us</Heading1>
-        <Separator
-          css={`
-            margin-bottom: 3.2rem;
-          `}
-        />
+        <ModalHeader>Contact Us</ModalHeader>
         <ContactForm afterSubmit={() => setIsContactFormOpen(false)} />
       </Modal>
       <Layout headerProps={{ isLightTheme: false }}>
