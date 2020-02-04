@@ -187,7 +187,14 @@ const Pricing = props => {
             margin-bottom: 8.9rem;
           `}
         >
-          contact us for pricing
+          <Button
+            variant="inline"
+            type="button"
+            onClick={() => setIsContactFormOpen(true)}
+          >
+            contact us
+          </Button>{' '}
+          for pricing
         </Body1>
         <List>
           <ListItem

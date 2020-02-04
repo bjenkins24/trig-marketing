@@ -79,7 +79,7 @@ const FeatureContainer = styled.div`
   }
   @media ${device.desktopUp} {
     width: 48%;
-    margin: 0 2% 0 0;
+    margin: 0 4% 0 0;
   }
 `;
 

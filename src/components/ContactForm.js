@@ -83,7 +83,7 @@ const ContactForm = ({ afterSubmit, initialValues }) => {
                 />
                 <StringFieldForm name="topic" label="Topic" />
                 <TextFieldForm name="message" label="Message" />
-                <Button type="submit" disabled={submitting}>
+                <Button type="submit" size="lg" disabled={submitting}>
                   Send Message
                 </Button>
               </Fieldset>
