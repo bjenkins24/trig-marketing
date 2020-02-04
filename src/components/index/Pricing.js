@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
   Heading2,
@@ -6,8 +6,11 @@ import {
   Body1Styles,
   Body1,
   Button,
+  Modal,
+  ModalHeader,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
+import ContactForm from '../ContactForm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -71,9 +74,26 @@ const SecondaryButton = styled(Button).attrs({
 `;
 
 const Pricing = props => {
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const bodyColor = 'ps.200';
   return (
     <Wrapper {...props}>
+      <Modal
+        isOpen={isContactFormOpen}
+        onRequestClose={() => setIsContactFormOpen(false)}
+      >
+        <ModalHeader>Contact Us</ModalHeader>
+        <ContactForm
+          initialValues={{
+            email: '',
+            topic: 'Enterprise Pricing',
+            message: '',
+          }}
+          afterSubmit={() => {
+            setIsContactFormOpen(false);
+          }}
+        />
+      </Modal>
       <Block
         css={`
           @media ${device.desktopUp} {
@@ -183,7 +203,12 @@ const Pricing = props => {
           <ListItem>White Labeling</ListItem>
           <ListItem>Unlimited File Storage</ListItem>
         </List>
-        <SecondaryButton type="button">Contact Us</SecondaryButton>
+        <SecondaryButton
+          type="button"
+          onClick={() => setIsContactFormOpen(true)}
+        >
+          Contact Us
+        </SecondaryButton>
       </Block>
     </Wrapper>
   );

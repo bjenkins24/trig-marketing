@@ -8,6 +8,7 @@ import {
   Button,
   Fieldset,
   Form,
+  toast,
 } from '@trig-app/core-components';
 
 const Container = styled.div``;
@@ -29,17 +30,27 @@ const sendMail = ({ email, message, topic }) => {
 
 const contactFormTypes = {
   afterSubmit: PropTypes.func,
+  initialValues: PropTypes.shape({
+    email: PropTypes.string,
+    topic: PropTypes.string,
+    message: PropTypes.string,
+  }),
 };
 
 const defaultProps = {
   afterSubmit: () => null,
+  initialValues: {
+    email: '',
+    topic: '',
+    message: '',
+  },
 };
 
-const ContactForm = ({ afterSubmit }) => {
+const ContactForm = ({ afterSubmit, initialValues }) => {
   return (
     <Container>
       <Form
-        initialValues={{ email: '', topic: '', message: '' }}
+        initialValues={initialValues}
         validationSchema={yup.object().shape({
           email: yup
             .string()
@@ -52,10 +63,13 @@ const ContactForm = ({ afterSubmit }) => {
           let result;
           try {
             result = await sendMail(values);
+            afterSubmit(result);
+            toast({
+              message: "Thank you for your interest! We'll be in touch.",
+            });
           } catch (error) {
-            console.log(error);
+            afterSubmit(error);
           }
-          afterSubmit(result);
         }}
       >
         {({ handleSubmit, submitting }) => {

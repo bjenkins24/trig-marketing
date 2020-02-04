@@ -130,7 +130,11 @@ const Index = ({ data }) => {
         onRequestClose={() => setIsContactFormOpen(false)}
       >
         <ModalHeader>Contact Us</ModalHeader>
-        <ContactForm afterSubmit={() => setIsContactFormOpen(false)} />
+        <ContactForm
+          afterSubmit={() => {
+            setIsContactFormOpen(false);
+          }}
+        />
       </Modal>
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
