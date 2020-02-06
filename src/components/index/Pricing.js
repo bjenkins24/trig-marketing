@@ -188,6 +188,7 @@ const Pricing = props => {
           `}
         >
           <Button
+            data-testid="contact-us-link"
             variant="inline"
             type="button"
             onClick={() => setIsContactFormOpen(true)}
@@ -211,6 +212,7 @@ const Pricing = props => {
           <ListItem>Unlimited File Storage</ListItem>
         </List>
         <SecondaryButton
+          data-testid="contact-us-button"
           type="button"
           onClick={() => setIsContactFormOpen(true)}
         >
