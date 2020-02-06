@@ -12,6 +12,7 @@ module.exports = {
     '!**/src/helpers/hooks/useSiteMetadata.js',
     '!**/src/fonts/**/*.js',
     '!**/src/pages/**/*.js',
+    '!**/src/templates/**/*.js',
   ],
   testPathIgnorePatterns: [`node_modules`, `.cache`, `public`],
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
@@ -26,7 +27,7 @@ module.exports = {
       lines: 100,
     },
   },
-  setupFiles: [`<rootDir>/loadershim.js`],
+  setupFiles: [`<rootDir>/loadershim.js`, `<rootDir>/jest.setup.js`],
   setupFilesAfterEnv: [
     'jest-styled-components',
     '@testing-library/jest-dom/extend-expect',

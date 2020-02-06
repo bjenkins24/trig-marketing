@@ -140,6 +140,8 @@ const Header = ({ isLightTheme, ...restProps }) => {
     }
   });
 
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
   return (
     <>
       <Container hasScrolled={hasScrolled} isLight={isLight} {...restProps}>
@@ -170,31 +172,40 @@ const Header = ({ isLightTheme, ...restProps }) => {
         hasScrolled={hasScrolled}
         isOpen={isMobileMenuOpen}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        data-testid="hamburger-icon"
       />
-      <MobileMenu isLight={isLight} isOpen={isMobileMenuOpen}>
+      <MobileMenu
+        isLight={isLight}
+        data-testid="mobile-menu"
+        isOpen={isMobileMenuOpen}
+      >
         <MobileMenuContent>
           <MobileMenuNav>
             <MobileMenuNavItem
+              data-testid="home-mobile-link"
               isLight={isLight}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               <HomeLink />
             </MobileMenuNavItem>
             <MobileMenuNavItem
+              data-testid="pricing-mobile-link"
               isLight={isLight}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               <PricingLink />
             </MobileMenuNavItem>
             <MobileMenuNavItem
+              data-testid="sign-in-mobile-link"
               isLight={isLight}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               Sign In
             </MobileMenuNavItem>
             <MobileMenuNavItem
+              data-testid="try-now-mobile-link"
               isLight={isLight}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
             >
               Try Now
             </MobileMenuNavItem>

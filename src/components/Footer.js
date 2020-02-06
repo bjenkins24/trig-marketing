@@ -125,12 +125,6 @@ const Footer = props => {
             `}
           >
             <Navigation>
-              <NavigationTitle>About</NavigationTitle>
-              <NavigationItem>Our Story</NavigationItem>
-              <NavigationItem>Benefits</NavigationItem>
-              <NavigationItem>FAQ</NavigationItem>
-            </Navigation>
-            <Navigation>
               <NavigationTitle>Keep in Touch</NavigationTitle>
               <NavigationItem>
                 <Button
