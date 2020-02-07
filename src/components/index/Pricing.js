@@ -76,6 +76,10 @@ const SecondaryButton = styled(Button).attrs({
 const Pricing = props => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const bodyColor = 'ps.200';
+  /* istanbul ignore next */
+  const closeModal = () => {
+    setIsContactFormOpen(false);
+  };
   return (
     <Wrapper {...props}>
       <Modal
@@ -89,9 +93,7 @@ const Pricing = props => {
             topic: 'Enterprise Pricing',
             message: '',
           }}
-          afterSubmit={() => {
-            setIsContactFormOpen(false);
-          }}
+          afterSubmit={closeModal}
         />
       </Modal>
       <Block

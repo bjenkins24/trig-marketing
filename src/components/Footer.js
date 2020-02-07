@@ -88,18 +88,16 @@ const Footer = props => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const { siteTitle } = useSiteMetadata();
 
+  /* istanbul ignore next */
+  const closeModal = () => {
+    setIsContactFormOpen(false);
+  };
+
   return (
     <>
-      <Modal
-        isOpen={isContactFormOpen}
-        onRequestClose={() => setIsContactFormOpen(false)}
-      >
+      <Modal isOpen={isContactFormOpen} onRequestClose={closeModal}>
         <ModalHeader>Contact Us</ModalHeader>
-        <ContactForm
-          afterSubmit={() => {
-            setIsContactFormOpen(false);
-          }}
-        />
+        <ContactForm afterSubmit={closeModal} />
       </Modal>
       <Container {...props}>
         <Content>
