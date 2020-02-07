@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { Body1, Body1Styles, Logo } from '@trig-app/core-components';
+import {
+  Body1,
+  Body1Styles,
+  Logo,
+  Modal,
+  ModalHeader,
+  Button,
+} from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
+import ContactForm from './ContactForm';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
 const Container = styled.div`
@@ -68,61 +76,81 @@ const NavigationTitle = styled.li`
 const NavigationItem = styled.li`
   ${Body1Styles};
   color: ${({ theme }) => theme.ps[200]};
+  div {
+    color: ${({ theme }) => theme.ps[200]};
+    &:hover {
+      color: ${({ theme }) => theme.ss[200]};
+    }
+  }
 `;
 
 const Footer = props => {
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const { siteTitle } = useSiteMetadata();
 
-  return (
-    <Container {...props}>
-      <Content>
-        <CompanyMeta>
-          <Logo
-            title={`${siteTitle} Logo`}
-            css={`
-              @media ${device.tabletLandscapeUp} {
-                margin-bottom: 8.8rem;
-              }
-            `}
-          />
+  /* istanbul ignore next */
+  const closeModal = () => {
+    setIsContactFormOpen(false);
+  };
 
-          <Copyright>
-            &copy; {`${new Date().getFullYear()}`} {siteTitle}
-          </Copyright>
-        </CompanyMeta>
-        <NavigationMenu
-          margin={9.6}
-          css={`
-            align-self: flex-start;
-            align-items: flex-start;
-          `}
-        >
-          <Navigation>
-            <NavigationTitle>About</NavigationTitle>
-            <NavigationItem>Our Story</NavigationItem>
-            <NavigationItem>Benefits</NavigationItem>
-            <NavigationItem>FAQ</NavigationItem>
-          </Navigation>
-          <Navigation>
-            <NavigationTitle>Keep in Touch</NavigationTitle>
-            <NavigationItem>Contact Us</NavigationItem>
-            <NavigationItem>
-              <Link to="/blog">Blog</Link>
-            </NavigationItem>
-          </Navigation>
-          <Navigation>
-            <NavigationTitle>Follow Us</NavigationTitle>
-            <NavigationItem>Facebook</NavigationItem>
-            <NavigationItem>Twitter</NavigationItem>
-          </Navigation>
-          <Navigation>
-            <NavigationTitle>Legal</NavigationTitle>
-            <NavigationItem>Terms of Service</NavigationItem>
-            <NavigationItem>Privacy Policy</NavigationItem>
-          </Navigation>
-        </NavigationMenu>
-      </Content>
-    </Container>
+  return (
+    <>
+      <Modal isOpen={isContactFormOpen} onRequestClose={closeModal}>
+        <ModalHeader>Contact Us</ModalHeader>
+        <ContactForm afterSubmit={closeModal} />
+      </Modal>
+      <Container {...props}>
+        <Content>
+          <CompanyMeta>
+            <Logo
+              title={`${siteTitle} Logo`}
+              css={`
+                @media ${device.tabletLandscapeUp} {
+                  margin-bottom: 8.8rem;
+                }
+              `}
+            />
+
+            <Copyright>
+              &copy; {`${new Date().getFullYear()}`} {siteTitle}
+            </Copyright>
+          </CompanyMeta>
+          <NavigationMenu
+            margin={9.6}
+            css={`
+              align-self: flex-start;
+              align-items: flex-start;
+            `}
+          >
+            <Navigation>
+              <NavigationTitle>Keep in Touch</NavigationTitle>
+              <NavigationItem>
+                <Button
+                  variant="inline"
+                  type="button"
+                  onClick={() => setIsContactFormOpen(true)}
+                >
+                  Contact Us
+                </Button>
+              </NavigationItem>
+              <NavigationItem>
+                <Link to="/blog">Blog</Link>
+              </NavigationItem>
+            </Navigation>
+            <Navigation>
+              <NavigationTitle>Follow Us</NavigationTitle>
+              <NavigationItem>Facebook</NavigationItem>
+              <NavigationItem>Twitter</NavigationItem>
+            </Navigation>
+            <Navigation>
+              <NavigationTitle>Legal</NavigationTitle>
+              <NavigationItem>Terms of Service</NavigationItem>
+              <NavigationItem>Privacy Policy</NavigationItem>
+            </Navigation>
+          </NavigationMenu>
+        </Content>
+      </Container>
+    </>
   );
 };
 

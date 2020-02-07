@@ -1,5 +1,6 @@
 import React from 'react';
 import theme from '@trig-app/themes';
+import user from '@testing-library/user-event';
 // eslint-disable-next-line import/named
 import { render, fireEvent } from '../../test/utils';
 import Header from '../Header';
@@ -33,5 +34,45 @@ describe('<Header />', () => {
   it('renders a spacer for height of header', () => {
     const { getByTestId } = render(<Header />);
     expect(getByTestId('header__spacer')).toHaveStyleRule('height', '10.3rem');
+  });
+
+  it('opens and closes when hamburger and links clicked', () => {
+    const { getByTestId } = render(<Header />);
+    expect(getByTestId('mobile-menu')).toHaveStyleRule(
+      'transform',
+      'translateY(-110%)'
+    );
+    user.click(getByTestId('hamburger-icon'));
+    expect(getByTestId('mobile-menu')).toHaveStyleRule(
+      'transform',
+      'translateY(0)'
+    );
+    user.click(getByTestId('pricing-mobile-link'));
+    expect(getByTestId('mobile-menu')).toHaveStyleRule(
+      'transform',
+      'translateY(-110%)'
+    );
+    user.click(getByTestId('hamburger-icon'));
+    expect(getByTestId('mobile-menu')).toHaveStyleRule(
+      'transform',
+      'translateY(0)'
+    );
+    user.click(getByTestId('sign-in-mobile-link'));
+    expect(getByTestId('mobile-menu')).toHaveStyleRule(
+      'transform',
+      'translateY(-110%)'
+    );
+    user.click(getByTestId('hamburger-icon'));
+    user.click(getByTestId('home-mobile-link'));
+    expect(getByTestId('mobile-menu')).toHaveStyleRule(
+      'transform',
+      'translateY(-110%)'
+    );
+    user.click(getByTestId('hamburger-icon'));
+    user.click(getByTestId('try-now-mobile-link'));
+    expect(getByTestId('mobile-menu')).toHaveStyleRule(
+      'transform',
+      'translateY(-110%)'
+    );
   });
 });

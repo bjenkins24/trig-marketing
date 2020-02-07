@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
   Heading2,
@@ -6,8 +6,11 @@ import {
   Body1Styles,
   Body1,
   Button,
+  Modal,
+  ModalHeader,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
+import ContactForm from '../ContactForm';
 
 const Wrapper = styled.div`
   display: flex;
@@ -71,9 +74,28 @@ const SecondaryButton = styled(Button).attrs({
 `;
 
 const Pricing = props => {
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const bodyColor = 'ps.200';
+  /* istanbul ignore next */
+  const closeModal = () => {
+    setIsContactFormOpen(false);
+  };
   return (
     <Wrapper {...props}>
+      <Modal
+        isOpen={isContactFormOpen}
+        onRequestClose={() => setIsContactFormOpen(false)}
+      >
+        <ModalHeader>Contact Us</ModalHeader>
+        <ContactForm
+          initialValues={{
+            email: '',
+            topic: 'Enterprise Pricing',
+            message: '',
+          }}
+          afterSubmit={closeModal}
+        />
+      </Modal>
       <Block
         css={`
           @media ${device.desktopUp} {
@@ -167,7 +189,15 @@ const Pricing = props => {
             margin-bottom: 8.9rem;
           `}
         >
-          contact us for pricing
+          <Button
+            data-testid="contact-us-link"
+            variant="inline"
+            type="button"
+            onClick={() => setIsContactFormOpen(true)}
+          >
+            contact us
+          </Button>{' '}
+          for pricing
         </Body1>
         <List>
           <ListItem
@@ -183,7 +213,13 @@ const Pricing = props => {
           <ListItem>White Labeling</ListItem>
           <ListItem>Unlimited File Storage</ListItem>
         </List>
-        <SecondaryButton type="button">Contact Us</SecondaryButton>
+        <SecondaryButton
+          data-testid="contact-us-button"
+          type="button"
+          onClick={() => setIsContactFormOpen(true)}
+        >
+          Contact Us
+        </SecondaryButton>
       </Block>
     </Wrapper>
   );
