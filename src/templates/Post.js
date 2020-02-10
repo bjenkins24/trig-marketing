@@ -124,6 +124,9 @@ const ContentStyles = styled.div`
 `;
 
 const postTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
+  }).isRequired,
   data: PropTypes.shape({
     prismicPost: PropTypes.shape({
       id: PropTypes.string,
@@ -147,13 +150,14 @@ const postTypes = {
   }).isRequired,
 };
 
-/* eslint-disable react/no-danger */
-const Post = ({ data: { prismicPost } }) => {
+const Post = ({ data: { prismicPost }, location }) => {
   const { siteUrl } = useSiteMetadata();
   const { data, id } = prismicPost;
+  const url = encodeURIComponent(`${siteUrl}${location.pathname}`);
+  const encodedUrl = encodeURIComponent(url);
 
   const disqusConfig = {
-    url: `${siteUrl + window.location.pathname}`,
+    url,
     identifier: id,
     title: data.title.text,
   };
@@ -204,27 +208,23 @@ const Post = ({ data: { prismicPost } }) => {
             />
             <ShareContainer>
               <a
-                href={`http://www.facebook.com/share.php?u=${encodeURIComponent(
-                  window.location.href
-                )}`}
+                href={`http://www.facebook.com/share.php?u=${encodedUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Icon type="facebook" size={2.4} title="Share on Facebook" />
               </a>
               <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-                  window.location.href
-                )}&text=${encodeURIComponent(data.title.text)}`}
+                href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodeURIComponent(
+                  data.title.text
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Icon type="twitter" size={2.4} title="Tweet" />
               </a>
               <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-                  window.location.href
-                )}`}
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
