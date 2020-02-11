@@ -144,7 +144,7 @@ const Index = ({ data }) => {
             him. Let {siteTitle} organize all of your company knowledge, and
             your team will actually know it all.
           </Body2Styled>
-          <ButtonStyled size="hg">Try {siteTitle} for Free</ButtonStyled>
+          <ButtonStyled size="hg">Get Started</ButtonStyled>
           <div
             css={`
               display: none;
@@ -260,7 +260,7 @@ const Index = ({ data }) => {
               `}
               size="hg"
             >
-              Get Organized Now
+              Get Organized
             </Button>
           </FeatureContainer>
         </Section>
@@ -322,7 +322,7 @@ const Index = ({ data }) => {
                 padding: 0 6.4rem;
               `}
             >
-              Get Started Now For Free
+              Get Started
             </Button>
           </div>
           <div
@@ -367,7 +367,7 @@ const Index = ({ data }) => {
                 }
               `}
             >
-              Get Started Now For Free
+              Get Started
             </Button>
           </div>
         </Section>

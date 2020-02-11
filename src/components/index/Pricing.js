@@ -121,7 +121,7 @@ const Pricing = props => {
           <ListItem>Slack Integration</ListItem>
           <ListItem>50GB File Storage/User</ListItem>
         </List>
-        <SecondaryButton type="button">Start Free 7-day Trial</SecondaryButton>
+        <SecondaryButton type="button">Get Started</SecondaryButton>
       </Block>
       <Block
         css={`
@@ -171,7 +171,7 @@ const Pricing = props => {
             }
           `}
         >
-          Start Free 7-day Trial
+          Get Started
         </Button>
       </Block>
       <Block

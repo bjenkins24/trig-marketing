@@ -104,6 +104,10 @@ const PricingLink = () => {
   return <Link to="/#pricing">Pricing</Link>;
 };
 
+const BlogLink = () => {
+  return <Link to="/blog">Blog</Link>;
+};
+
 export const headerTypes = {
   isLightTheme: PropTypes.bool,
 };
@@ -162,9 +166,9 @@ const Header = ({ isLightTheme, ...restProps }) => {
             <PricingLink />
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
-            Sign in
+            <BlogLink />
           </NavigationItem>
-          <Button>Try Now</Button>
+          <Button>Get Started</Button>
         </Nav>
       </Container>
       <Hamburger
@@ -200,7 +204,7 @@ const Header = ({ isLightTheme, ...restProps }) => {
               isLight={isLight}
               onClick={closeMobileMenu}
             >
-              Sign In
+              <BlogLink />
             </MobileMenuNavItem>
             <MobileMenuNavItem
               data-testid="try-now-mobile-link"
