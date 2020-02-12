@@ -143,7 +143,7 @@ const Index = ({ data }) => {
             him. Let {siteTitle} organize all of your company knowledge, and
             your team will actually know it all.
           </Description>
-          <ButtonStyled size="hg" forwardedAs={Link} to="/blog">
+          <ButtonStyled size="hg" forwardedAs={Link} to="/get-started">
             Get Started
           </ButtonStyled>
           <div
@@ -257,7 +257,7 @@ const Index = ({ data }) => {
             </BodyBig>
             <Button
               forwardedAs={Link}
-              to="/blog"
+              to="/get-started"
               css={`
                 padding: 0 3.2rem;
               `}
@@ -321,7 +321,7 @@ const Index = ({ data }) => {
             <Huge>Ideas &amp; Questions</Huge>
             <Button
               forwardedAs={Link}
-              to="/blog"
+              to="/get-started"
               size="hg"
               css={`
                 padding: 0 6.4rem;
