@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import {
   HorizontalGroup,
   Logo,
@@ -80,6 +80,7 @@ const Ad = styled.div`
   background: ${({ theme }) => theme.p};
   border-radius: ${({ theme }) => theme.br};
   padding: 3.2rem 0;
+  text-align: center;
 `;
 
 const blogTypes = {
@@ -165,10 +166,11 @@ const Blog = ({ data }) => {
               Knowledge Management for Teams
             </Body1>
             <Button
+              forwardedAs={Link}
+              to="/"
               size="lg"
               css={`
                 margin: 0 auto;
-                display: block;
               `}
             >
               Learn More

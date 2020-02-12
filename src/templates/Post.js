@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import { Disqus } from 'gatsby-plugin-disqus';
 import { Body2, Button, Separator, Icon } from '@trig-app/core-components';
@@ -192,13 +192,16 @@ const Post = ({ data: { prismicPost }, location }) => {
               Knowledge Base for Teams
             </Body2>
             <Button
+              forwardedAs={Link}
+              to="/"
               size="md"
               variant="inverse-s"
               css={`
                 margin-bottom: 2.4rem;
+                width: 100%;
               `}
             >
-              Try Trig Now
+              Learn More
             </Button>
             <Separator
               color="ps.50"
