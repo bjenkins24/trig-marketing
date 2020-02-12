@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import {
   Huge,
@@ -62,7 +62,6 @@ const Body2Styled = styled(BodyBiggest)`
 
 const ButtonStyled = styled(Button)`
   padding: 0 4.5rem;
-  display: block;
   margin: 0 auto;
   @media ${device.tabletPortraitUp} {
     margin: 0 auto 6.4rem;
@@ -144,7 +143,9 @@ const Index = ({ data }) => {
             him. Let {siteTitle} organize all of your company knowledge, and
             your team will actually know it all.
           </Body2Styled>
-          <ButtonStyled size="hg">Get Started</ButtonStyled>
+          <ButtonStyled size="hg" forwardedAs={Link} to="/blog">
+            Get Started
+          </ButtonStyled>
           <div
             css={`
               display: none;
@@ -255,6 +256,8 @@ const Index = ({ data }) => {
               your company&apos;s full-time knowledge organizer.
             </BodyBig>
             <Button
+              forwardedAs={Link}
+              to="/blog"
               css={`
                 padding: 0 3.2rem;
               `}
@@ -317,6 +320,8 @@ const Index = ({ data }) => {
           >
             <Huge>Ideas &amp; Questions</Huge>
             <Button
+              forwardedAs={Link}
+              to="/blog"
               size="hg"
               css={`
                 padding: 0 6.4rem;

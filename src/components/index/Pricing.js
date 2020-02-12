@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import {
   Heading2,
@@ -121,7 +122,9 @@ const Pricing = props => {
           <ListItem>Slack Integration</ListItem>
           <ListItem>50GB File Storage/User</ListItem>
         </List>
-        <SecondaryButton type="button">Get Started</SecondaryButton>
+        <SecondaryButton forwardedAs={Link} to="/blog" type="button">
+          Get Started
+        </SecondaryButton>
       </Block>
       <Block
         css={`
@@ -162,6 +165,8 @@ const Pricing = props => {
           <ListItem>250GB File Storage/User</ListItem>
         </List>
         <Button
+          forwardedAs={Link}
+          to="/blog"
           type="button"
           size="lg"
           css={`

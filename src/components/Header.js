@@ -168,7 +168,9 @@ const Header = ({ isLightTheme, ...restProps }) => {
           <NavigationItem isLight={isLight} weight="bold">
             <BlogLink />
           </NavigationItem>
-          <Button>Get Started</Button>
+          <Button as={Link} to="/blog">
+            Get Started
+          </Button>
         </Nav>
       </Container>
       <Hamburger
