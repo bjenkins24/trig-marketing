@@ -48,7 +48,7 @@ const MainHeading = styled(Huge)`
   }
 `;
 
-const Body2Styled = styled(BodyBiggest)`
+const Description = styled(BodyBiggest)`
   width: 100%;
   margin: 0 auto 6.4rem;
   @media ${device.tabletPortraitUp} {
@@ -138,11 +138,11 @@ const Index = ({ data }) => {
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
-          <Body2Styled as="p" color="pc">
+          <Description as="p" color="pc">
             Ew, not like that guy in the breakroom whose parents didn’t love
             him. Let {siteTitle} organize all of your company knowledge, and
             your team will actually know it all.
-          </Body2Styled>
+          </Description>
           <ButtonStyled size="hg" forwardedAs={Link} to="/blog">
             Get Started
           </ButtonStyled>
