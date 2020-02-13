@@ -10,6 +10,7 @@ import {
   Button,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
+import PaymentForm from '../components/PaymentForm';
 import Layout from '../components/Layout';
 
 const Hero = styled.div`
@@ -89,7 +90,7 @@ const GetStarted = () => {
           >
             Pay $40 Now, Then Never Pay Again*
           </Heading1>
-          Form Stuff
+          <PaymentForm />
           <Body2
             forwardedAs="p"
             css={`
@@ -108,8 +109,14 @@ const GetStarted = () => {
             Your payment is 100% refundable before our December 14, 2020
             release, by simply contacting us.
           </Body2>
-          <Button size="hg">
-            Pay $40 to Reserve Your Lifetime Subscription
+          <Button
+            size="hg"
+            css={`
+              width: 100%;
+            `}
+          >
+            Pay $40 and Reserve <br />
+            Your Lifetime Subscription
           </Button>
         </PaymentBox>
 
