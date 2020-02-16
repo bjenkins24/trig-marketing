@@ -7,8 +7,6 @@ import {
   Body1Styles,
   Body1,
   Button,
-  Modal,
-  ModalHeader,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import ContactForm from '../ContactForm';
@@ -83,20 +81,15 @@ const Pricing = props => {
   };
   return (
     <Wrapper {...props}>
-      <Modal
+      <ContactForm
         isOpen={isContactFormOpen}
-        onRequestClose={() => setIsContactFormOpen(false)}
-      >
-        <ModalHeader>Contact Us</ModalHeader>
-        <ContactForm
-          initialValues={{
-            email: '',
-            topic: 'Enterprise Pricing',
-            message: '',
-          }}
-          afterSubmit={closeModal}
-        />
-      </Modal>
+        onRequestClose={closeModal}
+        initialValues={{
+          email: '',
+          topic: 'Enterprise Pricing',
+          message: '',
+        }}
+      />
       <Block
         css={`
           @media ${device.desktopUp} {
@@ -122,7 +115,7 @@ const Pricing = props => {
           <ListItem>Slack Integration</ListItem>
           <ListItem>50GB File Storage/User</ListItem>
         </List>
-        <SecondaryButton forwardedAs={Link} to="/blog" type="button">
+        <SecondaryButton forwardedAs={Link} to="/get-started">
           Get Started
         </SecondaryButton>
       </Block>
@@ -166,8 +159,7 @@ const Pricing = props => {
         </List>
         <Button
           forwardedAs={Link}
-          to="/blog"
-          type="button"
+          to="/get-started"
           size="lg"
           css={`
             margin-top: 4.8rem;

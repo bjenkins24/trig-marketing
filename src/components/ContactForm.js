@@ -9,6 +9,8 @@ import {
   Fieldset,
   Form,
   toast,
+  Modal,
+  ModalHeader,
 } from '@trig-app/core-components';
 
 const Container = styled.div``;
@@ -29,16 +31,16 @@ const sendMail = ({ email, message, topic }) => {
 };
 
 const contactFormTypes = {
-  afterSubmit: PropTypes.func,
   initialValues: PropTypes.shape({
     email: PropTypes.string,
     topic: PropTypes.string,
     message: PropTypes.string,
   }),
+  isOpen: PropTypes.bool.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
-  afterSubmit: () => null,
   initialValues: {
     email: '',
     topic: '',
@@ -46,57 +48,55 @@ const defaultProps = {
   },
 };
 
-const ContactForm = ({ afterSubmit, initialValues }) => {
+const ContactForm = ({ isOpen, onRequestClose, initialValues }) => {
   return (
-    <Container>
-      <Form
-        initialValues={initialValues}
-        validationSchema={yup.object().shape({
-          email: yup
-            .string()
-            .email('Please enter a valid email address.')
-            .required('Please enter an email address.'),
-          topic: yup.string().required('Please enter a topic.'),
-          message: yup.string().required('Please enter a message.'),
-        })}
-        onSubmit={async values => {
-          let result;
-          try {
-            result = await sendMail(values);
-            afterSubmit(result);
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
+      <ModalHeader>Contact Us</ModalHeader>
+      <Container>
+        <Form
+          initialValues={initialValues}
+          validationSchema={yup.object().shape({
+            email: yup
+              .string()
+              .email('Please enter a valid email address.')
+              .required('Please enter an email address.'),
+            topic: yup.string().required('Please enter a topic.'),
+            message: yup.string().required('Please enter a message.'),
+          })}
+          onSubmit={async values => {
+            await sendMail(values);
+            onRequestClose();
             toast({
               message: "Thank you for your interest! We'll be in touch.",
             });
-          } catch (error) {
-            afterSubmit(error);
-          }
-        }}
-      >
-        {({ handleSubmit, submitting }) => {
-          return (
-            <form onSubmit={handleSubmit}>
-              <Fieldset width={40}>
-                <StringFieldForm
-                  name="email"
-                  type="email"
-                  label="Your email address"
-                />
-                <StringFieldForm name="topic" label="Topic" />
-                <TextFieldForm name="message" label="Message" />
-                <Button
-                  data-testid="send-message"
-                  type="submit"
-                  size="lg"
-                  disabled={submitting}
-                >
-                  Send Message
-                </Button>
-              </Fieldset>
-            </form>
-          );
-        }}
-      </Form>
-    </Container>
+          }}
+        >
+          {({ handleSubmit, submitting }) => {
+            return (
+              <form onSubmit={handleSubmit}>
+                <Fieldset width={40}>
+                  <StringFieldForm
+                    name="email"
+                    type="email"
+                    label="Your email address"
+                  />
+                  <StringFieldForm name="topic" label="Topic" />
+                  <TextFieldForm name="message" label="Message" />
+                  <Button
+                    data-testid="send-message"
+                    type="submit"
+                    size="lg"
+                    disabled={submitting}
+                  >
+                    Send Message
+                  </Button>
+                </Fieldset>
+              </form>
+            );
+          }}
+        </Form>
+      </Container>
+    </Modal>
   );
 };
 

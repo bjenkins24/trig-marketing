@@ -15,6 +15,7 @@ import {
 import { device } from '@trig-app/constants';
 import GlobalStyle from '../../global.css';
 import PaymentForm from '../components/PaymentForm';
+import ContactForm from '../components/ContactForm';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 import Layout from '../components/Layout';
 
@@ -93,64 +94,79 @@ const getStartedTypes = {
 const GetStarted = ({ data }) => {
   const { siteTitle } = useSiteMetadata();
   const [paymentSucceeded, setPaymentSucceeded] = useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   return !paymentSucceeded ? (
-    <Layout headerProps={{ isLightTheme: false }}>
-      <Hero>
-        <MainHeading color="pc">
-          Reserve Your Spot and Get a Lifetime Subscription*
-        </MainHeading>
-        <Description as="p" color="pc">
-          It’s like putting a deposit on a Tesla, except you don’t get a cool
-          electric car, it’s only $40, and you never have to pay again. Ok… So
-          it’s nothing like putting a deposit on a Tesla. But it’s still pretty
-          awesome.
-        </Description>
-      </Hero>
-      <ContentContainer margin={6.4}>
-        <PaymentBox>
-          <Heading1
-            css={`
-              text-align: center;
-              margin-bottom: 4.8rem;
-            `}
-          >
-            Pay $40 Now, Then Never Pay Again*
-          </Heading1>
-          <PaymentForm onSuccess={() => setPaymentSucceeded(true)} />
-        </PaymentBox>
-        <Content>
-          <Body2
-            color="ps.200"
-            forwardedAs="p"
-            css={`
-              margin: 0 0 2.4rem 0;
-            `}
-          >
-            * Your lifetime subscription is good for up to 50 users. We only ask
-            that you pay data storage costs which are currently at 2.3
-            cents/month per GB. After we release, this subscription will cost
-            $16/month per user.
-          </Body2>
-          <Heading1>Coming December 14th, 2020</Heading1>
-          <Body1
-            forwardedAs="p"
-            css={`
-              margin-bottom: 8rem;
-            `}
-          >
-            Still not convinced? Trig is going to change the way you work.
-            Contact us, and Trig’s founder will be happy to answer your
-            questions and hop on a call personally.
-          </Body1>
-          <Img
-            alt={`Screenshot of ${siteTitle} in a Laptop`}
-            durationFadeIn={300}
-            fluid={data.laptop.childImageSharp.fluid}
-          />
-        </Content>
-      </ContentContainer>
-    </Layout>
+    <>
+      <ContactForm
+        isOpen={isContactFormOpen}
+        onRequestClose={() => setIsContactFormOpen(false)}
+      />
+      <Layout headerProps={{ isLightTheme: false }}>
+        <Hero>
+          <MainHeading color="pc">
+            Reserve Your Spot and Get a Lifetime Subscription*
+          </MainHeading>
+          <Description as="p" color="pc">
+            It’s like putting a deposit on a Tesla, except you don’t get a cool
+            electric car, it’s only $40, and you never have to pay again. Ok… So
+            it’s nothing like putting a deposit on a Tesla. But it’s still
+            pretty awesome.
+          </Description>
+        </Hero>
+        <ContentContainer margin={6.4}>
+          <PaymentBox>
+            <Heading1
+              css={`
+                text-align: center;
+                margin-bottom: 4.8rem;
+              `}
+            >
+              Pay $40 Now, Then Never Pay Again*
+            </Heading1>
+            <PaymentForm onSuccess={() => setPaymentSucceeded(true)} />
+          </PaymentBox>
+          <Content>
+            <Body2
+              color="ps.200"
+              forwardedAs="p"
+              css={`
+                margin: 0 0 2.4rem 0;
+              `}
+            >
+              * Your lifetime subscription is good for up to 50 users. We only
+              ask that you pay data storage costs which are currently at 2.3
+              cents/month per GB. After we release, this subscription will cost
+              $16/month per user.
+            </Body2>
+            <Heading1>Coming December 14th, 2020</Heading1>
+            <Body1
+              forwardedAs="p"
+              css={`
+                margin-bottom: 8rem;
+              `}
+            >
+              Still not convinced? Trig is going to change the way you work.
+              <Button
+                data-testid="contact-us-link"
+                variant="inline"
+                type="button"
+                onClick={() => setIsContactFormOpen(true)}
+              >
+                Contact us
+              </Button>
+              , and Trig’s founder will be happy to answer your questions and
+              hop on a call personally.
+            </Body1>
+            <Img
+              alt={`Screenshot of ${siteTitle} in a Laptop`}
+              durationFadeIn={300}
+              fluid={data.laptop.childImageSharp.fluid}
+            />
+          </Content>
+        </ContentContainer>
+      </Layout>
+    </>
   ) : (
     <>
       <GlobalStyle />

@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import {
-  Body1,
-  Body1Styles,
-  Logo,
-  Modal,
-  ModalHeader,
-  Button,
-} from '@trig-app/core-components';
+import { Body1, Body1Styles, Logo, Button } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import ContactForm from './ContactForm';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
@@ -95,10 +88,7 @@ const Footer = props => {
 
   return (
     <>
-      <Modal isOpen={isContactFormOpen} onRequestClose={closeModal}>
-        <ModalHeader>Contact Us</ModalHeader>
-        <ContactForm afterSubmit={closeModal} />
-      </Modal>
+      <ContactForm isOpen={isContactFormOpen} onRequestClose={closeModal} />
       <Container {...props}>
         <Content>
           <CompanyMeta>

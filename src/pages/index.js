@@ -8,9 +8,7 @@ import {
   BodyBiggest,
   BodyBig,
   Heading1,
-  ModalHeader,
   Button,
-  Modal,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
@@ -124,17 +122,10 @@ const Index = ({ data }) => {
 
   return (
     <>
-      <Modal
+      <ContactForm
         isOpen={isContactFormOpen}
         onRequestClose={() => setIsContactFormOpen(false)}
-      >
-        <ModalHeader>Contact Us</ModalHeader>
-        <ContactForm
-          afterSubmit={() => {
-            setIsContactFormOpen(false);
-          }}
-        />
-      </Modal>
+      />
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
