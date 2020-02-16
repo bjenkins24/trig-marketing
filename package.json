@@ -51,6 +51,7 @@
     "react-helmet": "^5.2.1",
     "react-modal": "^3.11.1",
     "react-stripe-elements": "^6.0.1",
+    "stripe": "^8.17.0",
     "styled-components": "^4.4.1",
     "yup": "^0.28.0"
   },

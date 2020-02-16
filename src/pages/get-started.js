@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import {
   Huge,
   Heading1,
@@ -10,7 +13,9 @@ import {
   Button,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
+import GlobalStyle from '../../global.css';
 import PaymentForm from '../components/PaymentForm';
+import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 import Layout from '../components/Layout';
 
 const Hero = styled.div`
@@ -59,7 +64,7 @@ const PaymentBox = styled.div`
   flex-shrink: 0;
   box-shadow: ${({ theme }) => theme.sh};
   padding: 4.8rem 3.2rem;
-  margin-top: -12rem;
+  margin: -12rem 0 6.4rem 0;
   background: ${({ theme }) => theme.bs[200]};
 `;
 
@@ -67,8 +72,29 @@ const Content = styled.div`
   align-self: flex-start;
 `;
 
-const GetStarted = () => {
-  return (
+const Success = styled.div`
+  background: ${({ theme }) => theme.p};
+  height: 100vh;
+`;
+
+const SuccessContent = styled.div`
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 auto;
+  max-width: 85rem;
+  text-align: center;
+`;
+
+const getStartedTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+const GetStarted = ({ data }) => {
+  const { siteTitle } = useSiteMetadata();
+  const [paymentSucceeded, setPaymentSucceeded] = useState(false);
+
+  return !paymentSucceeded ? (
     <Layout headerProps={{ isLightTheme: false }}>
       <Hero>
         <MainHeading color="pc">
@@ -86,40 +112,13 @@ const GetStarted = () => {
           <Heading1
             css={`
               text-align: center;
+              margin-bottom: 4.8rem;
             `}
           >
             Pay $40 Now, Then Never Pay Again*
           </Heading1>
-          <PaymentForm />
-          <Body2
-            forwardedAs="p"
-            css={`
-              text-align: center;
-            `}
-          >
-            Your card will be immediately charged $40.00. This charge is{' '}
-            <strong>non-recurring</strong>.
-          </Body2>
-          <Body2
-            forwardedAs="p"
-            css={`
-              text-align: center;
-            `}
-          >
-            Your payment is 100% refundable before our December 14, 2020
-            release, by simply contacting us.
-          </Body2>
-          <Button
-            size="hg"
-            css={`
-              width: 100%;
-            `}
-          >
-            Pay $40 and Reserve <br />
-            Your Lifetime Subscription
-          </Button>
+          <PaymentForm onSuccess={() => setPaymentSucceeded(true)} />
         </PaymentBox>
-
         <Content>
           <Body2
             color="ps.200"
@@ -134,15 +133,57 @@ const GetStarted = () => {
             $16/month per user.
           </Body2>
           <Heading1>Coming December 14th, 2020</Heading1>
-          <Body1 forwardedAs="p">
+          <Body1
+            forwardedAs="p"
+            css={`
+              margin-bottom: 8rem;
+            `}
+          >
             Still not convinced? Trig is going to change the way you work.
             Contact us, and Trig’s founder will be happy to answer your
             questions and hop on a call personally.
           </Body1>
+          <Img
+            alt={`Screenshot of ${siteTitle} in a Laptop`}
+            durationFadeIn={300}
+            fluid={data.laptop.childImageSharp.fluid}
+          />
         </Content>
       </ContentContainer>
     </Layout>
+  ) : (
+    <>
+      <GlobalStyle />
+      <Success>
+        <SuccessContent>
+          <Huge color="pc">Your Lifetime Subscription is Reserved!</Huge>
+          <BodyBiggest as="p" color="pc">
+            Your payment went through successfully. We&apos;ll be in touch every
+            step of the way before our December 14th release. If you have any
+            thoughts or questions about what we&apos;re working on, please reach
+            out!
+          </BodyBiggest>
+          <Button size="hg" as={Link} to="/">
+            Back to Home
+          </Button>
+        </SuccessContent>
+      </Success>
+    </>
   );
 };
 
+GetStarted.propTypes = getStartedTypes;
+
 export default GetStarted;
+
+export const query = graphql`
+  query {
+    laptop: file(relativePath: { eq: "laptop.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 928, pngQuality: 100, webpQuality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
+  }
+`;
