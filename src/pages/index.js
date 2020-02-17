@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import {
   Huge,
   BodyBiggest,
   BodyBig,
   Heading1,
-  ModalHeader,
   Button,
-  Modal,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
@@ -48,7 +46,7 @@ const MainHeading = styled(Huge)`
   }
 `;
 
-const Body2Styled = styled(BodyBiggest)`
+const Description = styled(BodyBiggest)`
   width: 100%;
   margin: 0 auto 6.4rem;
   @media ${device.tabletPortraitUp} {
@@ -62,7 +60,6 @@ const Body2Styled = styled(BodyBiggest)`
 
 const ButtonStyled = styled(Button)`
   padding: 0 4.5rem;
-  display: block;
   margin: 0 auto;
   @media ${device.tabletPortraitUp} {
     margin: 0 auto 6.4rem;
@@ -125,26 +122,21 @@ const Index = ({ data }) => {
 
   return (
     <>
-      <Modal
+      <ContactForm
         isOpen={isContactFormOpen}
         onRequestClose={() => setIsContactFormOpen(false)}
-      >
-        <ModalHeader>Contact Us</ModalHeader>
-        <ContactForm
-          afterSubmit={() => {
-            setIsContactFormOpen(false);
-          }}
-        />
-      </Modal>
+      />
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
-          <Body2Styled as="p" color="pc">
+          <Description as="p" color="pc">
             Ew, not like that guy in the breakroom whose parents didn’t love
             him. Let {siteTitle} organize all of your company knowledge, and
             your team will actually know it all.
-          </Body2Styled>
-          <ButtonStyled size="hg">Try {siteTitle} for Free</ButtonStyled>
+          </Description>
+          <ButtonStyled size="hg" forwardedAs={Link} to="/get-started">
+            Get Started
+          </ButtonStyled>
           <div
             css={`
               display: none;
@@ -255,12 +247,14 @@ const Index = ({ data }) => {
               your company&apos;s full-time knowledge organizer.
             </BodyBig>
             <Button
+              forwardedAs={Link}
+              to="/get-started"
               css={`
                 padding: 0 3.2rem;
               `}
               size="hg"
             >
-              Get Organized Now
+              Get Organized
             </Button>
           </FeatureContainer>
         </Section>
@@ -317,12 +311,14 @@ const Index = ({ data }) => {
           >
             <Huge>Ideas &amp; Questions</Huge>
             <Button
+              forwardedAs={Link}
+              to="/get-started"
               size="hg"
               css={`
                 padding: 0 6.4rem;
               `}
             >
-              Get Started Now For Free
+              Get Started
             </Button>
           </div>
           <div
@@ -367,7 +363,7 @@ const Index = ({ data }) => {
                 }
               `}
             >
-              Get Started Now For Free
+              Get Started
             </Button>
           </div>
         </Section>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 import {
   Heading2,
@@ -6,8 +7,6 @@ import {
   Body1Styles,
   Body1,
   Button,
-  Modal,
-  ModalHeader,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import ContactForm from '../ContactForm';
@@ -82,20 +81,15 @@ const Pricing = props => {
   };
   return (
     <Wrapper {...props}>
-      <Modal
+      <ContactForm
         isOpen={isContactFormOpen}
-        onRequestClose={() => setIsContactFormOpen(false)}
-      >
-        <ModalHeader>Contact Us</ModalHeader>
-        <ContactForm
-          initialValues={{
-            email: '',
-            topic: 'Enterprise Pricing',
-            message: '',
-          }}
-          afterSubmit={closeModal}
-        />
-      </Modal>
+        onRequestClose={closeModal}
+        initialValues={{
+          email: '',
+          topic: 'Enterprise Pricing',
+          message: '',
+        }}
+      />
       <Block
         css={`
           @media ${device.desktopUp} {
@@ -121,7 +115,9 @@ const Pricing = props => {
           <ListItem>Slack Integration</ListItem>
           <ListItem>50GB File Storage/User</ListItem>
         </List>
-        <SecondaryButton type="button">Start Free 7-day Trial</SecondaryButton>
+        <SecondaryButton forwardedAs={Link} to="/get-started">
+          Get Started
+        </SecondaryButton>
       </Block>
       <Block
         css={`
@@ -162,7 +158,8 @@ const Pricing = props => {
           <ListItem>250GB File Storage/User</ListItem>
         </List>
         <Button
-          type="button"
+          forwardedAs={Link}
+          to="/get-started"
           size="lg"
           css={`
             margin-top: 4.8rem;
@@ -171,7 +168,7 @@ const Pricing = props => {
             }
           `}
         >
-          Start Free 7-day Trial
+          Get Started
         </Button>
       </Block>
       <Block

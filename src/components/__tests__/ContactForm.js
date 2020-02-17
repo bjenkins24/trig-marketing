@@ -4,6 +4,8 @@ import user from '@testing-library/user-event';
 import { render, wait } from '../../test/utils';
 import ContactForm from '../ContactForm';
 
+fetch.mockResponse(JSON.stringify({ body: '12345' }));
+
 describe('<ContactForm />', () => {
   it('renders and takes basic props', async () => {
     const handler = jest.fn();
@@ -15,7 +17,11 @@ describe('<ContactForm />', () => {
     };
 
     const { getByLabelText, getByTestId, rerender } = render(
-      <ContactForm afterSubmit={handler} initialValues={initialValues} />
+      <ContactForm
+        isOpen
+        onRequestClose={handler}
+        initialValues={initialValues}
+      />
     );
     expect(getByLabelText(/your email address/i)).toBeInTheDocument();
     expect(getByLabelText(/topic/i)).toBeInTheDocument();
@@ -27,10 +33,16 @@ describe('<ContactForm />', () => {
 
     await wait(() => expect(handler.mock.calls.length).toEqual(1));
 
-    rerender(<ContactForm initialValues={initialValues} />);
+    rerender(
+      <ContactForm
+        isOpen
+        onRequestClose={handler}
+        initialValues={initialValues}
+      />
+    );
 
     user.click(getByTestId('send-message'));
-    fetch.mockResponse(() => Promise.reject(new Error('oops')));
+
     wait();
   });
 });

@@ -13,6 +13,8 @@ module.exports = {
     '!**/src/fonts/**/*.js',
     '!**/src/pages/**/*.js',
     '!**/src/templates/**/*.js',
+    '!**/src/lambda/paymentIntent.js',
+    '!**/src/components/PaymentForm/**/*.js',
   ],
   testPathIgnorePatterns: [`node_modules`, `.cache`, `public`],
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],

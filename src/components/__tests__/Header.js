@@ -9,9 +9,8 @@ jest.mock('../../helpers/hooks/useSiteMetadata');
 
 describe('<Header />', () => {
   it('renders and takes basic props', () => {
-    const { getByTitle, getByRole } = render(<Header />);
+    const { getByTitle } = render(<Header />);
     expect(getByTitle(/trig logo/i)).toBeInTheDocument();
-    expect(getByRole('button')).toHaveTextContent(/try now/i);
   });
 
   it('changes styles when window is scrolled', () => {
