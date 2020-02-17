@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as yup from 'yup';
@@ -43,14 +43,7 @@ const defaultProps = {
 };
 
 const CheckoutForm = ({ stripe, elements, onSuccess }) => {
-  const [clientSecret, setClientSecret] = useState(null);
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-
-  useEffect(() => {
-    fetch('/.netlify/functions/paymentIntent')
-      .then(response => response.json())
-      .then(data => setClientSecret(data.clientSecret));
-  }, []);
 
   return (
     <>
@@ -69,6 +62,16 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
         })}
         onSubmit={async values => {
           const { name, email } = values;
+          const response = await fetch('/.netlify/functions/paymentIntent', {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({ email }),
+          });
+          const { clientSecret } = await response.json();
+
           const result = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
               card: elements.getElement('card'),
@@ -153,7 +156,7 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
                     width: 100%;
                     height: 9rem;
                   `}
-                  disabled={submitting || !clientSecret}
+                  loading={submitting}
                 >
                   Pay $40 and Reserve <br />
                   Your Lifetime Subscription

@@ -39,10 +39,6 @@ describe('<PaymentForm />', () => {
 
     user.type(getByTestId('name-input'), 'Brian Jenkins');
     user.type(getByTestId('email-input'), 'brian@trytrig.com');
-    // Before the wait the button should be disabled because we don't have a client
-    // secret yet. So this shouldn't hit mockOnSuccess
-    user.click(getByTestId('submit-button'));
-    await wait();
     user.click(getByTestId('submit-button'));
 
     await wait(() => expect(mockOnSuccess.mock.calls.length).toEqual(1));
