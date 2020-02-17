@@ -115,17 +115,6 @@ const GetStarted = ({ data }) => {
           </Description>
         </Hero>
         <ContentContainer margin={6.4}>
-          <PaymentBox>
-            <Heading1
-              css={`
-                text-align: center;
-                margin-bottom: 4.8rem;
-              `}
-            >
-              Pay $40 Now, Then Never Pay Again*
-            </Heading1>
-            <PaymentForm onSuccess={() => setPaymentSucceeded(true)} />
-          </PaymentBox>
           <Content>
             <Body2
               color="ps.200"
@@ -163,6 +152,17 @@ const GetStarted = ({ data }) => {
               fluid={data.laptop.childImageSharp.fluid}
             />
           </Content>
+          <PaymentBox>
+            <Heading1
+              css={`
+                text-align: center;
+                margin-bottom: 4.8rem;
+              `}
+            >
+              Pay $40 Now, Then Never Pay Again*
+            </Heading1>
+            <PaymentForm onSuccess={() => setPaymentSucceeded(true)} />
+          </PaymentBox>
         </ContentContainer>
       </Layout>
     </>
