@@ -127,16 +127,6 @@ const Footer = props => {
                 <Link to="/blog">Blog</Link>
               </NavigationItem>
             </Navigation>
-            <Navigation>
-              <NavigationTitle>Follow Us</NavigationTitle>
-              <NavigationItem>Facebook</NavigationItem>
-              <NavigationItem>Twitter</NavigationItem>
-            </Navigation>
-            <Navigation>
-              <NavigationTitle>Legal</NavigationTitle>
-              <NavigationItem>Terms of Service</NavigationItem>
-              <NavigationItem>Privacy Policy</NavigationItem>
-            </Navigation>
           </NavigationMenu>
         </Content>
       </Container>
