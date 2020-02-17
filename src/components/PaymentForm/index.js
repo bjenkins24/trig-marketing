@@ -17,16 +17,19 @@ const defaultProps = {
 const PaymentForm = ({ onSuccess }) => {
   const [stripeInstance, setStripeInstance] = useState(null);
 
+  const stripeListener = () => {
+    document.querySelector('#stripe-js').addEventListener('load', () => {
+      setStripeInstance(window.Stripe(apiKey));
+    });
+  };
+
   useEffect(() => {
     if (window.Stripe) {
       setStripeInstance(window.Stripe(apiKey));
     } else {
-      setTimeout(() => {
-        document.querySelector('#stripe-js').addEventListener('load', () => {
-          setStripeInstance(window.Stripe(apiKey));
-        });
-      });
+      setTimeout(stripeListener);
     }
+    return clearTimeout(stripeListener);
   }, []);
 
   return (

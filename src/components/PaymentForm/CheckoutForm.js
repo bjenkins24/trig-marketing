@@ -92,8 +92,17 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
           return (
             <form onSubmit={handleSubmit}>
               <Fieldset width="100%">
-                <StringFieldForm label="Cardholder Name" name="name" />
-                <StringFieldForm type="email" label="Email" name="email" />
+                <StringFieldForm
+                  label="Cardholder Name"
+                  name="name"
+                  data-testid="name-input"
+                />
+                <StringFieldForm
+                  type="email"
+                  label="Email"
+                  name="email"
+                  data-testid="email-input"
+                />
                 <Label>
                   <span
                     css={`
@@ -127,6 +136,7 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
                   Your payment is 100% refundable before our{' '}
                   <em>December 14, 2020</em> release, by simply{' '}
                   <Button
+                    data-testid="contact-us-button"
                     variant="inline"
                     type="button"
                     onClick={() => setIsContactFormOpen(true)}
@@ -136,6 +146,7 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
                   .
                 </ChargeDescription>
                 <Button
+                  data-testid="submit-button"
                   type="submit"
                   size="hg"
                   css={`

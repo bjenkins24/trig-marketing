@@ -14,7 +14,9 @@ const RootElement = wrapRootElement;
 
 test('add the theme to context correctly', () => {
   const { getByTestId } = render(
-    <RootElement element={<TestElement data-testid={testId} />} />
+    <div id="___gatsby">
+      <RootElement element={<TestElement data-testid={testId} />} />
+    </div>
   );
   expect(getByTestId(testId)).toHaveStyleRule('background', theme.p);
 });

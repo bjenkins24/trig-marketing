@@ -213,7 +213,7 @@ const Header = ({ isLightTheme, ...restProps }) => {
               isLight={isLight}
               onClick={closeMobileMenu}
             >
-              Try Now
+              <Link to="/get-started">Get Started</Link>
             </MobileMenuNavItem>
           </MobileMenuNav>
         </MobileMenuContent>

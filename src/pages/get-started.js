@@ -148,7 +148,6 @@ const GetStarted = ({ data }) => {
             >
               Still not convinced? Trig is going to change the way you work.
               <Button
-                data-testid="contact-us-link"
                 variant="inline"
                 type="button"
                 onClick={() => setIsContactFormOpen(true)}

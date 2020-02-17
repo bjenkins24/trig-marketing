@@ -50,7 +50,17 @@ const defaultProps = {
 
 const ContactForm = ({ isOpen, onRequestClose, initialValues }) => {
   return (
-    <Modal isOpen={isOpen} onRequestClose={onRequestClose}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      ariaHideApp={!process.env.NODE_ENV === 'test'}
+      appElement={
+        /* istanbul ignore next */
+        typeof document !== 'undefined'
+          ? document.getElementById('___gatsby')
+          : null
+      }
+    >
       <ModalHeader>Contact Us</ModalHeader>
       <Container>
         <Form
