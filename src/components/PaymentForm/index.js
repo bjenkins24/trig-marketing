@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { StripeProvider, Elements } from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
 
-const apiKey = 'pk_test_fa5gJKRjNx5ybeNGn4T2Ughw';
+let apiKey = 'pk_test_fa5gJKRjNx5ybeNGn4T2Ughw';
+if (process.env.NODE_ENV === 'production') {
+  apiKey = 'pk_live_hk5KCpK63rHYijfsdYl7qupz';
+}
 
 const paymentFormTypes = {
   onSuccess: PropTypes.func,
@@ -15,29 +17,9 @@ const defaultProps = {
 };
 
 const PaymentForm = ({ onSuccess }) => {
-  const [stripeInstance, setStripeInstance] = useState(null);
-
-  const stripeListener = () => {
-    document.querySelector('#stripe-js').addEventListener('load', () => {
-      setStripeInstance(window.Stripe(apiKey));
-    });
-  };
-
-  useEffect(() => {
-    if (window.Stripe) {
-      setStripeInstance(window.Stripe(apiKey));
-    } else {
-      setTimeout(stripeListener);
-    }
-    return clearTimeout(stripeListener);
-  }, []);
-
   return (
     <>
-      <Helmet>
-        <script id="stripe-js" src="https://js.stripe.com/v3/" async />
-      </Helmet>
-      <StripeProvider stripe={stripeInstance}>
+      <StripeProvider apiKey={apiKey}>
         <Elements>
           <CheckoutForm onSuccess={onSuccess} />
         </Elements>

@@ -37,8 +37,9 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "@sendgrid/mail": "^6.5.0",
+    "@stripe/stripe-js": "^1.0.0-beta.9",
     "@trig-app/constants": "^0.1.4",
-    "@trig-app/core-components": "^0.1.40",
+    "@trig-app/core-components": "^0.1.41",
     "@trig-app/themes": "^0.1.3",
     "gatsby": "^2.18.17",
     "gatsby-image": "^2.2.33",

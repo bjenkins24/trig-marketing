@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from '@trig-app/core-components';
 import theme from '@trig-app/themes';
+import '@stripe/stripe-js';
 
 // eslint-disable-next-line
 const wrapRootElement = ({ element }) => {
