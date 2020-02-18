@@ -9,7 +9,6 @@ import {
   BodyBiggest,
   Body2,
   Body1,
-  HorizontalGroup,
   Button,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
@@ -24,13 +23,10 @@ const Hero = styled.div`
   text-align: center;
   padding: 4.8rem 3.2rem 7.2rem;
   height: auto;
-  margin-bottom: 6.4rem;
-  @media ${device.tabletPortraitUp} {
-    height: 39.5rem;
-    padding: 4.8rem 3.2rem 0;
-  }
-  @media (min-width: 600px) and (max-width: 715px) {
-    height: 80rem;
+  margin-bottom: 3.2rem;
+  @media ${device.desktopUp} {
+    padding-bottom: 12.8rem;
+    margin-bottom: 6.4rem;
   }
 `;
 
@@ -45,7 +41,7 @@ const MainHeading = styled(Huge)`
 
 const Description = styled(BodyBiggest)`
   width: 100%;
-  margin: 0 auto 6.4rem;
+  margin: 0 auto;
   @media ${device.tabletPortraitUp} {
     width: 90%;
   }
@@ -55,18 +51,45 @@ const Description = styled(BodyBiggest)`
   }
 `;
 
-const ContentContainer = styled(HorizontalGroup)`
-  max-width: 110rem;
+const ContentContainer = styled.div`
+  display: flex;
+  max-width: 70rem;
   margin: 0 auto;
+  flex-wrap: wrap;
+  padding: 0 3.2rem;
+  & > *:not(:last-child) {
+    margin: 0;
+  }
+  @media ${device.tabletLandscapeUp} {
+    padding: 0;
+  }
+  @media ${device.desktopUp} {
+    max-width: 110rem;
+    flex-wrap: nowrap;
+    & > *:not(:last-child) {
+      margin-right: 6.4rem;
+    }
+  }
+`;
+
+const ImgStyled = styled(Img)`
+  display: none;
+  @media ${device.desktopUp} {
+    display: block;
+  }
 `;
 
 const PaymentBox = styled.div`
-  width: 42.6rem;
-  flex-shrink: 0;
   box-shadow: ${({ theme }) => theme.sh};
   padding: 4.8rem 3.2rem;
-  margin: -12rem 0 6.4rem 0;
   background: ${({ theme }) => theme.bs[200]};
+  width: 100%;
+  margin: 0 auto 3.2rem;
+  @media ${device.desktopUp} {
+    margin: -12rem 0 6.4rem 0;
+    width: 42.6rem;
+    flex-shrink: 0;
+  }
 `;
 
 const Content = styled.div`
@@ -115,17 +138,6 @@ const GetStarted = ({ data }) => {
           </Description>
         </Hero>
         <ContentContainer margin={6.4}>
-          <PaymentBox>
-            <Heading1
-              css={`
-                text-align: center;
-                margin-bottom: 4.8rem;
-              `}
-            >
-              Pay $40 Now, Then Never Pay Again*
-            </Heading1>
-            <PaymentForm onSuccess={() => setPaymentSucceeded(true)} />
-          </PaymentBox>
           <Content>
             <Body2
               color="ps.200"
@@ -143,10 +155,13 @@ const GetStarted = ({ data }) => {
             <Body1
               forwardedAs="p"
               css={`
-                margin-bottom: 8rem;
+                margin-bottom: 3.2rem;
+                @media ${device.desktopUp} {
+                  margin-bottom: 6.4rem;
+                }
               `}
             >
-              Still not convinced? Trig is going to change the way you work.
+              Still not convinced? Trig is going to change the way you work.{' '}
               <Button
                 variant="inline"
                 type="button"
@@ -157,12 +172,23 @@ const GetStarted = ({ data }) => {
               , and Trig’s founder will be happy to answer your questions and
               hop on a call personally.
             </Body1>
-            <Img
+            <ImgStyled
               alt={`Screenshot of ${siteTitle} in a Laptop`}
               durationFadeIn={300}
               fluid={data.laptop.childImageSharp.fluid}
             />
           </Content>
+          <PaymentBox>
+            <Heading1
+              css={`
+                text-align: center;
+                margin-bottom: 4.8rem;
+              `}
+            >
+              Pay $40 Now, Then Never Pay Again*
+            </Heading1>
+            <PaymentForm onSuccess={() => setPaymentSucceeded(true)} />
+          </PaymentBox>
         </ContentContainer>
       </Layout>
     </>

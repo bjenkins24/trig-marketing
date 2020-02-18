@@ -136,7 +136,7 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
                   <strong>non-recurring</strong>.
                 </ChargeDescription>
                 <ChargeDescription forwardedAs="p">
-                  Your payment is 100% refundable before our{' '}
+                  Your payment is 100% refundable until 90 days after our{' '}
                   <em>December 14, 2020</em> release, by simply{' '}
                   <Button
                     data-testid="contact-us-button"
