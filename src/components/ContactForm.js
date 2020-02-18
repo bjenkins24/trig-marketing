@@ -54,6 +54,7 @@ const ContactForm = ({ isOpen, onRequestClose, initialValues }) => {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       ariaHideApp={!process.env.NODE_ENV === 'test'}
+      width={40}
       appElement={
         /* istanbul ignore next */
         typeof document !== 'undefined'
@@ -84,7 +85,7 @@ const ContactForm = ({ isOpen, onRequestClose, initialValues }) => {
           {({ handleSubmit, submitting }) => {
             return (
               <form onSubmit={handleSubmit}>
-                <Fieldset width={40}>
+                <Fieldset width="100%">
                   <StringFieldForm
                     name="email"
                     type="email"
