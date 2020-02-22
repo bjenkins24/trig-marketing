@@ -1,7 +1,6 @@
 import React from 'react';
 import { StripeProvider } from 'react-stripe-elements';
 import IsomorphicWrapper from './src/helpers/IsomorphicWrapper';
-import '@stripe/stripe-js';
 import './consoleOverrides';
 
 let apiKey = 'pk_test_fa5gJKRjNx5ybeNGn4T2Ughw';

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from '@trig-app/core-components';
 import theme from '@trig-app/themes';
+import '@stripe/stripe-js';
 
 const isomorphicWrapperTypes = {
   children: PropTypes.node.isRequired,
