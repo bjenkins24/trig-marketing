@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 const wrapRootElement = ({ element }) => {
   return (
     <IsomorphicWrapper>
-      <StripeProvider apiKey={apiKey}>{element}</StripeProvider>
+      <StripeProvider stripe={window.Stripe(apiKey)}>{element}</StripeProvider>
     </IsomorphicWrapper>
   );
 };
