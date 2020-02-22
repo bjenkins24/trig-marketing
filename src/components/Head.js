@@ -39,7 +39,6 @@ const Head = ({ pageTitle, socialImageUrl }) => {
               content="width=device-width,initial-scale=1.0,user-scalable=yes"
               name="viewport"
             />
-            <script src="https://js.stripe.com/v3/" />
             <meta content={siteTitle} name="apple-mobile-web-app-title" />
             <meta content={pageTitleFull} property="og:title" />
             <meta content={pageTitleFull} name="twitter:title" />

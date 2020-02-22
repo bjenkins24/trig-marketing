@@ -9,6 +9,7 @@ module.exports = {
   collectCoverageFrom: [
     '**/src/**/*.js',
     '!**/src/test/**/*.js',
+    '!**/src/html.js',
     '!**/src/helpers/hooks/useSiteMetadata.js',
     '!**/src/fonts/**/*.js',
     '!**/src/pages/**/*.js',

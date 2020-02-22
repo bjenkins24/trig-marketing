@@ -22,12 +22,14 @@ const IsomorphicWrapper = ({ children }) => {
   }, []);
 
   return (
-    <StripeProvider stripe={stripeInstance}>
-      <ThemeProvider theme={theme}>
-        <ToastContainer />
-        {children}
-      </ThemeProvider>
-    </StripeProvider>
+    <>
+      <StripeProvider stripe={stripeInstance}>
+        <ThemeProvider theme={theme}>
+          <ToastContainer />
+          {children}
+        </ThemeProvider>
+      </StripeProvider>
+    </>
   );
 };
 
