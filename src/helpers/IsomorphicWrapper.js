@@ -4,7 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from '@trig-app/core-components';
 import { StripeProvider } from 'react-stripe-elements';
 import theme from '@trig-app/themes';
-import '@stripe/stripe-js';
 
 let apiKey = 'pk_test_fa5gJKRjNx5ybeNGn4T2Ughw';
 if (process.env.NODE_ENV === 'production') {
