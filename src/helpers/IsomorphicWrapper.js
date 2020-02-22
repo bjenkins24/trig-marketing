@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from '@trig-app/core-components';
@@ -18,7 +18,7 @@ const isomorphicWrapperTypes = {
 const IsomorphicWrapper = ({ children }) => {
   const [stripeInstance, setStripeInstance] = useState(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setStripeInstance(window.Stripe(apiKey));
   }, []);
 
