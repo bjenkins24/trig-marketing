@@ -11,6 +11,7 @@ import {
   Label,
   toast,
 } from '@trig-app/core-components';
+import { device } from '@trig-app/constants';
 import { injectStripe, CardElement } from 'react-stripe-elements';
 import ContactForm from '../ContactForm';
 
@@ -24,6 +25,14 @@ const ChargeDescription = styled(Body2)`
   text-align: center;
   width: 90%;
   margin: 0 auto;
+`;
+
+const SubmitButton = styled(Button)`
+  width: 100%;
+  height: 12rem;
+  @media ${device.tabletPortraitUp} {
+    height: 9rem;
+  }
 `;
 
 const checkoutFormTypes = {
@@ -148,19 +157,15 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
                   </Button>
                   .
                 </ChargeDescription>
-                <Button
+                <SubmitButton
                   data-testid="submit-button"
                   type="submit"
                   size="hg"
-                  css={`
-                    width: 100%;
-                    height: 9rem;
-                  `}
                   loading={submitting}
                 >
                   Pay $40 and Reserve <br />
                   Your Lifetime Subscription
-                </Button>
+                </SubmitButton>
               </Fieldset>
             </form>
           );
