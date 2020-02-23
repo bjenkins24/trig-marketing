@@ -153,7 +153,7 @@ const postTypes = {
 const Post = ({ data: { prismicPost }, location }) => {
   const { siteUrl } = useSiteMetadata();
   const { data, id } = prismicPost;
-  const url = encodeURIComponent(`${siteUrl}${location.pathname}`);
+  const url = `${siteUrl}${location.pathname}`;
   const encodedUrl = encodeURIComponent(url);
 
   const disqusConfig = {
