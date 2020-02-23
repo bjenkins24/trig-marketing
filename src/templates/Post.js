@@ -154,7 +154,6 @@ const Post = ({ data: { prismicPost }, location }) => {
   const { siteUrl } = useSiteMetadata();
   const { data, id } = prismicPost;
   const url = `${siteUrl}${location.pathname}`;
-  const encodedUrl = encodeURIComponent(url);
 
   const disqusConfig = {
     url,
@@ -211,23 +210,21 @@ const Post = ({ data: { prismicPost }, location }) => {
             />
             <ShareContainer>
               <a
-                href={`http://www.facebook.com/share.php?u=${encodedUrl}`}
+                href={`http://www.facebook.com/share.php?u=${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Icon type="facebook" size={2.4} title="Share on Facebook" />
               </a>
               <a
-                href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodeURIComponent(
-                  data.title.text
-                )}`}
+                href={`https://twitter.com/intent/tweet?url=${url}&text=${data.title.text}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Icon type="twitter" size={2.4} title="Tweet" />
               </a>
               <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${url}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
