@@ -169,7 +169,7 @@ const Index = ({ data }) => {
             </SectionTitle>
             <BodyBig as="p">
               Just like your garage! Wait, no, not like that. You’ll actually be
-              able to find things in {siteTitle}
+              able to find things in {siteTitle}.
             </BodyBig>
             <BodyBig as="p">
               Store files and links, create documents, and sync with existing
@@ -226,7 +226,7 @@ const Index = ({ data }) => {
           >
             <SectionTitle>Organizing is a thing of the past</SectionTitle>
             <BodyBig as="p">
-              Are you the type of person that organizes your socks by color and
+              Are you the type of person who organizes your socks by color and
               pattern, but then your partner washes them and throws them in your
               shirt drawer? Not. Cool.
             </BodyBig>
@@ -241,9 +241,9 @@ const Index = ({ data }) => {
                 margin-bottom: 3.2rem;
               `}
             >
-              With {siteTitle} there are no folders, no tagging, and yup, no
-              sock drawers. {siteTitle} surfaces and tags your documents
-              automatically, and has a deep full text search. It&apos;s like
+              With {siteTitle}, there are no folders, no tagging, and yup&mdash;
+              no sock drawers. {siteTitle} surfaces and tags your documents
+              automatically, and has a deep full-text search. It&apos;s like
               your company&apos;s full-time knowledge organizer.
             </BodyBig>
             <Button
@@ -274,8 +274,8 @@ const Index = ({ data }) => {
               the article to a deck in {siteTitle}.
             </BodyBig>
             <BodyBig as="p">
-              All followers of your deck will be notified immediately that you
-              added a new card. You can link to your deck, or even embed it in
+              All followers of your deck will be notified immediately when you
+              add a new card. You can link to your deck, or even embed it in
               your existing intranet.
             </BodyBig>
           </FeatureContainer>
@@ -335,15 +335,14 @@ const Index = ({ data }) => {
             </SectionTitle>
             <BodyBig as="p">
               Just kidding. There totally are. But you can’t get to the good
-              ones, until you get through the bad ones.
+              ones until you get through the bad ones.
             </BodyBig>
             <BodyBig as="p">
               {siteTitle} lets team members post ideas and administrators can
               review them or open them up for votes. Team members can also post
-              questions and
-              {siteTitle} will direct them to the right people in your company.
-              Answers then stay in your pool of knowledge for others to find
-              when they need it.
+              questions and {siteTitle} will direct them to the right people in
+              your company. Answers then stay in your pool of knowledge for
+              others to find when they need it.
             </BodyBig>
             <BodyBig
               as="p"
@@ -352,7 +351,7 @@ const Index = ({ data }) => {
               `}
             >
               Empower your team to come up with ideas, or you’ll never know how
-              badly your team wants lunch time lip sync battles.
+              badly your team wants lunchtime lip sync battles.
             </BodyBig>
             <Button
               size="hg"
