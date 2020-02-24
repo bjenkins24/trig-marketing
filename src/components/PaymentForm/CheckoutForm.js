@@ -67,7 +67,7 @@ const CheckoutForm = ({ stripe, elements, onSuccess }) => {
             .string()
             .email('Please enter a valid email address.')
             .required('Please enter an email address.'),
-          name: yup.string().required("Please enter the cardholder's name"),
+          name: yup.string().required("Please enter the cardholder's name."),
         })}
         onSubmit={async values => {
           const { name, email } = values;

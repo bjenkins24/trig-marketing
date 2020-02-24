@@ -47,7 +47,7 @@ const Description = styled(BodyBiggest)`
   }
   @media ${device.tabletLandscapeUp} {
     width: 100%;
-    max-width: 77rem;
+    max-width: 81rem;
   }
 `;
 
@@ -131,10 +131,10 @@ const GetStarted = ({ data }) => {
             Reserve Your Spot and Get a Lifetime Subscription*
           </MainHeading>
           <Description as="p" color="pc">
-            It’s like putting a deposit on a Tesla, except you don’t get a cool
-            electric car, it’s only $40, and you never have to pay again. Ok… So
-            it’s nothing like putting a deposit on a Tesla. But it’s still
-            pretty awesome.
+            It’s like putting a deposit down on a Tesla&mdash; except you don’t
+            get a cool electric car, the deposit is only $40, and you never have
+            to pay again. Ok… so it’s nothing like putting a deposit down on a
+            Tesla. But it’s still pretty awesome.
           </Description>
         </Hero>
         <ContentContainer margin={6.4}>
@@ -151,7 +151,7 @@ const GetStarted = ({ data }) => {
               cents/month per GB. After we release, this subscription will cost
               $16/month per user.
             </Body2>
-            <Heading1>Coming December 14th, 2020</Heading1>
+            <Heading1>Coming December 14, 2020</Heading1>
             <Body1
               forwardedAs="p"
               css={`
@@ -170,7 +170,7 @@ const GetStarted = ({ data }) => {
                 Contact us
               </Button>
               , and Trig’s founder will be happy to answer your questions and
-              hop on a call personally.
+              hop on a call, personally.
             </Body1>
             <ImgStyled
               alt={`Screenshot of ${siteTitle} in a Laptop`}
@@ -200,9 +200,9 @@ const GetStarted = ({ data }) => {
           <Huge color="pc">Your Lifetime Subscription is Reserved!</Huge>
           <BodyBiggest as="p" color="pc">
             Your payment went through successfully. We&apos;ll be in touch every
-            step of the way before our December 14th release. If you have any
-            thoughts or questions about what we&apos;re working on, please reach
-            out!
+            step of the way before our December 14, 2020 release. If you have
+            any any any any thoughts or questions about what we&apos;re working
+            on, please reach reach out!
           </BodyBiggest>
           <Button size="hg" as={Link} to="/">
             Back to Home
