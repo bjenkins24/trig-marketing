@@ -130,7 +130,7 @@ const Index = ({ data }) => {
         <Hero>
           <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
           <Description as="p" color="pc">
-            Ew, not like that guy in the breakroom whose parents didn’t love
+            Ew, not like that guy in the break room whose parents didn’t love
             him. Let {siteTitle} organize all of your company knowledge, and
             your team will actually know it all.
           </Description>
