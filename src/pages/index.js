@@ -168,13 +168,14 @@ const Index = ({ data }) => {
               Store all company knowledge in one place
             </SectionTitle>
             <BodyBig as="p">
-              Just like your garage! Wait, no, not like that. You’ll actually be
-              able to find things in {siteTitle}.
+              Store files and links, create documents, and sync with existing
+              services like Google Drive, Dropbox, and Slack. Anything you can
+              think of can be stored in {siteTitle} as cards.
             </BodyBig>
             <BodyBig as="p">
-              Store files and links, create documents, and sync with existing
-              services like Google Drive and Dropbox. Anything you can think of
-              can be stored in {siteTitle} as cards.
+              There&apos;s no need to stop using your current knowledge base.
+              Just let Trig orgnanize it and all of your other company knowledge
+              into cards.
             </BodyBig>
             <BodyBig as="p">
               Empower all your teammates to find what they need exactly when
@@ -226,14 +227,9 @@ const Index = ({ data }) => {
           >
             <SectionTitle>Organizing is a thing of the past</SectionTitle>
             <BodyBig as="p">
-              Are you the type of person who organizes your socks by color and
-              pattern, but then your partner washes them and throws them in your
-              shirt drawer? Not. Cool.
-            </BodyBig>
-            <BodyBig as="p">
-              You might not have sock drawers in your company (maybe you do,
-              we’re not judging), but being sabotaged by unorganized co-workers
-              is no fun.
+              With {siteTitle}, there are no folders. There&apos;s no tagging.
+              Actually, Trig has no manual organizing features at all. Why?
+              Because you won&apos;t need them.
             </BodyBig>
             <BodyBig
               as="p"
@@ -241,10 +237,11 @@ const Index = ({ data }) => {
                 margin-bottom: 3.2rem;
               `}
             >
-              With {siteTitle}, there are no folders, no tagging, and yup&mdash;
-              no sock drawers. {siteTitle} surfaces and tags your documents
-              automatically, and has a deep full-text search. It&apos;s like
-              your company&apos;s full-time knowledge organizer.
+              {siteTitle} uses AI to surface and tag your documents
+              automatically because you don&apos;t know what you don&apos;t
+              know. Then search through all of your documents in one place. Find
+              the exact location of words in documents. It&apos;s like your
+              company&apos;s full-time librarian.
             </BodyBig>
             <Button
               forwardedAs={Link}
@@ -269,14 +266,13 @@ const Index = ({ data }) => {
               Share collections of files, links, and documents
             </SectionTitle>
             <BodyBig as="p">
-              If you want your team to read that career changing article you
-              found on how to sell ice cream to eskimos (ice has been done), add
-              the article to a deck in {siteTitle}.
+              Sharing collections of documents is easy with decks. You can add
+              cards to a deck or let {siteTitle} suggest deck groupings.
             </BodyBig>
             <BodyBig as="p">
-              All followers of your deck will be notified immediately when you
-              add a new card. You can link to your deck, or even embed it in
-              your existing intranet.
+              Members of your team can follow your deck and they will be
+              notified immediately when you add a new card. You can link to your
+              deck, make it public, or even embed it in your existing intranet.
             </BodyBig>
           </FeatureContainer>
           <ImgContainer
@@ -337,21 +333,17 @@ const Index = ({ data }) => {
               Just kidding. There totally are. But you can’t get to the good
               ones until you get through the bad ones.
             </BodyBig>
-            <BodyBig as="p">
-              {siteTitle} lets team members post ideas and administrators can
-              review them or open them up for votes. Team members can also post
-              questions and {siteTitle} will direct them to the right people in
-              your company. Answers then stay in your pool of knowledge for
-              others to find when they need it.
-            </BodyBig>
             <BodyBig
               as="p"
               css={`
                 margin-bottom: 3.2rem;
               `}
             >
-              Empower your team to come up with ideas, or you’ll never know how
-              badly your team wants lunchtime lip sync battles.
+              {siteTitle} lets team members post ideas and administrators can
+              review them or open them up for votes. Team members can also post
+              questions and {siteTitle} will direct them to the right people in
+              your company. Answers then stay in your pool of knowledge for
+              others to find when they need it.
             </BodyBig>
             <Button
               size="hg"
