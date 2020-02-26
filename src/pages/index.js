@@ -128,11 +128,11 @@ const Index = ({ data }) => {
       />
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
-          <MainHeading color="pc">Make a Team of Know-It-Alls</MainHeading>
+          <MainHeading color="pc">Automatic Knowledge Organizer</MainHeading>
           <Description as="p" color="pc">
-            Ew, not like that guy in the break room whose parents didn’t love
-            him. Let {siteTitle} organize all of your company knowledge, and
-            your team will actually know it all.
+            Stop endlessly searching for files, links, or documents. Never
+            create another folder or tag again. Throw all of your company
+            knowledge in, and Trig will do the rest.
           </Description>
           <ButtonStyled size="hg" forwardedAs={Link} to="/get-started">
             Get Started
