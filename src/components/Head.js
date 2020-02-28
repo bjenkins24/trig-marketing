@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Location } from '@reach/router';
+import Icon64x64 from '../icons/favicon-64x64.png';
+import Icon32x32 from '../icons/favicon-32x32.png';
+import Icon16x16 from '../icons/favicon-16x16.png';
 import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 
 const headPropTypes = {
@@ -70,6 +73,9 @@ const Head = ({ pageTitle, socialImageUrl }) => {
               rel="canonical"
               href={canonical}
             />
+            <link rel="icon" type="image/png" href={Icon64x64} sizes="64x64" />
+            <link rel="icon" type="image/png" href={Icon32x32} sizes="32x32" />
+            <link rel="icon" type="image/png" href={Icon16x16} sizes="16x16" />
             {socialImageUrl && (
               <>
                 <meta content={socialImageUrl} property="og:image" />
