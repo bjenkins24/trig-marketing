@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const FourOhFour = () => {
   return (
-    <Layout>
+    <Layout title="Oops! 404 Not Found">
       <Container>
         <Huge
           color="bc"

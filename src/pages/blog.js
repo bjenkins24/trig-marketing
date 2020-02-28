@@ -117,7 +117,7 @@ const Blog = ({ data }) => {
   const posts = data.allPrismicPost.edges;
 
   return (
-    <Layout>
+    <Layout title="Blog">
       <Content>
         <Posts>
           {posts.map(post => {

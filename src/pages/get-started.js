@@ -125,7 +125,7 @@ const GetStarted = ({ data }) => {
         isOpen={isContactFormOpen}
         onRequestClose={() => setIsContactFormOpen(false)}
       />
-      <Layout headerProps={{ isLightTheme: false }}>
+      <Layout title="Get Started" headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">
             Reserve Your Spot and Get a Lifetime Subscription*

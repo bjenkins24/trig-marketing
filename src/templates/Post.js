@@ -162,7 +162,7 @@ const Post = ({ data: { prismicPost }, location }) => {
   };
 
   return (
-    <Layout>
+    <Layout title={data.title.text}>
       <Title>{data.title.text}</Title>
       <ImgStyled
         alt={data.image.alt}

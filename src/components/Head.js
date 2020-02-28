@@ -26,7 +26,7 @@ const Head = ({ pageTitle, socialImageUrl }) => {
     social,
   } = useSiteMetadata();
 
-  const pageTitleFull = pageTitle ? `${pageTitle} - ${siteTitle}` : siteTitle;
+  const pageTitleFull = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
 
   return (
     <Location>

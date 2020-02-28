@@ -8,16 +8,18 @@ import GlobalStyle from '../../global.css';
 const layoutTypes = {
   children: PropTypes.node.isRequired,
   headerProps: PropTypes.shape(headerTypes),
+  title: PropTypes.string,
 };
 
 const defaultProps = {
   headerProps: {},
+  title: '',
 };
 
-const Layout = ({ children, headerProps }) => (
+const Layout = ({ children, title, headerProps }) => (
   <>
     <GlobalStyle />
-    <Head />
+    <Head pageTitle={title} />
     <Header {...headerProps} />
     {children}
     <Footer />
