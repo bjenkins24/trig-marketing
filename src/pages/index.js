@@ -9,6 +9,7 @@ import {
   BodyBig,
   Heading1,
   Button,
+  StringFieldWithButton,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
@@ -135,6 +136,16 @@ const Index = ({ data }) => {
             create another folder or tag again. Throw all of your company
             knowledge in, and Trig will do the rest.
           </Description>
+          <StringFieldWithButton
+            css={`
+              width: 50rem;
+              margin: 0 auto;
+            `}
+            buttonProps={{ variant: 's' }}
+            buttonContent="Get Email Updates"
+            onSubmit={() => console.log('do something cool')}
+            placeholder="Email address..."
+          />
           <ButtonStyled size="hg" forwardedAs={Link} to="/get-started">
             Get Started
           </ButtonStyled>
