@@ -88,6 +88,7 @@ const ImgContainer = styled.div`
   max-width: 51.5rem;
   width: 100%;
   margin: 0 auto;
+  align-self: center;
   @media ${device.desktopUp} {
     margin: 0;
   }
@@ -173,9 +174,9 @@ const Index = ({ data }) => {
               think of can be stored in {siteTitle} as cards.
             </BodyBig>
             <BodyBig as="p">
-              There&apos;s no need to stop using your current knowledge base.
-              Just let Trig orgnanize it and all of your other company knowledge
-              into cards.
+              There&apos;s no need to stop using your current knowledge base. No
+              migrations needed. Trig will work with everything you have and
+              make it instantly discoverable.
             </BodyBig>
             <BodyBig as="p">
               Empower all your teammates to find what they need exactly when
@@ -227,9 +228,14 @@ const Index = ({ data }) => {
           >
             <SectionTitle>Organizing is a thing of the past</SectionTitle>
             <BodyBig as="p">
-              With {siteTitle}, there are no folders. There&apos;s no tagging.
-              Actually, Trig has no manual organizing features at all. Why?
-              Because you won&apos;t need them.
+              Think about it. No more folders. No more tagging. Actually, Trig
+              has no manual organizing features at all. Why? Because you
+              won&apos;t need them.
+            </BodyBig>
+
+            <BodyBig as="p">
+              Search through all of your documents in one place. You&apos;ll
+              even be able to find the exact location of words within documents.
             </BodyBig>
             <BodyBig
               as="p"
@@ -237,10 +243,10 @@ const Index = ({ data }) => {
                 margin-bottom: 3.2rem;
               `}
             >
-              {siteTitle} uses AI to surface and tag your documents
-              automatically because you don&apos;t know what you don&apos;t
-              know. Then search through all of your documents in one place. Find
-              the exact location of words in documents. It&apos;s like your
+              Search isn&apos;t where it ends because you don&apos;t know what
+              you don&apos;t know. {siteTitle} also uses AI to surface and tag
+              your documents automatically. It helps you find what you need
+              before you even know you need it. It&apos;s like your
               company&apos;s full-time librarian.
             </BodyBig>
             <Button
@@ -267,12 +273,13 @@ const Index = ({ data }) => {
             </SectionTitle>
             <BodyBig as="p">
               Sharing collections of documents is easy with decks. You can add
-              cards to a deck or let {siteTitle} suggest deck groupings.
+              cards to a deck or let {siteTitle} suggest groups of cards to
+              automatically add to a deck.
             </BodyBig>
             <BodyBig as="p">
-              Members of your team can follow your deck and they will be
-              notified immediately when you add a new card. You can link to your
-              deck, make it public, or even embed it in your existing intranet.
+              Members of your team that follow your deck will be notified
+              immediately when you add a new card. You can link to your deck,
+              make it public, or even embed it in your existing intranet.
             </BodyBig>
           </FeatureContainer>
           <ImgContainer
@@ -327,23 +334,19 @@ const Index = ({ data }) => {
             `}
           >
             <SectionTitle>
-              There’s no such things as bad ideas or questions
+              Get Your Employee&apos;s Questions Answered
             </SectionTitle>
             <BodyBig as="p">
-              Just kidding. There totally are. But you can’t get to the good
-              ones until you get through the bad ones.
+              Team members can post questions and {siteTitle} will direct them
+              to the right people in your company. Answers then stay in your
+              pool of knowledge for others to find when they need it.
             </BodyBig>
-            <BodyBig
-              as="p"
-              css={`
-                margin-bottom: 3.2rem;
-              `}
-            >
-              {siteTitle} lets team members post ideas and administrators can
-              review them or open them up for votes. Team members can also post
-              questions and {siteTitle} will direct them to the right people in
-              your company. Answers then stay in your pool of knowledge for
-              others to find when they need it.
+            <BodyBig as="p">
+              {siteTitle} also lets team members post ideas that administrators
+              can review or open up for votes. Trig is powerful because
+              everything from questions and ideas to files and links are stored
+              in Trig as cards and all cards are instantly searchable and
+              discoverable.
             </BodyBig>
             <Button
               size="hg"
