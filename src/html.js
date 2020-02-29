@@ -12,7 +12,7 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <script src="https://js.stripe.com/v3/" />
+        <script src="https://js.stripe.com/v3/" async />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
