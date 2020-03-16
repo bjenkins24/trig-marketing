@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { BodyBig, Icon } from '@trig-app/core-components';
+import { BodyBig, BodyBiggest, Icon } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import useSiteMetadata from '../../helpers/hooks/useSiteMetadata';
 
@@ -27,7 +27,7 @@ const Bullet = styled.div`
   align-items: center;
 `;
 
-const BulletTitle = styled(BodyBig)`
+const BulletTitle = styled(BodyBiggest)`
   margin: 0 0 0.8rem 0;
 `;
 
