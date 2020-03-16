@@ -179,7 +179,7 @@ const Post = ({ data: { prismicPost }, location }) => {
                 margin: 0;
               `}
             >
-              Make a Team of Know-It-Alls
+              Automatic Knowledge Organizer
             </Body2>
             <Body2
               forwardedAs="p"
@@ -252,6 +252,7 @@ export const pageQuery = graphql`
       uid
       id
       data {
+        meta_description
         title {
           text
         }

@@ -169,7 +169,7 @@ const Header = ({ isLightTheme, ...restProps }) => {
             <BlogLink />
           </NavigationItem>
           <Button as={Link} to="/get-started">
-            Get Started
+            Get Lifetime Subscription
           </Button>
         </Nav>
       </Container>

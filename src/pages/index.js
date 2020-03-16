@@ -9,8 +9,11 @@ import {
   BodyBig,
   Heading1,
   Button,
+  StringFieldWithButtonForm,
+  toast,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
+import { string } from 'yup';
 import Layout from '../components/Layout';
 import Pricing from '../components/index/Pricing';
 import Section from '../components/index/Section';
@@ -26,7 +29,7 @@ const Hero = styled.div`
   padding: 4.8rem 3.2rem 7.2rem;
   height: auto;
   @media ${device.tabletPortraitUp} {
-    height: 84.6rem;
+    height: 85.6rem;
     padding: 4.8rem 3.2rem 0;
   }
   @media (min-width: 600px) and (max-width: 715px) {
@@ -55,14 +58,6 @@ const Description = styled(BodyBiggest)`
   @media ${device.tabletLandscapeUp} {
     width: 100%;
     max-width: 87rem;
-  }
-`;
-
-const ButtonStyled = styled(Button)`
-  padding: 0 4.5rem;
-  margin: 0 auto;
-  @media ${device.tabletPortraitUp} {
-    margin: 0 auto 6.4rem;
   }
 `;
 
@@ -120,6 +115,7 @@ const indexTypes = {
 const Index = ({ data }) => {
   const { siteTitle } = useSiteMetadata();
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+  const [isSubscribing, setIsSubscribing] = useState(false);
 
   return (
     <>
@@ -135,9 +131,66 @@ const Index = ({ data }) => {
             create another folder or tag again. Throw all of your company
             knowledge in, and Trig will do the rest.
           </Description>
-          <ButtonStyled size="hg" forwardedAs={Link} to="/get-started">
-            Get Started
-          </ButtonStyled>
+          <div
+            css={`
+              margin: 0 auto;
+              width: 40rem;
+              @media ${device.tabletPortraitUp} {
+                width: 50rem;
+                margin-bottom: 6.4rem;
+              }
+              text-align: left;
+            `}
+          >
+            <BodyBig
+              color="pc"
+              css={`
+                text-align: center;
+                margin-bottom: 0.8rem;
+              `}
+              as="p"
+            >
+              Trig is scheduled to release in 2020. Add your email below and
+              we&apos;ll keep you updated!
+            </BodyBig>
+            <StringFieldWithButtonForm
+              buttonContent="Get Updates"
+              buttonProps={{ variant: 's' }}
+              width="100%"
+              placeholder="E-mail Address"
+              loading={isSubscribing}
+              validate={string()
+                .required('Please enter an email.')
+                .email('Please enter a valid email.')}
+              onSubmit={async ({ value, resetForm }) => {
+                setIsSubscribing(true);
+                const response = await fetch('/.netlify/functions/subscribe', {
+                  headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                  },
+                  method: 'POST',
+                  body: JSON.stringify({ email: value }),
+                });
+                setIsSubscribing(false);
+                if (response.status === 200) {
+                  resetForm();
+                  toast({
+                    message:
+                      "Thank you for your interest in Trig. Your email has been added successfully to our list. You'll be the first to know when we launch!",
+                    timeout: 6000,
+                  });
+                }
+                if (response.status !== 200) {
+                  toast({
+                    type: 'error',
+                    message:
+                      'Something went wrong. If this continues, please contact us.',
+                  });
+                }
+              }}
+            />
+          </div>
           <div
             css={`
               display: none;
@@ -257,7 +310,7 @@ const Index = ({ data }) => {
               `}
               size="hg"
             >
-              Get Organized
+              Get a Lifetime Subscription
             </Button>
           </FeatureContainer>
         </Section>
@@ -321,7 +374,7 @@ const Index = ({ data }) => {
                 padding: 0 6.4rem;
               `}
             >
-              Get Started
+              Get Lifetime Subscription
             </Button>
           </div>
           <div
@@ -357,7 +410,7 @@ const Index = ({ data }) => {
                 }
               `}
             >
-              Get Started
+              Get a Lifetime Subscription
             </Button>
           </div>
         </Section>

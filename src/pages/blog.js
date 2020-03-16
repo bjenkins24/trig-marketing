@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { graphql, Link } from 'gatsby';
+import { string } from 'yup';
 import {
   HorizontalGroup,
   Logo,
   Heading1,
   Body1,
   Button,
+  StringFieldWithButtonForm,
+  toast,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import Layout from '../components/Layout';
@@ -81,6 +84,7 @@ const Ad = styled.div`
   border-radius: ${({ theme }) => theme.br};
   padding: 3.2rem 0;
   text-align: center;
+  margin-bottom: 3.2rem;
 `;
 
 const blogTypes = {
@@ -114,6 +118,7 @@ const blogTypes = {
 };
 
 const Blog = ({ data }) => {
+  const [isSubscribing, setIsSubscribing] = useState(false);
   const posts = data.allPrismicPost.edges;
 
   return (
@@ -153,7 +158,7 @@ const Blog = ({ data }) => {
                 text-align: center;
               `}
             >
-              Make a Team of Know-It-Alls
+              Automatic Knowledge Organizer
             </Heading1>
             <Body1
               color="pc"
@@ -176,6 +181,43 @@ const Blog = ({ data }) => {
               Learn More
             </Button>
           </Ad>
+          <StringFieldWithButtonForm
+            buttonContent="Subscribe"
+            width="100%"
+            label="Subscribe for updates in your inbox"
+            placeholder="E-mail Address"
+            loading={isSubscribing}
+            validate={string()
+              .required('Please enter an email.')
+              .email('Please enter a valid email.')}
+            onSubmit={async ({ value, resetForm }) => {
+              setIsSubscribing(true);
+              const response = await fetch('/.netlify/functions/subscribe', {
+                headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                },
+                method: 'POST',
+                body: JSON.stringify({ email: value }),
+              });
+              setIsSubscribing(false);
+              if (response.status === 200) {
+                resetForm();
+                toast({
+                  message:
+                    "Your email has been added successfully to our list. We'll keep you updated with new blog posts as they happen.",
+                  timeout: 6000,
+                });
+              }
+              if (response.status !== 200) {
+                toast({
+                  type: 'error',
+                  message:
+                    'Something went wrong. If this continues, please contact us.',
+                });
+              }
+            }}
+          />
         </Sidebar>
       </Content>
     </Layout>
