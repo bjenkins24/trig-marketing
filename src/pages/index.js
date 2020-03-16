@@ -29,7 +29,7 @@ const Hero = styled.div`
   padding: 4.8rem 3.2rem 7.2rem;
   height: auto;
   @media ${device.tabletPortraitUp} {
-    height: 85.6rem;
+    height: 93.6rem;
     padding: 4.8rem 3.2rem 0;
   }
   @media (min-width: 600px) and (max-width: 715px) {
@@ -125,8 +125,9 @@ const Index = ({ data }) => {
       />
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
-          <MainHeading color="pc">Automatic Knowledge Organizer</MainHeading>
-          <Description as="p" color="pc">
+          <MainHeading color="pc">Coming Fall 2020</MainHeading>
+          <MainHeading color="pc">Automatic Document Organizer</MainHeading>
+          <Description as="p" color="pc" id="subscribe">
             Stop endlessly searching for files, links, or documents. Never
             create another folder or tag again. Throw all of your company
             knowledge in, and Trig will do the rest.
@@ -150,11 +151,11 @@ const Index = ({ data }) => {
               `}
               as="p"
             >
-              Trig is scheduled to release in 2020. Add your email below and
-              we&apos;ll keep you updated!
+              Add your email to know when we release!
             </BodyBig>
             <StringFieldWithButtonForm
               buttonContent="Get Updates"
+              type="email"
               buttonProps={{ variant: 's' }}
               width="100%"
               placeholder="E-mail Address"
@@ -304,13 +305,13 @@ const Index = ({ data }) => {
             </BodyBig>
             <Button
               forwardedAs={Link}
-              to="/get-started"
+              to="/#subscribe"
               css={`
                 padding: 0 3.2rem;
               `}
               size="hg"
             >
-              Get a Lifetime Subscription
+              Get Release Updates
             </Button>
           </FeatureContainer>
         </Section>
@@ -368,13 +369,13 @@ const Index = ({ data }) => {
             <Huge>Ideas &amp; Questions</Huge>
             <Button
               forwardedAs={Link}
-              to="/get-started"
+              to="/#subscribe"
               size="hg"
               css={`
                 padding: 0 6.4rem;
               `}
             >
-              Get Lifetime Subscription
+              Get Release Updates
             </Button>
           </div>
           <div
@@ -402,7 +403,9 @@ const Index = ({ data }) => {
               discoverable.
             </BodyBig>
             <Button
+              as={Link}
               size="hg"
+              to="/#subscribe"
               css={`
                 padding: 0 6.4rem;
                 @media ${device.desktopUp} {
@@ -410,7 +413,7 @@ const Index = ({ data }) => {
                 }
               `}
             >
-              Get a Lifetime Subscription
+              Get Release Updates
             </Button>
           </div>
         </Section>
