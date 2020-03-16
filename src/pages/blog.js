@@ -158,7 +158,7 @@ const Blog = ({ data }) => {
                 text-align: center;
               `}
             >
-              Automatic Knowledge Organizer
+              Automatic Document Organizer
             </Heading1>
             <Body1
               color="pc"

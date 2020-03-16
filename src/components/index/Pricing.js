@@ -115,8 +115,8 @@ const Pricing = props => {
           <ListItem>Slack Integration</ListItem>
           <ListItem>50GB File Storage/User</ListItem>
         </List>
-        <SecondaryButton forwardedAs={Link} to="/get-started">
-          Get a Lifetime Subscription
+        <SecondaryButton forwardedAs={Link} to="/#subscribe">
+          Get Release Updates
         </SecondaryButton>
       </Block>
       <Block
@@ -159,7 +159,7 @@ const Pricing = props => {
         </List>
         <Button
           forwardedAs={Link}
-          to="/get-started"
+          to="/#subscribe"
           size="lg"
           css={`
             margin-top: 4.8rem;
@@ -168,7 +168,7 @@ const Pricing = props => {
             }
           `}
         >
-          Get a Lifetime Subscription
+          Get Release Updates
         </Button>
       </Block>
       <Block

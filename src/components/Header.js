@@ -168,8 +168,8 @@ const Header = ({ isLightTheme, ...restProps }) => {
           <NavigationItem isLight={isLight} weight="bold">
             <BlogLink />
           </NavigationItem>
-          <Button as={Link} to="/get-started">
-            Get Lifetime Subscription
+          <Button as={Link} to="/#subscribe">
+            Get Release Updates
           </Button>
         </Nav>
       </Container>
@@ -213,7 +213,7 @@ const Header = ({ isLightTheme, ...restProps }) => {
               isLight={isLight}
               onClick={closeMobileMenu}
             >
-              <Link to="/get-started">Get Started</Link>
+              <Link to="/#subscribe">Get Release Updates</Link>
             </MobileMenuNavItem>
           </MobileMenuNav>
         </MobileMenuContent>

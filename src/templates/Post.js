@@ -26,7 +26,7 @@ const StickyContainer = styled.div`
 const StickySidebar = styled.div`
   position: sticky;
   top: 10rem;
-  width: 13rem;
+  width: 16rem;
 `;
 
 const ShareContainer = styled.div`
@@ -179,7 +179,7 @@ const Post = ({ data: { prismicPost }, location }) => {
                 margin: 0;
               `}
             >
-              Automatic Knowledge Organizer
+              Automatic Document Organizer
             </Body2>
             <Body2
               forwardedAs="p"
@@ -188,7 +188,7 @@ const Post = ({ data: { prismicPost }, location }) => {
                 margin: 0 0 0.8rem;
               `}
             >
-              Knowledge Base for Teams
+              Knowledge Management for Teams
             </Body2>
             <Button
               forwardedAs={Link}
