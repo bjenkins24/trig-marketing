@@ -116,7 +116,7 @@ const Pricing = props => {
           <ListItem>50GB File Storage/User</ListItem>
         </List>
         <SecondaryButton forwardedAs={Link} to="/get-started">
-          Get Started
+          Get a Lifetime Subscription
         </SecondaryButton>
       </Block>
       <Block
@@ -168,7 +168,7 @@ const Pricing = props => {
             }
           `}
         >
-          Get Started
+          Get a Lifetime Subscription
         </Button>
       </Block>
       <Block

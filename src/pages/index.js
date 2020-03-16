@@ -310,7 +310,7 @@ const Index = ({ data }) => {
               `}
               size="hg"
             >
-              Get Organized
+              Get a Lifetime Subscription
             </Button>
           </FeatureContainer>
         </Section>
@@ -374,7 +374,7 @@ const Index = ({ data }) => {
                 padding: 0 6.4rem;
               `}
             >
-              Get Started
+              Get Lifetime Subscription
             </Button>
           </div>
           <div
@@ -410,7 +410,7 @@ const Index = ({ data }) => {
                 }
               `}
             >
-              Get Started
+              Get a Lifetime Subscription
             </Button>
           </div>
         </Section>

@@ -13,14 +13,16 @@ import useSiteMetadata from '../helpers/hooks/useSiteMetadata';
 const headPropTypes = {
   socialImageUrl: PropTypes.string,
   pageTitle: PropTypes.string,
+  metaDescription: PropTypes.string,
 };
 
 const defaultProps = {
   socialImageUrl: '',
   pageTitle: '',
+  metaDescription: '',
 };
 
-const Head = ({ pageTitle, socialImageUrl }) => {
+const Head = ({ pageTitle, metaDescription, socialImageUrl }) => {
   const {
     siteTitle,
     siteDescription,
@@ -55,9 +57,18 @@ const Head = ({ pageTitle, socialImageUrl }) => {
             <meta content={pageTitleFull} property="og:title" />
             <meta content={pageTitleFull} name="twitter:title" />
             <title>{pageTitleFull}</title>
-            <meta content={siteDescription} name="description" />
-            <meta content={siteDescription} property="og:description" />
-            <meta content={siteDescription} name="twitter:description" />
+            <meta
+              content={metaDescription || siteDescription}
+              name="description"
+            />
+            <meta
+              content={metaDescription || siteDescription}
+              property="og:description"
+            />
+            <meta
+              content={metaDescription || siteDescription}
+              name="twitter:description"
+            />
             <meta content="yes" name="apple-mobile-web-app-capable" />
             <meta
               content="black-translucent"

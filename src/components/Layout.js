@@ -9,17 +9,19 @@ const layoutTypes = {
   children: PropTypes.node.isRequired,
   headerProps: PropTypes.shape(headerTypes),
   title: PropTypes.string,
+  metaDescription: PropTypes.string,
 };
 
 const defaultProps = {
   headerProps: {},
   title: '',
+  metaDescription: '',
 };
 
-const Layout = ({ children, title, headerProps }) => (
+const Layout = ({ children, title, headerProps, metaDescription }) => (
   <>
     <GlobalStyle />
-    <Head pageTitle={title} />
+    <Head pageTitle={title} metaDescription={metaDescription} />
     <Header {...headerProps} />
     {children}
     <Footer />
