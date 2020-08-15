@@ -57,5 +57,12 @@ module.exports = {
         defaultDataLayer: { platform: 'gatsby' },
       },
     },
+    {
+      resolve: 'gatsby-plugin-copy-files',
+      options: {
+        source: `${__dirname}/_headers`,
+        destination: ''
+      }
+    },
   ],
 };
