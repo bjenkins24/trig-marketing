@@ -38,14 +38,26 @@ const Hero = styled.div`
 `;
 
 const MainHeading = styled(Huge)`
+  font-size: 3.6rem;
   margin: 0 auto 1.6rem;
   max-width: 73rem;
   @media ${device.tabletPortraitUp} {
     max-width: none;
     margin-bottom: 1.6rem;
+    span {
+      display: block;
+    }
   }
   @media (min-width: 815px) and (max-width: 1003px) {
+    font-size: 4.8rem;
     max-width: 73rem;
+    span {
+      display: inline;
+    }
+  }
+
+  @media ${device.tabletLandscapeUp} {
+    font-size: 4.8rem;
   }
 `;
 
@@ -107,7 +119,7 @@ const SubHeading = styled(Huge)`
     margin: 16rem 0 3.2rem;
   }
   @media ${device.desktopUp} {
-    margin: 12.8rem 0 3.2rem;
+    margin: 16rem 0 3.2rem;
   }
 `;
 
@@ -129,7 +141,7 @@ const Index = ({ data }) => {
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">
-            The Thread that Connects Your Team&apos;s Apps
+            The Thread that Connects <span>Your Team&apos;s Apps Together</span>
           </MainHeading>
           <Description as="p" color="pc" id="subscribe">
             <span>
@@ -142,11 +154,14 @@ const Index = ({ data }) => {
             css={`
               margin: 0 auto;
               width: 40rem;
+              text-align: left;
               @media ${device.tabletPortraitUp} {
                 width: 50rem;
+                margin-bottom: 12rem;
+              }
+              @media ${device.tabletLandscapeUp} {
                 margin-bottom: 8rem;
               }
-              text-align: left;
             `}
           >
             <BodyBig
