@@ -135,7 +135,7 @@ const Blog = ({ data }) => {
                 title={postData.title.text}
                 summary={postData.summary.html}
                 imageProps={{
-                  fluid: postData.image.localFile.childImageSharp.fluid,
+                  fluid: postData.image.fluid.src,
                   alt: postData.image.alt,
                 }}
               />
@@ -228,6 +228,14 @@ Blog.propTypes = blogTypes;
 
 export default Blog;
 
+// localFile {
+//   childImageSharp {
+//     fluid(maxHeight: 200, pngQuality: 100, webpQuality: 100) {
+//     ...GatsbyImageSharpFluid_withWebp_noBase64
+//     }
+//   }
+// }
+
 export const query = graphql`
   query AllPosts {
     allPrismicPost(sort: { fields: data___date, order: DESC }) {
@@ -236,12 +244,8 @@ export const query = graphql`
           data {
             image {
               alt
-              localFile {
-                childImageSharp {
-                  fluid(maxHeight: 200, pngQuality: 100, webpQuality: 100) {
-                    ...GatsbyImageSharpFluid_withWebp_noBase64
-                  }
-                }
+              fluid {
+                src
               }
             }
             summary {

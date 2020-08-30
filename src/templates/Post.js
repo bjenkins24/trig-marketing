@@ -139,10 +139,8 @@ const postTypes = {
         }),
         image: PropTypes.shape({
           alt: PropTypes.string,
-          localFile: PropTypes.shape({
-            childImageSharp: PropTypes.shape({
-              fluid: PropTypes.object,
-            }),
+          fluid: PropTypes.shape({
+            src: PropTypes.string,
           }),
         }),
       }),
@@ -167,7 +165,7 @@ const Post = ({ data: { prismicPost }, location }) => {
       <ImgStyled
         alt={data.image.alt}
         durationFadeIn={300}
-        fluid={data.image.localFile.childImageSharp.fluid}
+        fluid={data.image.fluid.src}
       />
       <Content>
         <StickyContainer>
@@ -246,6 +244,13 @@ Post.propTypes = postTypes;
 
 export default Post;
 
+// localFile {
+//   childImageSharp {
+//     fluid(maxHeight: 410, pngQuality: 100, webpQuality: 100) {
+//       ...GatsbyImageSharpFluid_withWebp_noBase64
+//     }
+//   }
+// }
 export const pageQuery = graphql`
   query PostBySlug($uid: String!) {
     prismicPost(uid: { eq: $uid }) {
@@ -258,12 +263,8 @@ export const pageQuery = graphql`
         }
         image {
           alt
-          localFile {
-            childImageSharp {
-              fluid(maxHeight: 410, pngQuality: 100, webpQuality: 100) {
-                ...GatsbyImageSharpFluid_withWebp_noBase64
-              }
-            }
+          fluid {
+            src
           }
         }
         content {

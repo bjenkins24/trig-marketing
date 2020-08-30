@@ -3,7 +3,6 @@ require('dotenv').config({
 });
 const proxy = require('http-proxy-middleware');
 const siteConfig = require('./site-config');
-const postSchema = require('./src/prismic_schemas/post.json');
 
 module.exports = {
   siteMetadata: {
@@ -43,7 +42,8 @@ module.exports = {
         accessToken: `${process.env.PRISMIC_API_KEY}`,
         linkResolver: () => post => `/${post.uid}`,
         schemas: {
-          post: postSchema,
+          // eslint-disable-next-line
+          post: require('./src/prismic_schemas/post.json'),
         },
       },
     },

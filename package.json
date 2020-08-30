@@ -20,6 +20,7 @@
     "start:app": "npm run develop",
     "start:lambda": "netlify-lambda serve src/lambda",
     "serve": "gatsby serve",
+    "justclean": "gatsby clean",
     "clean": "gatsby clean && rimraf package-lock.json && rimraf node_modules && npm install"
   },
   "husky": {
