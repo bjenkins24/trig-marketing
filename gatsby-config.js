@@ -3,6 +3,7 @@ require('dotenv').config({
 });
 const proxy = require('http-proxy-middleware');
 const siteConfig = require('./site-config');
+const postSchema = require('./src/prismic_schemas/post.json');
 
 module.exports = {
   siteMetadata: {
@@ -41,6 +42,9 @@ module.exports = {
         repositoryName: `trig-app`,
         accessToken: `${process.env.PRISMIC_API_KEY}`,
         linkResolver: () => post => `/${post.uid}`,
+        schemas: {
+          post: postSchema,
+        },
       },
     },
     {
@@ -61,8 +65,8 @@ module.exports = {
       resolve: 'gatsby-plugin-copy-files',
       options: {
         source: `${__dirname}/_headers`,
-        destination: ''
-      }
+        destination: '',
+      },
     },
   ],
 };

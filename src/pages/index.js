@@ -30,7 +30,7 @@ const Hero = styled.div`
   height: auto;
   @media ${device.tabletPortraitUp} {
     height: 93.6rem;
-    padding: 4.8rem 3.2rem 0;
+    padding: 7.2rem 3.2rem 0;
   }
   @media (min-width: 600px) and (max-width: 715px) {
     height: 80rem;
@@ -58,6 +58,9 @@ const Description = styled(BodyBiggest)`
   @media ${device.tabletLandscapeUp} {
     width: 100%;
     max-width: 87rem;
+    span {
+      display: block;
+    }
   }
 `;
 
@@ -125,20 +128,23 @@ const Index = ({ data }) => {
       />
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
-          <MainHeading color="pc">Coming Fall 2020</MainHeading>
-          <MainHeading color="pc">Automatic Document Organizer</MainHeading>
+          <MainHeading color="pc">
+            The Thread that Connects Your Team&apos;s Apps
+          </MainHeading>
           <Description as="p" color="pc" id="subscribe">
-            Stop endlessly searching for files, links, or documents. Never
-            create another folder or tag again. Throw all of your company
-            knowledge in, and Trig will do the rest.
+            <span>
+              Can&apos;t find that document? Stop endlessly searching.{' '}
+            </span>
+            Connect your team&apos;s apps and let Trig do the rest.
           </Description>
+          <Heading1 color="pc">Coming Fall 2020</Heading1>
           <div
             css={`
               margin: 0 auto;
               width: 40rem;
               @media ${device.tabletPortraitUp} {
                 width: 50rem;
-                margin-bottom: 6.4rem;
+                margin-bottom: 8rem;
               }
               text-align: left;
             `}
@@ -219,18 +225,16 @@ const Index = ({ data }) => {
               margin: 0 auto 3.2rem;
             `}
           >
-            <SectionTitle>
-              Store all company knowledge in one place
-            </SectionTitle>
+            <SectionTitle>Store all team knowledge in one place</SectionTitle>
             <BodyBig as="p">
-              Store files and links, create documents, and sync with existing
-              services like Google Drive, Dropbox, and Slack. Anything you can
-              think of can be stored in {siteTitle} as cards.
+              Anything you can think of can be stored in {siteTitle} as cards.
+              Connect to dozens of services and store all of your links and
+              files.
             </BodyBig>
             <BodyBig as="p">
-              There&apos;s no need to stop using your current knowledge base. No
-              migrations needed. Trig will work with everything you have and
-              make it instantly discoverable.
+              There&apos;s no need to stop using your current knowledge base or
+              tools. No migrations needed. Trig will work with everything you
+              have <em>and</em> make it instantly discoverable.
             </BodyBig>
             <BodyBig as="p">
               Empower all your teammates to find what they need exactly when
@@ -288,8 +292,9 @@ const Index = ({ data }) => {
             </BodyBig>
 
             <BodyBig as="p">
-              Search through all of your documents in one place. You&apos;ll
-              even be able to find the exact location of words within documents.
+              Search through all of your apps and documents in one place.
+              You&apos;ll even be able to find the exact location of words
+              within documents.
             </BodyBig>
             <BodyBig
               as="p"
@@ -297,11 +302,10 @@ const Index = ({ data }) => {
                 margin-bottom: 3.2rem;
               `}
             >
-              Search isn&apos;t where it ends because you don&apos;t know what
-              you don&apos;t know. {siteTitle} also uses AI to surface and tag
-              your documents automatically. It helps you find what you need
-              before you even know you need it. It&apos;s like your
-              company&apos;s full-time librarian.
+              Search isn&apos;t where it ends. {siteTitle} also uses AI to
+              surface and tag your cards automatically. It helps you find what
+              you need before you know you need it. It&apos;s like your
+              team&apos;s full-time librarian.
             </BodyBig>
             <Button
               forwardedAs={Link}
@@ -326,8 +330,8 @@ const Index = ({ data }) => {
               Share collections of files, links, and documents
             </SectionTitle>
             <BodyBig as="p">
-              Sharing collections of documents is easy with decks. You can add
-              cards to a deck or let {siteTitle} suggest groups of cards to
+              Sharing collections of cards is easy by creating a deck. You can
+              add cards to a deck or let {siteTitle} suggest groups of cards to
               automatically add to a deck.
             </BodyBig>
             <BodyBig as="p">
@@ -392,15 +396,12 @@ const Index = ({ data }) => {
             </SectionTitle>
             <BodyBig as="p">
               Team members can post questions and {siteTitle} will direct them
-              to the right people in your company. Answers then stay in your
-              pool of knowledge for others to find when they need it.
+              to the right people in your team. Answers then stay in your pool
+              of knowledge for others to find when they need it.
             </BodyBig>
             <BodyBig as="p">
               {siteTitle} also lets team members post ideas that administrators
-              can review or open up for votes. Trig is powerful because
-              everything from questions and ideas to files and links are stored
-              in Trig as cards and all cards are instantly searchable and
-              discoverable.
+              can review or open up for votes.
             </BodyBig>
             <Button
               as={Link}

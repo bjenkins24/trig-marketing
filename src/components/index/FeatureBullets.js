@@ -93,7 +93,7 @@ const FeatureBullets = () => {
           <StyledIcon type="aggregate" size={4.8} color="bs.200" />
         )}
         title="One Place for Everything"
-        description="Throw in your team's files, links, and documents, or connect to apps like Google Drive, Dropbox, or Slack."
+        description="Pull in docs from Google Drive, issues from Jira, conversations in Zendesk, and connect countless other apps."
       />
       <BulletInfo
         color="a1"
@@ -109,7 +109,7 @@ const FeatureBullets = () => {
           />
         )}
         title="Auto Organizing"
-        description={`No endless folder nesting. ${siteTitle} organizes for you. Find what you need when you need it.`}
+        description={`${siteTitle} organizes this mess of content for you. All of your team's data becomes instantly searchable.`}
       />
       <BulletInfo
         color="a3"
@@ -125,7 +125,7 @@ const FeatureBullets = () => {
           />
         )}
         title="Share With Your Team"
-        description="Share collections of knowledge with decks. Notify everyone on your team when there's anything new."
+        description="Share collections of knowledge with your team. Notify everyone on your team when there's anything new."
       />
     </Container>
   );
