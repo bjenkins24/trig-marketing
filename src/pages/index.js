@@ -149,7 +149,7 @@ const Index = ({ data }) => {
             </span>
             Connect your team&apos;s apps and let Trig do the rest.
           </Description>
-          <Heading1 color="pc">Coming February 2021</Heading1>
+          <Heading1 color="pc">Coming May 2021</Heading1>
           <div
             css={`
               margin: 0 auto;

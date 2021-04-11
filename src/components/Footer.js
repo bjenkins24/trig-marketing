@@ -113,7 +113,7 @@ const Footer = props => {
             `}
           >
             <Navigation>
-              <NavigationTitle>Keep in Touch</NavigationTitle>
+              <NavigationTitle>Stay in Touch</NavigationTitle>
               <NavigationItem>
                 <Button
                   variant="inline"
@@ -125,6 +125,15 @@ const Footer = props => {
               </NavigationItem>
               <NavigationItem>
                 <Link to="/blog">Blog</Link>
+              </NavigationItem>
+            </Navigation>
+            <Navigation>
+              <NavigationTitle>Quick Links</NavigationTitle>
+              <NavigationItem>
+                <Link to="/privacy-policy">Privacy Policy</Link>
+              </NavigationItem>
+              <NavigationItem>
+                <Link to="/terms-of-service">Terms of Service</Link>
               </NavigationItem>
             </Navigation>
           </NavigationMenu>
