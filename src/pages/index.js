@@ -146,10 +146,12 @@ const Index = ({ data }) => {
             Find and discover anything. Instantly.
           </Description>
           <Button
-            size="hg"
+            forwardedAs={Link}
+            to={`${process.env.APP_URL}/register`}
             css={`
               width: 259px;
             `}
+            size="hg"
           >
             Try {siteTitle} for Free
           </Button>
@@ -222,7 +224,7 @@ const Index = ({ data }) => {
             </BodyBig>
             <Button
               forwardedAs={Link}
-              to="https://app.trytrig.com/register"
+              to={`${process.env.APP_URL}/register`}
               css={`
                 padding: 0 3.2rem;
               `}

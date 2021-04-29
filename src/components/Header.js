@@ -108,6 +108,10 @@ const BlogLink = () => {
   return <Link to="/blog">Blog</Link>;
 };
 
+const LoginLink = () => {
+  return <Link to={process.env.APP_URL}>Log In</Link>;
+};
+
 export const headerTypes = {
   isLightTheme: PropTypes.bool,
 };
@@ -168,8 +172,11 @@ const Header = ({ isLightTheme, ...restProps }) => {
           <NavigationItem isLight={isLight} weight="bold">
             <BlogLink />
           </NavigationItem>
-          <Button as={Link} to="/#subscribe">
-            Get Release Updates
+          <NavigationItem isLight={isLight} weight="bold">
+            <LoginLink />
+          </NavigationItem>
+          <Button as="a" href={`${process.env.APP_URL}/register`}>
+            Try Now
           </Button>
         </Nav>
       </Container>
