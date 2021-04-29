@@ -9,11 +9,8 @@ import {
   BodyBig,
   Heading1,
   Button,
-  StringFieldWithButtonForm,
-  toast,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
-import { string } from 'yup';
 import Layout from '../components/Layout';
 import Pricing from '../components/index/Pricing';
 import Section from '../components/index/Section';
@@ -130,7 +127,6 @@ const indexTypes = {
 const Index = ({ data }) => {
   const { siteTitle } = useSiteMetadata();
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-  const [isSubscribing, setIsSubscribing] = useState(false);
 
   return (
     <>
@@ -141,78 +137,22 @@ const Index = ({ data }) => {
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">
-            The Thread that Connects <span>Your Team&apos;s Apps Together</span>
+            Automatically Organize Your Digital Life
           </MainHeading>
           <Description as="p" color="pc" id="subscribe">
             <span>
               Can&apos;t find that document? Stop endlessly searching.{' '}
             </span>
-            Connect your team&apos;s apps and let Trig do the rest.
+            Find and discover anything. Instantly.
           </Description>
-          <Heading1 color="pc">Coming May 2021</Heading1>
-          <div
+          <Button
+            size="hg"
             css={`
-              margin: 0 auto;
-              width: 40rem;
-              text-align: left;
-              @media ${device.tabletPortraitUp} {
-                width: 50rem;
-                margin-bottom: 12rem;
-              }
-              @media ${device.tabletLandscapeUp} {
-                margin-bottom: 8rem;
-              }
+              width: 259px;
             `}
           >
-            <BodyBig
-              color="pc"
-              css={`
-                text-align: center;
-                margin-bottom: 0.8rem;
-              `}
-              as="p"
-            >
-              Add your email to know when we release!
-            </BodyBig>
-            <StringFieldWithButtonForm
-              buttonContent="Get Updates"
-              type="email"
-              buttonProps={{ variant: 's' }}
-              width="100%"
-              placeholder="E-mail Address"
-              loading={isSubscribing}
-              validate={string()
-                .required('Please enter an email.')
-                .email('Please enter a valid email.')}
-              onSubmit={async ({ value, resetForm }) => {
-                setIsSubscribing(true);
-                const response = await fetch('/.netlify/functions/subscribe', {
-                  headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                  },
-                  method: 'POST',
-                  body: JSON.stringify({ email: value }),
-                });
-                setIsSubscribing(false);
-                if (response.status === 200) {
-                  resetForm();
-                  toast({
-                    message:
-                      "Thank you for your interest in Trig. Your email has been added successfully to our list. You'll be the first to know when we launch!",
-                    timeout: 6000,
-                  });
-                }
-                if (response.status !== 200) {
-                  toast({
-                    type: 'error',
-                    message:
-                      'Something went wrong. If this continues, please contact us.',
-                  });
-                }
-              }}
-            />
-          </div>
+            Try {siteTitle} for Free
+          </Button>
           <div
             css={`
               display: none;
@@ -234,48 +174,7 @@ const Index = ({ data }) => {
         <Section>
           <FeatureBullets />
         </Section>
-        <Section colored fullPadding>
-          <FeatureContainer
-            css={`
-              margin: 0 auto 3.2rem;
-            `}
-          >
-            <SectionTitle>Store all team knowledge in one place</SectionTitle>
-            <BodyBig as="p">
-              Anything you can think of can be stored in {siteTitle} as cards.
-              Connect to dozens of services and store all of your links and
-              files.
-            </BodyBig>
-            <BodyBig as="p">
-              There&apos;s no need to stop using your current knowledge base or
-              tools. No migrations needed. Trig will work with everything you
-              have <em>and</em> make it instantly discoverable.
-            </BodyBig>
-            <BodyBig as="p">
-              Empower all your teammates to find what they need exactly when
-              they need it.
-            </BodyBig>
-          </FeatureContainer>
-          <ImgContainer
-            css={`
-              max-width: 42.4rem;
-            `}
-          >
-            <Img
-              css={`
-                align-self: center;
-                margin: 0 auto;
-                @media ${device.desktopUp} {
-                  margin: 0;
-                }
-              `}
-              alt={`Screenshot of Cards in ${siteTitle}`}
-              durationFadeIn={300}
-              fluid={data.card.childImageSharp.fluid}
-            />
-          </ImgContainer>
-        </Section>
-        <Section fullPadding>
+        <Section fullPadding colored>
           <ImgContainer
             css={`
               max-width: 45rem;
@@ -301,9 +200,8 @@ const Index = ({ data }) => {
           >
             <SectionTitle>Organizing is a thing of the past</SectionTitle>
             <BodyBig as="p">
-              Think about it. No more folders. No more tagging. Actually, Trig
-              has no manual organizing features at all. Why? Because you
-              won&apos;t need them.
+              Trig has no manual organizing features at all. No folders and no
+              manual tagging. Why? Because you won&apos;t need them.
             </BodyBig>
 
             <BodyBig as="p">
@@ -317,123 +215,24 @@ const Index = ({ data }) => {
                 margin-bottom: 3.2rem;
               `}
             >
-              Search isn&apos;t where it ends. {siteTitle} also uses AI to
-              surface and tag your cards automatically. It helps you find what
-              you need before you know you need it. It&apos;s like your
-              team&apos;s full-time librarian.
+              Search isn&apos;t where it ends. {siteTitle} uses AI to surface
+              and tag your cards automatically. It helps you find what you need
+              before you know you need it. It&apos;s like your own full-time
+              librarian.
             </BodyBig>
             <Button
               forwardedAs={Link}
-              to="/#subscribe"
+              to="https://app.trytrig.com/register"
               css={`
                 padding: 0 3.2rem;
               `}
               size="hg"
             >
-              Get Release Updates
+              Try {siteTitle} Now
             </Button>
           </FeatureContainer>
         </Section>
-        <Section colored fullPadding>
-          <FeatureContainer
-            css={`
-              margin: 0 auto 3.2rem;
-              align-self: center;
-            `}
-          >
-            <SectionTitle>
-              Share collections of files, links, and documents
-            </SectionTitle>
-            <BodyBig as="p">
-              Sharing collections of cards is easy by creating a deck. You can
-              add cards to a deck or let {siteTitle} suggest groups of cards to
-              automatically add to a deck.
-            </BodyBig>
-            <BodyBig as="p">
-              Members of your team that follow your deck will be notified
-              immediately when you add a new card. You can link to your deck,
-              make it public, or even embed it in your existing intranet.
-            </BodyBig>
-          </FeatureContainer>
-          <ImgContainer
-            css={`
-              width: 51.5rem;
-            `}
-          >
-            <Img
-              css={`
-                align-self: center;
-                margin: 0 auto;
-                @media ${device.desktopUp} {
-                  margin: 0;
-                }
-              `}
-              alt={`Screenshot of Decks in ${siteTitle}`}
-              durationFadeIn={300}
-              fluid={data.deck.childImageSharp.fluid}
-            />
-          </ImgContainer>
-        </Section>
-        <Section fullPadding>
-          <div
-            css={`
-              display: none;
-              @media ${device.desktopUp} {
-                display: block;
-                width: 41.8rem;
-                align-self: center;
-              }
-            `}
-          >
-            <Huge>Ideas &amp; Questions</Huge>
-            <Button
-              forwardedAs={Link}
-              to="/#subscribe"
-              size="hg"
-              css={`
-                padding: 0 6.4rem;
-              `}
-            >
-              Get Release Updates
-            </Button>
-          </div>
-          <div
-            css={`
-              width: 51.1rem;
-              margin: 0 auto;
-              @media ${device.desktopUp} {
-                margin: 0;
-              }
-            `}
-          >
-            <SectionTitle>
-              Get Your Employee&apos;s Questions Answered
-            </SectionTitle>
-            <BodyBig as="p">
-              Team members can post questions and {siteTitle} will direct them
-              to the right people in your team. Answers then stay in your pool
-              of knowledge for others to find when they need it.
-            </BodyBig>
-            <BodyBig as="p">
-              {siteTitle} also lets team members post ideas that administrators
-              can review or open up for votes.
-            </BodyBig>
-            <Button
-              as={Link}
-              size="hg"
-              to="/#subscribe"
-              css={`
-                padding: 0 6.4rem;
-                @media ${device.desktopUp} {
-                  display: none;
-                }
-              `}
-            >
-              Get Release Updates
-            </Button>
-          </div>
-        </Section>
-        <Section fullPadding colored title="Pricing" id="pricing">
+        <Section fullPadding title="Pricing" id="pricing">
           <Pricing />
         </Section>
         <div
