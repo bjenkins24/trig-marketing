@@ -9,11 +9,8 @@ import {
   BodyBig,
   Heading1,
   Button,
-  StringFieldWithButtonForm,
-  toast,
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
-import { string } from 'yup';
 import Layout from '../components/Layout';
 import Pricing from '../components/index/Pricing';
 import Section from '../components/index/Section';
@@ -27,52 +24,59 @@ const Hero = styled.div`
   background: ${({ theme }) => theme.p};
   text-align: center;
   padding: 4.8rem 3.2rem 7.2rem;
-  height: auto;
+  height: 37rem;
   @media ${device.tabletPortraitUp} {
-    height: 93.6rem;
+    height: 60rem;
     padding: 7.2rem 3.2rem 0;
   }
-  @media (min-width: 600px) and (max-width: 715px) {
-    height: 80rem;
+  @media ${device.tabletLandscapeUp} {
+    height: 82rem;
+    padding: 7.2rem 3.2rem 0;
+  }
+  @media ${device.desktopUp} {
+    height: 94rem;
   }
 `;
 
 const MainHeading = styled(Huge)`
-  font-size: 3.6rem;
+  font-size: 3.2rem;
   margin: 0 auto 1.6rem;
   max-width: 73rem;
-  @media ${device.tabletPortraitUp} {
-    max-width: none;
-    margin-bottom: 1.6rem;
-    span {
-      display: block;
-    }
+  & span {
+    display: block;
   }
-  @media (min-width: 815px) and (max-width: 1003px) {
-    font-size: 4.8rem;
-    max-width: 73rem;
-    span {
-      display: inline;
-    }
+  @media ${device.tabletPortraitUp} {
+    font-size: 3.8rem;
   }
 
   @media ${device.tabletLandscapeUp} {
     font-size: 4.8rem;
   }
+  
+  @media ${device.desktopUp} {
+      font-size: 5.6rem;
+  }
+}
 `;
 
 const Description = styled(BodyBiggest)`
   width: 100%;
-  margin: 0 auto 6.4rem;
+  margin: 0 auto ${({ theme }) => theme.space[4]}px;
+  span {
+    display: block;
+  }
+  font-size: 1.6rem;
   @media ${device.tabletPortraitUp} {
     width: 90%;
+    font-size: 2rem;
   }
   @media ${device.tabletLandscapeUp} {
     width: 100%;
-    max-width: 87rem;
-    span {
-      display: block;
-    }
+    font-size: 2.4rem;
+    margin-bottom: ${({ theme }) => theme.space[5]}px;
+  }
+  @media ${device.desktopUp} {
+    margin-bottom: ${({ theme }) => theme.space[5] + theme.space[1]}px;
   }
 `;
 
@@ -105,10 +109,6 @@ const ImgContainer = styled.div`
   display: block;
 `;
 
-const ImgStyled = styled(Img)`
-  margin-bottom: ${bottomMargin};
-`;
-
 const SubHeading = styled(Huge)`
   text-align: center;
   margin-top: 6.4rem;
@@ -130,7 +130,6 @@ const indexTypes = {
 const Index = ({ data }) => {
   const { siteTitle } = useSiteMetadata();
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-  const [isSubscribing, setIsSubscribing] = useState(false);
 
   return (
     <>
@@ -141,141 +140,67 @@ const Index = ({ data }) => {
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">
-            The Thread that Connects <span>Your Team&apos;s Apps Together</span>
+            Automatically Organize <span>Your Digital Life</span>
           </MainHeading>
           <Description as="p" color="pc" id="subscribe">
             <span>
               Can&apos;t find that document? Stop endlessly searching.{' '}
             </span>
-            Connect your team&apos;s apps and let Trig do the rest.
+            <span>Find and discover anything. Instantly.</span>
           </Description>
-          <Heading1 color="pc">Coming May 2021</Heading1>
-          <div
+          <Button
+            forwardedAs={Link}
+            to={`${process.env.APP_URL}/register`}
             css={`
-              margin: 0 auto;
-              width: 40rem;
-              text-align: left;
-              @media ${device.tabletPortraitUp} {
-                width: 50rem;
-                margin-bottom: 12rem;
-              }
+              width: 259px;
+              margin-bottom: ${({ theme }) => theme.space[4]}px;
               @media ${device.tabletLandscapeUp} {
-                margin-bottom: 8rem;
+                margin-bottom: ${({ theme }) => theme.space[5]}px;
+              }
+              @media ${device.desktopUp} {
+                margin-bottom: ${({ theme }) =>
+                  theme.space[5] + theme.space[1]}px;
               }
             `}
+            size="hg"
           >
-            <BodyBig
-              color="pc"
+            Try {siteTitle} for Free
+          </Button>
+          <div>
+            <span
+              className="wistia_embed wistia_async_fs718sin3z popover=true popoverAnimateThumbnail=true"
               css={`
-                text-align: center;
-                margin-bottom: 0.8rem;
+                & > div > div {
+                  border-radius: 10px;
+                  box-shadow: ${({ theme }) => theme.sh};
+                }
+                display: inline-block;
+                position: relative;
+                height: 180px;
+                width: 300px;
+                @media ${device.tabletPortraitUp} {
+                  height: 325px;
+                  width: 550px;
+                }
+                @media ${device.tabletLandscapeUp} {
+                  height: 450px;
+                  width: 750px;
+                }
+                @media ${device.desktopUp} {
+                  height: 550px;
+                  width: 890px;
+                }
               `}
-              as="p"
             >
-              Add your email to know when we release!
-            </BodyBig>
-            <StringFieldWithButtonForm
-              buttonContent="Get Updates"
-              type="email"
-              buttonProps={{ variant: 's' }}
-              width="100%"
-              placeholder="E-mail Address"
-              loading={isSubscribing}
-              validate={string()
-                .required('Please enter an email.')
-                .email('Please enter a valid email.')}
-              onSubmit={async ({ value, resetForm }) => {
-                setIsSubscribing(true);
-                const response = await fetch('/.netlify/functions/subscribe', {
-                  headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                  },
-                  method: 'POST',
-                  body: JSON.stringify({ email: value }),
-                });
-                setIsSubscribing(false);
-                if (response.status === 200) {
-                  resetForm();
-                  toast({
-                    message:
-                      "Thank you for your interest in Trig. Your email has been added successfully to our list. You'll be the first to know when we launch!",
-                    timeout: 6000,
-                  });
-                }
-                if (response.status !== 200) {
-                  toast({
-                    type: 'error',
-                    message:
-                      'Something went wrong. If this continues, please contact us.',
-                  });
-                }
-              }}
-            />
-          </div>
-          <div
-            css={`
-              display: none;
-              @media ${device.tabletPortraitUp} {
-                max-width: 92.8rem;
-                margin: 0 auto;
-                display: block;
-              }
-            `}
-          >
-            <ImgStyled
-              alt={`Screenshot of ${siteTitle} in a Laptop`}
-              durationFadeIn={300}
-              fluid={data.laptop.childImageSharp.fluid}
-            />
+              &nbsp;
+            </span>
           </div>
         </Hero>
         <SubHeading>What is {siteTitle}?</SubHeading>
         <Section>
           <FeatureBullets />
         </Section>
-        <Section colored fullPadding>
-          <FeatureContainer
-            css={`
-              margin: 0 auto 3.2rem;
-            `}
-          >
-            <SectionTitle>Store all team knowledge in one place</SectionTitle>
-            <BodyBig as="p">
-              Anything you can think of can be stored in {siteTitle} as cards.
-              Connect to dozens of services and store all of your links and
-              files.
-            </BodyBig>
-            <BodyBig as="p">
-              There&apos;s no need to stop using your current knowledge base or
-              tools. No migrations needed. Trig will work with everything you
-              have <em>and</em> make it instantly discoverable.
-            </BodyBig>
-            <BodyBig as="p">
-              Empower all your teammates to find what they need exactly when
-              they need it.
-            </BodyBig>
-          </FeatureContainer>
-          <ImgContainer
-            css={`
-              max-width: 42.4rem;
-            `}
-          >
-            <Img
-              css={`
-                align-self: center;
-                margin: 0 auto;
-                @media ${device.desktopUp} {
-                  margin: 0;
-                }
-              `}
-              alt={`Screenshot of Cards in ${siteTitle}`}
-              durationFadeIn={300}
-              fluid={data.card.childImageSharp.fluid}
-            />
-          </ImgContainer>
-        </Section>
-        <Section fullPadding>
+        <Section fullPadding colored>
           <ImgContainer
             css={`
               max-width: 45rem;
@@ -301,9 +226,8 @@ const Index = ({ data }) => {
           >
             <SectionTitle>Organizing is a thing of the past</SectionTitle>
             <BodyBig as="p">
-              Think about it. No more folders. No more tagging. Actually, Trig
-              has no manual organizing features at all. Why? Because you
-              won&apos;t need them.
+              Trig has no manual organizing features at all. No folders and no
+              manual tagging. Why? Because you won&apos;t need them.
             </BodyBig>
 
             <BodyBig as="p">
@@ -317,123 +241,24 @@ const Index = ({ data }) => {
                 margin-bottom: 3.2rem;
               `}
             >
-              Search isn&apos;t where it ends. {siteTitle} also uses AI to
-              surface and tag your cards automatically. It helps you find what
-              you need before you know you need it. It&apos;s like your
-              team&apos;s full-time librarian.
+              Search isn&apos;t where it ends. {siteTitle} uses AI to surface
+              and tag your cards automatically. It helps you find what you need
+              before you know you need it. It&apos;s like your own full-time
+              librarian.
             </BodyBig>
             <Button
               forwardedAs={Link}
-              to="/#subscribe"
+              to={`${process.env.APP_URL}/register`}
               css={`
                 padding: 0 3.2rem;
               `}
               size="hg"
             >
-              Get Release Updates
+              Try {siteTitle} Now
             </Button>
           </FeatureContainer>
         </Section>
-        <Section colored fullPadding>
-          <FeatureContainer
-            css={`
-              margin: 0 auto 3.2rem;
-              align-self: center;
-            `}
-          >
-            <SectionTitle>
-              Share collections of files, links, and documents
-            </SectionTitle>
-            <BodyBig as="p">
-              Sharing collections of cards is easy by creating a deck. You can
-              add cards to a deck or let {siteTitle} suggest groups of cards to
-              automatically add to a deck.
-            </BodyBig>
-            <BodyBig as="p">
-              Members of your team that follow your deck will be notified
-              immediately when you add a new card. You can link to your deck,
-              make it public, or even embed it in your existing intranet.
-            </BodyBig>
-          </FeatureContainer>
-          <ImgContainer
-            css={`
-              width: 51.5rem;
-            `}
-          >
-            <Img
-              css={`
-                align-self: center;
-                margin: 0 auto;
-                @media ${device.desktopUp} {
-                  margin: 0;
-                }
-              `}
-              alt={`Screenshot of Decks in ${siteTitle}`}
-              durationFadeIn={300}
-              fluid={data.deck.childImageSharp.fluid}
-            />
-          </ImgContainer>
-        </Section>
-        <Section fullPadding>
-          <div
-            css={`
-              display: none;
-              @media ${device.desktopUp} {
-                display: block;
-                width: 41.8rem;
-                align-self: center;
-              }
-            `}
-          >
-            <Huge>Ideas &amp; Questions</Huge>
-            <Button
-              forwardedAs={Link}
-              to="/#subscribe"
-              size="hg"
-              css={`
-                padding: 0 6.4rem;
-              `}
-            >
-              Get Release Updates
-            </Button>
-          </div>
-          <div
-            css={`
-              width: 51.1rem;
-              margin: 0 auto;
-              @media ${device.desktopUp} {
-                margin: 0;
-              }
-            `}
-          >
-            <SectionTitle>
-              Get Your Employee&apos;s Questions Answered
-            </SectionTitle>
-            <BodyBig as="p">
-              Team members can post questions and {siteTitle} will direct them
-              to the right people in your team. Answers then stay in your pool
-              of knowledge for others to find when they need it.
-            </BodyBig>
-            <BodyBig as="p">
-              {siteTitle} also lets team members post ideas that administrators
-              can review or open up for votes.
-            </BodyBig>
-            <Button
-              as={Link}
-              size="hg"
-              to="/#subscribe"
-              css={`
-                padding: 0 6.4rem;
-                @media ${device.desktopUp} {
-                  display: none;
-                }
-              `}
-            >
-              Get Release Updates
-            </Button>
-          </div>
-        </Section>
-        <Section fullPadding colored title="Pricing" id="pricing">
+        <Section fullPadding title="Pricing" id="pricing">
           <Pricing />
         </Section>
         <div

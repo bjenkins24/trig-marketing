@@ -12,7 +12,7 @@ const BulletInfoContainer = styled.div`
     width: 60%;
   }
   @media ${device.tabletLandscapeUp} {
-    width: 32%;
+    width: 37%;
     margin: 0;
   }
 `;
@@ -42,9 +42,15 @@ const bulletInfoTypes = {
   description: PropTypes.string.isRequired,
 };
 
-const BulletInfo = ({ color, renderIcon, title, description }) => {
+const BulletInfo = ({
+  color,
+  renderIcon,
+  title,
+  description,
+  ...restProps
+}) => {
   return (
-    <BulletInfoContainer>
+    <BulletInfoContainer {...restProps}>
       <Bullet color={color}>{renderIcon()}</Bullet>
       <BulletTitle
         as="h3"
@@ -72,7 +78,6 @@ BulletInfo.propTypes = bulletInfoTypes;
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-items: space-between;
   padding: 3.2rem;
   @media ${device.desktopUp} {
     padding: 0;
@@ -93,9 +98,12 @@ const FeatureBullets = () => {
           <StyledIcon type="aggregate" size={4.8} color="bs.200" />
         )}
         title="One Place for Everything"
-        description="Pull in docs from Google Drive, issues from Jira, conversations in Zendesk, and connect countless other apps."
+        description={`Anything on the internet like emails, google docs, and articles can be saved to ${siteTitle}.`}
       />
       <BulletInfo
+        css={`
+          margin-left: auto;
+        `}
         color="a1"
         renderIcon={() => (
           <StyledIcon
@@ -109,23 +117,7 @@ const FeatureBullets = () => {
           />
         )}
         title="Auto Organizing"
-        description={`${siteTitle} organizes this mess of content for you. All of your team's data becomes instantly searchable.`}
-      />
-      <BulletInfo
-        color="a3"
-        renderIcon={() => (
-          <StyledIcon
-            css={`
-              position: relative;
-              left: -0.2rem;
-            `}
-            type="deck"
-            size={4.8}
-            color="bs.200"
-          />
-        )}
-        title="Share With Your Team"
-        description="Share collections of knowledge with your team. Notify everyone on your team when there's anything new."
+        description={`${siteTitle} automatically tags your cards and allows you to search by the content within them. You'll never lose anything again.`}
       />
     </Container>
   );

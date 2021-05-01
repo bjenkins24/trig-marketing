@@ -69,7 +69,7 @@ const SecondaryButton = styled(Button).attrs({
   size: 'lg',
   variant: 'inverse-s',
 })`
-  margin-top: 4.8rem;
+  margin-top: ${({ theme }) => theme.space[5] + theme.space[4]}px;
 `;
 
 const Pricing = props => {
@@ -97,7 +97,7 @@ const Pricing = props => {
           }
         `}
       >
-        <Title>Starter</Title>
+        <Title>Solo</Title>
         <Price>$6</Price>
         <Body1
           color={bodyColor}
@@ -106,31 +106,32 @@ const Pricing = props => {
             margin-bottom: 4.8rem;
           `}
         >
-          user/month
+          month
         </Body1>
         <List>
-          <ListItem>Up to 8 Decks/User</ListItem>
-          <ListItem>Deep Searching and Auto Tagging</ListItem>
-          <ListItem>Dropbox/Google Drive Integration</ListItem>
-          <ListItem>Slack Integration</ListItem>
-          <ListItem>50GB File Storage/User</ListItem>
+          <ListItem>Unlimited Cards</ListItem>
+          <ListItem>Full-Text Search</ListItem>
+          <ListItem>AI Powered Tagging</ListItem>
+          <ListItem>Chrome Extension</ListItem>
         </List>
         <SecondaryButton forwardedAs={Link} to="/#subscribe">
-          Get Release Updates
+          Start Free 7-day Trial
         </SecondaryButton>
       </Block>
       <Block
         css={`
           @media ${device.desktopUp} {
-            transform: translateY(-2.4rem);
+            transform: translateY(
+              -${({ theme }) => theme.space[3] + theme.space[1]}px
+            );
             width: 31.1rem;
             position: relative;
             z-index: 2;
           }
         `}
       >
-        <Title>Plus</Title>
-        <Price>$16</Price>
+        <Title>Team</Title>
+        <Price>$10</Price>
         <Body1
           color={bodyColor}
           css={`
@@ -150,26 +151,24 @@ const Pricing = props => {
               font-weight: 500;
             `}
           >
-            All of Starter
+            All of Solo
           </ListItem>
-          <ListItem>Unlimited Decks</ListItem>
-          <ListItem>Question Feature</ListItem>
-          <ListItem>Ideas Feature</ListItem>
-          <ListItem>250GB File Storage/User</ListItem>
+          <ListItem>Unlimited Collections</ListItem>
+          <ListItem>Team Sharing</ListItem>
+          <ListItem>Slack Integration</ListItem>
         </List>
-        <Button
-          forwardedAs={Link}
-          to="/#subscribe"
-          size="lg"
+        <Body1
           css={`
+            display: block;
+            font-weight: bold;
             margin-top: 4.8rem;
             @media ${device.desktopUp} {
-              margin-top: 7.5rem;
+              margin-top: ${({ theme }) => theme.space[6] + theme.space[3]}px;
             }
           `}
         >
-          Get Release Updates
-        </Button>
+          Coming Soon!
+        </Body1>
       </Block>
       <Block
         css={`
@@ -203,20 +202,24 @@ const Pricing = props => {
               font-weight: 500;
             `}
           >
-            All of Plus
+            All of Team
           </ListItem>
           <ListItem>Priority Support</ListItem>
-          <ListItem>Fully Embeddable</ListItem>
-          <ListItem>White Labeling</ListItem>
-          <ListItem>Unlimited File Storage</ListItem>
+          <ListItem>AI Powered Full-Text Search</ListItem>
         </List>
-        <SecondaryButton
-          data-testid="contact-us-button"
-          type="button"
-          onClick={() => setIsContactFormOpen(true)}
+        <Body1
+          css={`
+            display: block;
+            font-weight: bold;
+            margin-top: 4.8rem;
+            @media ${device.desktopUp} {
+              margin-top: ${({ theme }) =>
+                theme.space[6] + theme.space[4] + theme.space[1]}px;
+            }
+          `}
         >
-          Contact Us
-        </SecondaryButton>
+          Coming Soon!
+        </Body1>
       </Block>
     </Wrapper>
   );

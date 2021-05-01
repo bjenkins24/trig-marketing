@@ -130,6 +130,9 @@ const Footer = props => {
             <Navigation>
               <NavigationTitle>Quick Links</NavigationTitle>
               <NavigationItem>
+                <Link to={process.env.APP_URL}>Log In</Link>
+              </NavigationItem>
+              <NavigationItem>
                 <Link to="/privacy-policy">Privacy Policy</Link>
               </NavigationItem>
               <NavigationItem>
