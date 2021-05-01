@@ -106,7 +106,7 @@ const Pricing = props => {
             margin-bottom: 4.8rem;
           `}
         >
-          user/month
+          month
         </Body1>
         <List>
           <ListItem>Unlimited Cards</ListItem>
