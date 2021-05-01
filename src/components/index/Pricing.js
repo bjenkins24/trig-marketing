@@ -114,7 +114,10 @@ const Pricing = props => {
           <ListItem>AI Powered Tagging</ListItem>
           <ListItem>Chrome Extension</ListItem>
         </List>
-        <SecondaryButton forwardedAs={Link} to="/#subscribe">
+        <SecondaryButton
+          forwardedAs={Link}
+          to={`${process.env.APP_URL}/register`}
+        >
           Start Free 7-day Trial
         </SecondaryButton>
       </Block>
