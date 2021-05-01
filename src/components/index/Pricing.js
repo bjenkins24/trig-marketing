@@ -10,6 +10,7 @@ import {
 } from '@trig-app/core-components';
 import { device } from '@trig-app/constants';
 import ContactForm from '../ContactForm';
+import useSiteMetadata from '../../helpers/hooks/useSiteMetadata';
 
 const Wrapper = styled.div`
   display: flex;
@@ -73,6 +74,7 @@ const SecondaryButton = styled(Button).attrs({
 `;
 
 const Pricing = props => {
+  const { appUrl } = useSiteMetadata();
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const bodyColor = 'ps.200';
   /* istanbul ignore next */
@@ -114,10 +116,7 @@ const Pricing = props => {
           <ListItem>AI Powered Tagging</ListItem>
           <ListItem>Chrome Extension</ListItem>
         </List>
-        <SecondaryButton
-          forwardedAs={Link}
-          to={`${process.env.APP_URL}/register`}
-        >
+        <SecondaryButton forwardedAs={Link} to={`${appUrl}/register`}>
           Start Free 7-day Trial
         </SecondaryButton>
       </Block>
