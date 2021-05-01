@@ -12,7 +12,7 @@ const BulletInfoContainer = styled.div`
     width: 60%;
   }
   @media ${device.tabletLandscapeUp} {
-    width: 45%;
+    width: 37%;
     margin: 0;
   }
 `;
@@ -79,7 +79,6 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 3.2rem;
-  width: 70%;
   @media ${device.desktopUp} {
     padding: 0;
   }

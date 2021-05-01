@@ -3,6 +3,7 @@
 # ide
 *.sublime-workspace
 *.sublime-project
+.idea
 
 # Logs
 logs

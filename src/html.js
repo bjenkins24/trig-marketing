@@ -14,6 +14,11 @@ export default function HTML(props) {
         />
         <script src="https://js.stripe.com/v3/" async />
         {props.headComponents}
+        <script
+          src="https://fast.wistia.com/embed/medias/fs718sin3z.jsonp"
+          async
+        />
+        <script src="https://fast.wistia.com/assets/external/E-v1.js" async />
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}

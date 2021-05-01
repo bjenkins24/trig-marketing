@@ -24,52 +24,59 @@ const Hero = styled.div`
   background: ${({ theme }) => theme.p};
   text-align: center;
   padding: 4.8rem 3.2rem 7.2rem;
-  height: auto;
+  height: 37rem;
   @media ${device.tabletPortraitUp} {
-    height: 93.6rem;
+    height: 60rem;
     padding: 7.2rem 3.2rem 0;
   }
-  @media (min-width: 600px) and (max-width: 715px) {
-    height: 80rem;
+  @media ${device.tabletLandscapeUp} {
+    height: 82rem;
+    padding: 7.2rem 3.2rem 0;
+  }
+  @media ${device.desktopUp} {
+    height: 94rem;
   }
 `;
 
 const MainHeading = styled(Huge)`
-  font-size: 3.6rem;
+  font-size: 3.2rem;
   margin: 0 auto 1.6rem;
   max-width: 73rem;
-  @media ${device.tabletPortraitUp} {
-    max-width: none;
-    margin-bottom: 1.6rem;
-    span {
-      display: block;
-    }
+  & span {
+    display: block;
   }
-  @media (min-width: 815px) and (max-width: 1003px) {
-    font-size: 4.8rem;
-    max-width: 73rem;
-    span {
-      display: inline;
-    }
+  @media ${device.tabletPortraitUp} {
+    font-size: 3.8rem;
   }
 
   @media ${device.tabletLandscapeUp} {
     font-size: 4.8rem;
   }
+  
+  @media ${device.desktopUp} {
+      font-size: 5.6rem;
+  }
+}
 `;
 
 const Description = styled(BodyBiggest)`
   width: 100%;
-  margin: 0 auto 6.4rem;
+  margin: 0 auto ${({ theme }) => theme.space[4]}px;
+  span {
+    display: block;
+  }
+  font-size: 1.6rem;
   @media ${device.tabletPortraitUp} {
     width: 90%;
+    font-size: 2rem;
   }
   @media ${device.tabletLandscapeUp} {
     width: 100%;
-    max-width: 87rem;
-    span {
-      display: block;
-    }
+    font-size: 2.4rem;
+    margin-bottom: ${({ theme }) => theme.space[5]}px;
+  }
+  @media ${device.desktopUp} {
+    margin-bottom: ${({ theme }) => theme.space[5] + theme.space[1]}px;
   }
 `;
 
@@ -100,10 +107,6 @@ const ImgContainer = styled.div`
     margin: 0;
   }
   display: block;
-`;
-
-const ImgStyled = styled(Img)`
-  margin-bottom: ${bottomMargin};
 `;
 
 const SubHeading = styled(Huge)`
@@ -137,39 +140,60 @@ const Index = ({ data }) => {
       <Layout headerProps={{ isLightTheme: false }}>
         <Hero>
           <MainHeading color="pc">
-            Automatically Organize Your Digital Life
+            Automatically Organize <span>Your Digital Life</span>
           </MainHeading>
           <Description as="p" color="pc" id="subscribe">
             <span>
               Can&apos;t find that document? Stop endlessly searching.{' '}
             </span>
-            Find and discover anything. Instantly.
+            <span>Find and discover anything. Instantly.</span>
           </Description>
           <Button
             forwardedAs={Link}
             to={`${process.env.APP_URL}/register`}
             css={`
               width: 259px;
+              margin-bottom: ${({ theme }) => theme.space[4]}px;
+              @media ${device.tabletLandscapeUp} {
+                margin-bottom: ${({ theme }) => theme.space[5]}px;
+              }
+              @media ${device.desktopUp} {
+                margin-bottom: ${({ theme }) =>
+                  theme.space[5] + theme.space[1]}px;
+              }
             `}
             size="hg"
           >
             Try {siteTitle} for Free
           </Button>
-          <div
-            css={`
-              display: none;
-              @media ${device.tabletPortraitUp} {
-                max-width: 92.8rem;
-                margin: 0 auto;
-                display: block;
-              }
-            `}
-          >
-            <ImgStyled
-              alt={`Screenshot of ${siteTitle} in a Laptop`}
-              durationFadeIn={300}
-              fluid={data.laptop.childImageSharp.fluid}
-            />
+          <div>
+            <span
+              className="wistia_embed wistia_async_fs718sin3z popover=true popoverAnimateThumbnail=true"
+              css={`
+                & > div > div {
+                  border-radius: 10px;
+                  box-shadow: ${({ theme }) => theme.sh};
+                }
+                display: inline-block;
+                position: relative;
+                height: 180px;
+                width: 300px;
+                @media ${device.tabletPortraitUp} {
+                  height: 325px;
+                  width: 550px;
+                }
+                @media ${device.tabletLandscapeUp} {
+                  height: 450px;
+                  width: 750px;
+                }
+                @media ${device.desktopUp} {
+                  height: 550px;
+                  width: 890px;
+                }
+              `}
+            >
+              &nbsp;
+            </span>
           </div>
         </Hero>
         <SubHeading>What is {siteTitle}?</SubHeading>
