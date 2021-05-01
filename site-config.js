@@ -5,6 +5,7 @@ module.exports = {
   siteTitleShort: `Trig`,
   siteDescription: `Knowledge Management for Teams`,
   siteUrl: `https://trytrig.com`,
+  appUrl: `https://app.trytrig.com`,
   themeColor: `#2C2929`,
   backgroundColor: `#F5F5F5`,
   pathPrefix: null,

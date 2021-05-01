@@ -108,9 +108,10 @@ const BlogLink = () => {
   return <Link to="/blog">Blog</Link>;
 };
 
-const LoginLink = () => {
+// eslint-disable-next-line
+const LoginLink = ({ url }) => {
   return (
-    <a href={process.env.APP_URL} rel="noreferrer">
+    <a href={url} rel="noreferrer">
       Log In
     </a>
   );
@@ -125,7 +126,7 @@ const defaultProps = {
 };
 
 const Header = ({ isLightTheme, ...restProps }) => {
-  const { siteTitle } = useSiteMetadata();
+  const { siteTitle, appUrl } = useSiteMetadata();
   const [isLight, setIsLight] = useState(isLightTheme);
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -177,9 +178,9 @@ const Header = ({ isLightTheme, ...restProps }) => {
             <BlogLink />
           </NavigationItem>
           <NavigationItem isLight={isLight} weight="bold">
-            <LoginLink />
+            <LoginLink url={appUrl} />
           </NavigationItem>
-          <Button as="a" href={`${process.env.APP_URL}/register`}>
+          <Button as="a" href={`${appUrl}/register`}>
             Try Now
           </Button>
         </Nav>

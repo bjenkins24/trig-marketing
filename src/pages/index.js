@@ -128,7 +128,7 @@ const indexTypes = {
 };
 
 const Index = ({ data }) => {
-  const { siteTitle } = useSiteMetadata();
+  const { siteTitle, appUrl } = useSiteMetadata();
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
 
   return (
@@ -150,7 +150,7 @@ const Index = ({ data }) => {
           </Description>
           <Button
             forwardedAs={Link}
-            to={`${process.env.APP_URL}/register`}
+            to={`${appUrl}/register`}
             css={`
               width: 259px;
               margin-bottom: ${({ theme }) => theme.space[4]}px;
@@ -248,7 +248,7 @@ const Index = ({ data }) => {
             </BodyBig>
             <Button
               forwardedAs={Link}
-              to={`${process.env.APP_URL}/register`}
+              to={`${appUrl}/register`}
               css={`
                 padding: 0 3.2rem;
               `}

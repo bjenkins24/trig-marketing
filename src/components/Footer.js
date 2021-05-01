@@ -79,7 +79,7 @@ const NavigationItem = styled.li`
 
 const Footer = props => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
-  const { siteTitle } = useSiteMetadata();
+  const { siteTitle, appUrl } = useSiteMetadata();
 
   /* istanbul ignore next */
   const closeModal = () => {
@@ -130,7 +130,7 @@ const Footer = props => {
             <Navigation>
               <NavigationTitle>Quick Links</NavigationTitle>
               <NavigationItem>
-                <Link to={process.env.APP_URL}>Log In</Link>
+                <Link to={appUrl}>Log In</Link>
               </NavigationItem>
               <NavigationItem>
                 <Link to="/privacy-policy">Privacy Policy</Link>
