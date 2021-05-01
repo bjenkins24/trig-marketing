@@ -109,7 +109,11 @@ const BlogLink = () => {
 };
 
 const LoginLink = () => {
-  return <Link to={process.env.APP_URL}>Log In</Link>;
+  return (
+    <a href={process.env.APP_URL} rel="noreferrer">
+      Log In
+    </a>
+  );
 };
 
 export const headerTypes = {
